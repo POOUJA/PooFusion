@@ -7,7 +7,9 @@
 
 #include <cstdlib>
 
-#include "PooFusion.h"
+#include "Persona.h"
+#include "Canal.h"
+#include "ConexionInternet.h"
 
 using namespace std;
 
@@ -16,29 +18,14 @@ using namespace std;
  */
 int main ( int argc, char** argv )
 {
-   // Creación de una variable de tipo Persona
-   PooFusion::Persona p;
+   // Creación de un objeto de clase Persona
+   Persona p;
 
-   // Asignación de valores a los campos
-   p.apeNom = "García, Javier";
-   p.nif = "12345678-K";
+   // Creación de un objeto de clase ConexionInternet
+   ConexionInternet c;
 
-   // Creación de una variable de tipo ConexionInternet
-   PooFusion::ConexionInternet c;
-
-   // Asignación de valores a los campos
-   c.tipo = "Fibra óptica";
-   c.velocidadMB = 300;
-
-   // Creación de una variable de tipo Canal
-   PooFusion::Canal c2;
-
-   // Asignación de valores a los campos
-   c2.nombre = "Eurosport";
-
-   PooFusion::mostrarPersona ( p );
-   PooFusion::mostrarConexion ( c );
-   PooFusion::mostrarCanal ( c2 );
+   // Creación de un objeto de clase Canal
+   Canal c2;
 
    return 0;
 }

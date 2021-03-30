@@ -4,7 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>PooFusion.h</itemPath>
+      <itemPath>Canal.h</itemPath>
+      <itemPath>ConexionInternet.h</itemPath>
+      <itemPath>Persona.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,7 +15,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>PooFusion.cpp</itemPath>
+      <itemPath>Canal.cpp</itemPath>
+      <itemPath>ConexionInternet.cpp</itemPath>
+      <itemPath>Persona.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -38,9 +42,17 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="PooFusion.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Canal.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PooFusion.h" ex="false" tool="3" flavor2="0">
+      <item path="Canal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConexionInternet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConexionInternet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Persona.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Persona.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -65,9 +77,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="PooFusion.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Canal.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PooFusion.h" ex="false" tool="3" flavor2="0">
+      <item path="Canal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConexionInternet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConexionInternet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Persona.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Persona.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
