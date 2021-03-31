@@ -1,0 +1,21 @@
+@startuml
+
+hide circle
+skinparam classattributeiconsize 0
+skinparam classFontStyle bold
+
+class Persona {
+ - apeNom: string
+ - nif: string
+}
+
+class ConexionInternet {
+ - tipo: string
+ - velocidadMB: int
+}
+
+class Canal {
+ - nombre: string
+}
+
+@enduml
