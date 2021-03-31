@@ -9,12 +9,13 @@ class Persona {
  - nif: string
  + Persona ()
  + Persona ( orig: Persona )
- <b>+ ~Persona ()
  + Persona ( nApeNom: string, nNIF: string )
+ + ~Persona ()
  + getApeNom (): string
  + setApeNom ( nApeNom: string )
  + getNif (): string
  + setNif ( nNif: string )
+ <b>+ operator= ( otro: Persona ): Persona
 }
 
 class ConexionInternet {
@@ -23,11 +24,14 @@ class ConexionInternet {
  + ConexionInternet ()
  + ConexionInternet ( orig: ConexionInternet )
  + ConexionInternet ( nTipo: string, nVel: int )
- <b>+ ~ConexionInternet ()
+ + ~ConexionInternet ()
  + getTipo (): string
  + setTipo ( nTipo: string )
  + getVelocidad (): int
  + setVelocidad ( nVel: int )
+ <b>+ operator< ( otro: ConexionInternet ): bool
+ <b>+ operator== ( otro: ConexionInternet ): bool
+ <b>+ operator= ( otro: ConexionInternet ): ConexionInternet
 }
 
 class Canal {
@@ -35,9 +39,10 @@ class Canal {
  + Canal ()
  + Canal ( orig: Canal )
  + Canal ( nNombre: string )
- <b>+ ~Canal ()
+ + ~Canal ()
  + setNombre ( nNombre: string )
  + getNombre (): string
+ <b>+ operator= ( otro: Canal ): Canal
 }
 
 @enduml
