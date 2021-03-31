@@ -18,6 +18,16 @@
 Canal::Canal ( std::string nNombre ): _nombre ( nNombre )
 { }
 
+
+/**
+ * Constructor de copia
+ * @param orig Canal del que se copia la información
+ * @post El nuevo canal tiene exactamente los mismos datos que el original
+ */
+Canal::Canal ( const Canal& orig ): _nombre ( orig._nombre )
+{ }
+
+
 /**
  * Cambia el nombre del canal
  * @param nNombre Nuevo nombre para el canal

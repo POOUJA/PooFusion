@@ -38,6 +38,20 @@ int main ( int argc, char** argv )
              << "La conexión es " << c.getTipo () << " a "
              << c.getVelocidadMB () << " MB" << std::endl;
 
+   // Creación de copia en memoria automática (pila)
+   Persona p2 ( p );
+
+   std::cout << "La persona copiada se llama " << p2.getApeNom () << std::endl;
+
+   // Creación de copia en memoria dinámica (heap)
+   Persona* ptrP = new Persona ( p );
+
+   std::cout << "La persona copiada se llama " << ptrP->getApeNom () << std::endl;
+
+   // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
+   delete ptrP;
+   ptrP = nullptr;
+
    return 0;
 }
 
