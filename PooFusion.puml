@@ -8,7 +8,8 @@ class Persona {
  - apeNom: string
  - nif: string
  + Persona ()
- <b>+ Persona ( orig: Persona )</b>
+ + Persona ( orig: Persona )
+ <b>+ ~Persona ()
  + Persona ( nApeNom: string, nNIF: string )
  + getApeNom (): string
  + setApeNom ( nApeNom: string )
@@ -20,8 +21,9 @@ class ConexionInternet {
  - tipo: string
  - velocidadMB: int
  + ConexionInternet ()
- <b>+ ConexionInternet ( orig: ConexionInternet )</b>
+ + ConexionInternet ( orig: ConexionInternet )
  + ConexionInternet ( nTipo: string, nVel: int )
+ <b>+ ~ConexionInternet ()
  + getTipo (): string
  + setTipo ( nTipo: string )
  + getVelocidad (): int
@@ -31,8 +33,9 @@ class ConexionInternet {
 class Canal {
  - nombre: string
  + Canal ()
- <b>+ Canal ( orig: Canal )</b>
+ + Canal ( orig: Canal )
  + Canal ( nNombre: string )
+ <b>+ ~Canal ()
  + setNombre ( nNombre: string )
  + getNombre (): string
 }
