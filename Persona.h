@@ -25,6 +25,7 @@ class Persona
       Persona () = default;
       Persona ( std::string nApeNom, std::string nNIF );
       Persona ( const Persona& orig );
+      ~Persona ();
       void setNif ( std::string nNif );
       std::string getNif ( ) const;
       void setApeNom ( std::string nApeNom );

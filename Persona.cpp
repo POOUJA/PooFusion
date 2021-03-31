@@ -33,6 +33,13 @@ Persona::Persona ( const Persona& orig ): _apeNom ( orig._apeNom )
 
 
 /**
+ * Destructor
+ */
+Persona::~Persona ( )
+{ }
+
+
+/**
  * Cambia el NIF de la persona
  * @param nNif Nuevo valor de NIF
  * @pre El valor de NIF ha de ser válido
