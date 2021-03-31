@@ -7,15 +7,31 @@ skinparam classFontStyle bold
 class Persona {
  - apeNom: string
  - nif: string
+ + Persona ()
+ + Persona ( nApeNom: string, nNIF: string )
+ + getApeNom (): string
+ + setApeNom ( nApeNom: string )
+ + getNif (): string
+ + setNif ( nNif: string )
 }
 
 class ConexionInternet {
  - tipo: string
  - velocidadMB: int
+ + ConexionInternet ()
+ + ConexionInternet ( nTipo: string, nVel: int )
+ + getTipo (): string
+ + setTipo ( nTipo: string )
+ + getVelocidad (): int
+ + setVelocidad ( nVel: int )
 }
 
 class Canal {
  - nombre: string
+ + Canal ()
+ + Canal ( nNombre: string )
+ + setNombre ( nNombre: string )
+ + getNombre (): string
 }
 
 @enduml
