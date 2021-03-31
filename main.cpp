@@ -48,9 +48,29 @@ int main ( int argc, char** argv )
 
    std::cout << "La persona copiada se llama " << ptrP->getApeNom () << std::endl;
 
+   // Creación de array de objetos en memoria automática (pila)
+   Persona aP[3];
+
+   aP[0].setApeNom ( "Pérez, Pedro" );
+   aP[0].setNif ( "11111111-A" );
+   aP[1].setApeNom ( "Álvarez, Antonio" );
+   aP[1].setNif ( "22222222-B" );
+   aP[2].setApeNom ( "González, Gabriel" );
+   aP[2].setNif ( "33333333-C" );
+
+   // Creación de array de objetos en memoria dinámica (heap)
+   Canal* aC = new Canal[3];
+
+   aC[0].setNombre ( "Eurosport" );
+   aC[1].setNombre ( "TDP" );
+   aC[2].setNombre ( "#Vamos" );
+
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
    delete ptrP;
    ptrP = nullptr;
+
+   delete [] aC;
+   aC = nullptr;
 
    return 0;
 }

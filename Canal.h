@@ -24,6 +24,7 @@ class Canal
       Canal () = default;
       Canal ( std::string nNombre );
       Canal ( const Canal& orig );
+      ~Canal ();
       void setNombre ( std::string nNombre );
       std::string getNombre ( ) const;
 };

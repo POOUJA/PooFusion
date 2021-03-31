@@ -29,6 +29,13 @@ Canal::Canal ( const Canal& orig ): _nombre ( orig._nombre )
 
 
 /**
+ * Destructor
+ */
+Canal::~Canal ( )
+{ }
+
+
+/**
  * Cambia el nombre del canal
  * @param nNombre Nuevo nombre para el canal
  * @pre El nombre del canal debe ser un valor válido

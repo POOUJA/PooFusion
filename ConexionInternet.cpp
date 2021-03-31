@@ -35,6 +35,13 @@ ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
 
 
 /**
+ * Destructor
+ */
+ConexionInternet::~ConexionInternet ( )
+{ }
+
+
+/**
  * Cambia la velocidad de la conexión
  * @param nVel Nueva velocidad
  * @pre El valor de nueva velocidad debe ser válido

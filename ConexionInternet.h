@@ -25,6 +25,7 @@ class ConexionInternet
       ConexionInternet () = default;
       ConexionInternet ( std::string nTipo, int nVel );
       ConexionInternet ( const ConexionInternet& orig );
+      ~ConexionInternet ();
       void setVelocidadMB ( int nVel );
       int getVelocidadMB ( ) const;
       void setTipo ( std::string nTipo );
