@@ -32,6 +32,6 @@
 *.app
 
 #NetBeans folders
-/nbproject/private/
-/build/
-/dist/
+**/nbproject/private/
+**/build/
+**/dist/
