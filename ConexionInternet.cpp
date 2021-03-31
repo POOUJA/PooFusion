@@ -83,3 +83,52 @@ std::string ConexionInternet::getTipo ( ) const
 {
    return _tipo;
 }
+
+
+/**
+ * Operador de asignación
+ * @param otro Conexión de la que se copia la información
+ * @post La conexión tiene exactamente la misma información que la que se pasa
+ *       como parámetro
+ * @return Una referencia a la conexión actual, para permitir asignaciones
+ *         encadenadas (a = b = c)
+ */
+ConexionInternet& ConexionInternet::operator= ( const ConexionInternet& otro )
+{
+   if ( this != &otro )
+   {
+      _tipo = otro._tipo;
+      _velocidadMB = otro._velocidadMB;
+   }
+
+   return *this;
+}
+
+
+/**
+ * Operador de comparación "menor que"
+ * @param otro Conexión con la que se compara
+ * @retval true Si la conexión actual tiene menos velocidad que la que se pasa
+ *              como parámetro
+ * @retval false Si la conexión actual tiene igual o más velocidad que la que
+ *               se pasa como parámetro
+ */
+bool ConexionInternet::operator< ( const ConexionInternet& otro )
+{
+   return ( _velocidadMB < otro._velocidadMB );
+}
+
+
+/**
+ * Operador de comparación "igual que"
+ * @param otro Conexión con la que se compara
+ * @retval true Si la conexión actual tiene la misma velocidad que la que se
+ *              pasa como parámetro
+ * @retval false Si la conexión actual tiene distinta velocidad que la que se
+ *               pasa como parámetro
+ */
+bool ConexionInternet::operator== ( const ConexionInternet& otro )
+{
+   return ( _velocidadMB == otro._velocidadMB );
+}
+

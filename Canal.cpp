@@ -55,3 +55,21 @@ std::string Canal::getNombre ( ) const
    return _nombre;
 }
 
+
+/**
+ * Operador de asignación
+ * @param otro Canal del que se copia la información
+ * @post El canal tiene exactamente la misma información que el que se pasa
+ *       como parámetro
+ * @return Una referencia al canal actual, para permitir asignaciones
+ *         encadenadas (a = b = c)
+ */
+Canal& Canal::operator= ( const Canal& otro )
+{
+   if ( this != &otro )
+   {
+      _nombre = otro._nombre;
+   }
+
+   return *this;
+}

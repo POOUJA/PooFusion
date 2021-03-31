@@ -82,3 +82,23 @@ std::string Persona::getApeNom ( ) const
 {
    return _apeNom;
 }
+
+
+/**
+ * Operador de asignación
+ * @param otro Persona de la que se copia la información
+ * @post La persona tiene exactamente la misma información que la que se pasa
+ *       como parámetro
+ * @return Una referencia a la persona actual, para permitir asignaciones
+ *         encadenadas (a = b = c)
+ */
+Persona& Persona::operator= ( const Persona& otro )
+{
+   if ( this != &otro )
+   {
+      _apeNom = otro._apeNom;
+      _nif = otro._nif;
+   }
+
+   return *this;
+}
