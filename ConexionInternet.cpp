@@ -18,8 +18,19 @@
  *       pasan
  */
 ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
-                                                                 _tipo ( nTipo )
-                                                         , _velocidadMB ( nVel )
+                                   _tipo ( nTipo )
+                                 , _velocidadMB ( nVel )
+{ }
+
+
+/**
+ * Constructor de copia
+ * @param orig Conexión de la que se copia la información
+ * @post La nueva conexión tiene exactamente los mismos datos que la original
+ */
+ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
+                                   _tipo ( orig._tipo )
+                                 , _velocidadMB ( orig._velocidadMB )
 { }
 
 

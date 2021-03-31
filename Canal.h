@@ -23,6 +23,7 @@ class Canal
    public:
       Canal () = default;
       Canal ( std::string nNombre );
+      Canal ( const Canal& orig );
       void setNombre ( std::string nNombre );
       std::string getNombre ( ) const;
 };

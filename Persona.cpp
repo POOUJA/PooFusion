@@ -23,6 +23,16 @@ Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
 
 
 /**
+ * Constructor de copia
+ * @param orig Persona de la que se copia la información
+ * @post La nueva persona tiene exactamente los mismos datos que la original
+ */
+Persona::Persona ( const Persona& orig ): _apeNom ( orig._apeNom )
+                                        , _nif ( orig._nif )
+{ }
+
+
+/**
  * Cambia el NIF de la persona
  * @param nNif Nuevo valor de NIF
  * @pre El valor de NIF ha de ser válido
