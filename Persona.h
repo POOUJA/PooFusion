@@ -30,6 +30,7 @@ class Persona
       std::string getNif ( ) const;
       void setApeNom ( std::string nApeNom );
       std::string getApeNom ( ) const;
+      Persona& operator= ( const Persona& otro );
 };
 
 #endif /* PERSONA_H */

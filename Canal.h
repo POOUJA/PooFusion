@@ -27,6 +27,7 @@ class Canal
       ~Canal ();
       void setNombre ( std::string nNombre );
       std::string getNombre ( ) const;
+      Canal& operator= ( const Canal& otro );
 };
 
 #endif /* CANAL_H */

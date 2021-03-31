@@ -30,7 +30,9 @@ class ConexionInternet
       int getVelocidadMB ( ) const;
       void setTipo ( std::string nTipo );
       std::string getTipo ( ) const;
-      
+      ConexionInternet& operator= ( const ConexionInternet& otro );
+      bool operator< ( const ConexionInternet& otro );
+      bool operator== ( const ConexionInternet& otro );
 };
 
 #endif /* CONEXIONINTERNET_H */

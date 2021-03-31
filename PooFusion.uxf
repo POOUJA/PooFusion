@@ -7,7 +7,7 @@
       <x>160</x>
       <y>220</y>
       <w>320</w>
-      <h>210</h>
+      <h>220</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Persona
@@ -18,11 +18,12 @@ Persona
 + Persona ()
 + Persona ( nApeNom: string, nNIF: string )
 + Persona ( orig: Persona )
-*+ ~Persona ()*
++ ~Persona ()
 + getApeNom (): string
 + setApeNom ( nApeNom: string )
 + getNif (): string
-+ setNif ( nNif: string )</panel_attributes>
++ setNif ( nNif: string )
+*+ operator= ( otro: Persona ): Persona*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -30,8 +31,8 @@ Persona
     <coordinates>
       <x>430</x>
       <y>460</y>
-      <w>330</w>
-      <h>210</h>
+      <w>470</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>style=autoresize
 ConexionInternet
@@ -41,12 +42,15 @@ ConexionInternet
 --
 + ConexionInternet ()
 + ConexionInternet ( nTipo: string, nVel: int )
-*+ ~ConexionInternet ()*
++ ~ConexionInternet ()
 + ConexionInternet ( orig: ConexionInternet )
 + getTipo (): string
 + setTipo ( nTipo: string )
 + getVelocidad (): int
-+ setVelocidad ( nVel: int )</panel_attributes>
++ setVelocidad ( nVel: int )
+*+ operator= ( otro: ConexionInternet ): ConexionInternet*
+*+ operator&lt; ( otro: ConexionInternet )*
+*+ operator== ( otro: ConexionInternet )*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -54,8 +58,8 @@ ConexionInternet
     <coordinates>
       <x>650</x>
       <y>230</y>
-      <w>250</w>
-      <h>160</h>
+      <w>280</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
@@ -65,9 +69,10 @@ Canal
 + Canal ()
 + Canal ( nNombre: string )
 + Canal ( orig: Canal )
-*+ ~Canal ()*
++ ~Canal ()
 + getNombre (): string
-+ setNombre ( nNombre: string )</panel_attributes>
++ setNombre ( nNombre: string )
+*+ operator= ( otro: Canal ): Canal*</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
