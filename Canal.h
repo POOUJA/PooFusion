@@ -18,7 +18,13 @@
 class Canal
 {
    private:
-      std::string nombre = "";   ///< Nombre del canal
+      std::string _nombre = "";   ///< Nombre del canal
+      
+   public:
+      Canal () = default;
+      Canal ( std::string nNombre );
+      void setNombre ( std::string nNombre );
+      std::string getNombre ( ) const;
 };
 
 #endif /* CANAL_H */
