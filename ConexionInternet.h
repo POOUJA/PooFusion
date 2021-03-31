@@ -18,8 +18,17 @@
 class ConexionInternet
 {
    private:
-      std::string tipo = "";   ///< Tipo de conexión
-      int velocidadMB = 0;    ///< Velocidad máxima en MB
+      std::string _tipo = "";   ///< Tipo de conexión
+      int _velocidadMB = 0;    ///< Velocidad máxima en MB
+      
+   public:
+      ConexionInternet () = default;
+      ConexionInternet ( std::string nTipo, int nVel );
+      void setVelocidadMB ( int nVel );
+      int getVelocidadMB ( ) const;
+      void setTipo ( std::string nTipo );
+      std::string getTipo ( ) const;
+      
 };
 
 #endif /* CONEXIONINTERNET_H */

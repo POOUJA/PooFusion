@@ -18,8 +18,16 @@
 class Persona
 {
    private:
-      std::string apeNom = "";   ///< Apellidos, nombre
-      std::string nif = "";      ///< NIF (formato "XXXXXXXX-X")
+      std::string _apeNom = "";   ///< Apellidos, nombre
+      std::string _nif = "";      ///< NIF (formato "XXXXXXXX-X")
+
+   public:
+      Persona () = default;
+      Persona ( std::string nApeNom, std::string nNIF );
+      void setNif ( std::string nNif );
+      std::string getNif ( ) const;
+      void setApeNom ( std::string nApeNom );
+      std::string getApeNom ( ) const;
 };
 
 #endif /* PERSONA_H */
