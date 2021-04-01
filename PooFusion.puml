@@ -7,51 +7,31 @@ skinparam classFontStyle bold
 class Persona {
  - apeNom: string
  - nif: string
- + Persona ()
- + Persona ( orig: Persona )
- + Persona ( nApeNom: string, nNIF: string )
- + ~Persona ()
- + getApeNom (): string
- + setApeNom ( nApeNom: string )
- + getNif (): string
- + setNif ( nNif: string )
- + operator= ( otro: Persona ): Persona
+ + setMiCanal ( nuevoC: Canal ): Canal
+ + getMiCanal (): Canal
+ + setMiConexion ( nuevaC: ConexionInternet ): ConexionInternet
+ + getMiConexion (): ConexionInternet
 }
 
 class ConexionInternet {
  - tipo: string
  - velocidadMB: int
- + ConexionInternet ()
- + ConexionInternet ( orig: ConexionInternet )
- + ConexionInternet ( nTipo: string, nVel: int )
- + ~Persona ()
- + getTipo (): string
- + setTipo ( nTipo: string )
- + getVelocidad (): int
- + setVelocidad ( nVel: int )
- + operator< ( otro: ConexionInternet ): bool
- + operator== ( otro: ConexionInternet ): bool
- + operator= ( otro: ConexionInternet ): ConexionInternet
 }
 
 class Canal {
  - nombre: string
- + Canal ()
- + Canal ( orig: Canal )
- + Canal ( nNombre: string )
- + ~Canal ()
- + setNombre ( nNombre: string )
- + getNombre (): string
- + operator= ( otro: Canal ): Canal
 }
 
 class MiExcepcion{
  - fichero: string
- - funcion: string
+ - función: string
  - mensaje: string
- + MiExcepcion ( nFich: string, nFun: string, msg: string )
- + MiExcepcion ( orig: MiExcepcion )
- + quePasa (): string
 }
+
+Persona --> "miConexion" ConexionInternet: Contrata >
+Persona --> "miCanal" Canal: Contrata >
+Canal ..> MiExcepcion
+ConexionInternet ..> MiExcepcion
+Persona ..> MiExcepcion
 
 @enduml
