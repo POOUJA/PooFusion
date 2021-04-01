@@ -42,14 +42,22 @@ Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
  */
 Persona::Persona ( const Persona& orig ): _apeNom ( orig._apeNom )
                                         , _nif ( orig._nif )
+                                        , _miCanal ( orig._miCanal )
+                                        , _miConexion ( orig._miConexion )
 { }
 
 
 /**
  * Destructor
+ * @post Se rompe la relación de la persona con el canal y la conexión que tenga
+ *       contratadas
+ * @note La conexión y el canal NO se destruyen
  */
 Persona::~Persona ( )
-{ }
+{
+   _miCanal = nullptr;
+   _miConexion = nullptr;
+}
 
 
 /**
@@ -110,6 +118,61 @@ std::string Persona::getApeNom ( ) const
 
 
 /**
+ * Cambia la conexión contratada por la persona
+ * @param nuevaC Dirección de memoria de la nueva conexión a vincular
+ * @post La conexión a Internet vinculada a la persona cambia al valor del
+ *       parámetro
+ * @return La dirección de memoria de la conexión anteriormente vinculada a la
+ *         persona. Si no había una conexión previa, devuelve nullptr
+ */
+ConexionInternet* Persona::setMiConexion ( ConexionInternet* nuevaC )
+{
+   ConexionInternet* aux = _miConexion;
+   this->_miConexion = nuevaC;
+
+   return aux;
+}
+
+
+/**
+ * Consulta la conexión a Internet contratada por la persona
+ * @return La dirección de memoria de la conexión contratada. Si no hay una
+ *         conexión contratada, devuelve nullptr
+ */
+ConexionInternet* Persona::getMiConexion ( ) const
+{
+   return _miConexion;
+}
+
+
+/**
+ * Cambia el canal contratado por la persona
+ * @param nuevoC Dirección de memoria del nuevo canal a vincular
+ * @post El canal vinculado a la persona cambia al valor del parámetro
+ * @return La dirección de memoria del canal anteriormente vinculado a la
+ *         persona. Si no había un canal previo, devuelve nullptr
+ */
+Canal* Persona::setMiCanal ( Canal* nuevoC )
+{
+   Canal* aux = _miCanal;
+   this->_miCanal = nuevoC;
+
+   return aux;
+}
+
+
+/**
+ * Consulta el canal de TV contratado por la persona
+ * @return La dirección de memoria del canal contratado. Si no hay un canal
+ *         contratado, devuelve nullptr
+ */
+Canal* Persona::getMiCanal ( ) const
+{
+   return _miCanal;
+}
+
+
+/**
  * Operador de asignación
  * @param otro Persona de la que se copia la información
  * @post La persona tiene exactamente la misma información que la que se pasa
@@ -123,6 +186,8 @@ Persona& Persona::operator= ( const Persona& otro )
    {
       _apeNom = otro._apeNom;
       _nif = otro._nif;
+      _miCanal = otro._miCanal;
+      _miConexion = otro._miConexion;
    }
 
    return *this;

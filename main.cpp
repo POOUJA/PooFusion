@@ -16,6 +16,20 @@
 using namespace std;
 
 /**
+ * @brief Muestra la información de una persona por consola
+ * @param paramP Persona de la que muestra la información
+ */
+void muestraPersona ( Persona& paramP )
+{
+   std::cout << "La persona se llama " << paramP.getApeNom () << std::endl
+             << "está abonada al canal " << paramP.getMiCanal ()->getNombre ()
+             << std::endl
+             << "y tiene contratada una conexión de tipo "
+             << paramP.getMiConexion ()->getTipo () << " a una velocidad de "
+             << paramP.getMiConexion ()->getVelocidadMB () << " MB" << std::endl;
+}
+
+/**
  * @brief Punto de inicio de la aplicación
  */
 int main ( int argc, char** argv )
@@ -106,8 +120,15 @@ int main ( int argc, char** argv )
    }
    catch ( MiExcepcion& e )
    {
-      std::cerr << e.quePasa ();
+      std::cerr << e.quePasa () << std::endl;
    }
+
+   // Relaciona un canal y una conexión con una persona
+   p.setMiCanal ( &c2 );
+   p.setMiConexion ( &c );
+
+   // Comprobamos que se ha relacionado correctamente
+   muestraPersona ( p );
 
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
    delete ptrP;

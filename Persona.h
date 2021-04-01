@@ -12,6 +12,9 @@
 
 #include <string>
 
+#include "Canal.h"
+#include "ConexionInternet.h"
+
 /**
  * Los objetos de esta clase representan personas físicas
  */
@@ -20,6 +23,8 @@ class Persona
    private:
       std::string _apeNom = "";   ///< Apellidos, nombre
       std::string _nif = "";      ///< NIF (formato "XXXXXXXX-X")
+      Canal* _miCanal = nullptr;   ///< Canal contratado
+      ConexionInternet* _miConexion = nullptr;   ///< Conexión contratada
 
    public:
       Persona () = default;
@@ -30,6 +35,10 @@ class Persona
       std::string getNif ( ) const;
       void setApeNom ( std::string nApeNom );
       std::string getApeNom ( ) const;
+      ConexionInternet* setMiConexion ( ConexionInternet* nuevaC );
+      ConexionInternet* getMiConexion ( ) const;
+      Canal* setMiCanal ( Canal* nuevoC );
+      Canal* getMiCanal ( ) const;
       Persona& operator= ( const Persona& otro );
 };
 
