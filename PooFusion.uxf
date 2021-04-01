@@ -23,15 +23,15 @@ Persona
 + setApeNom ( nApeNom: string )
 + getNif (): string
 + setNif ( nNif: string )
-*+ operator= ( otro: Persona ): Persona*</panel_attributes>
++ operator= ( otro: Persona ): Persona</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
+      <x>160</x>
       <y>460</y>
-      <w>470</w>
+      <w>420</w>
       <h>260</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -48,17 +48,17 @@ ConexionInternet
 + setTipo ( nTipo: string )
 + getVelocidad (): int
 + setVelocidad ( nVel: int )
-*+ operator= ( otro: ConexionInternet ): ConexionInternet*
-*+ operator&lt; ( otro: ConexionInternet )*
-*+ operator== ( otro: ConexionInternet )*</panel_attributes>
++ operator= ( otro: ConexionInternet ): ConexionInternet
++ operator&lt; ( otro: ConexionInternet )
++ operator== ( otro: ConexionInternet )</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>650</x>
-      <y>230</y>
-      <w>280</w>
+      <y>220</y>
+      <w>250</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -72,7 +72,27 @@ Canal
 + ~Canal ()
 + getNombre (): string
 + setNombre ( nNombre: string )
-*+ operator= ( otro: Canal ): Canal*</panel_attributes>
++ operator= ( otro: Canal ): Canal</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>460</y>
+      <w>410</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+MiExcepcion
+--
+- fichero: string
+- funcion: string
+- mensaje: string
+--
++ MiExcepcion ( nFich: string, nFun: string, msg: string )
++ MiExcepcion ( orig: MiExcepcion )
++ quePasa (): string</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
