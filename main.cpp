@@ -11,6 +11,7 @@
 #include "Persona.h"
 #include "Canal.h"
 #include "ConexionInternet.h"
+#include "MiExcepcion.h"
 
 using namespace std;
 
@@ -95,6 +96,17 @@ int main ( int argc, char** argv )
                    << " es más rápida que la conexión " << otraC.getTipo ()
                    << std::endl;
       }
+   }
+
+   // Captura de excepciones
+   //aP[0].setNif ( "" ); // Descomenta esta línea para ver qué pasa si no se captura
+   try
+   {
+      aP[2].setApeNom ("");
+   }
+   catch ( MiExcepcion& e )
+   {
+      std::cerr << e.quePasa ();
    }
 
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
