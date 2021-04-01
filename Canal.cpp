@@ -8,15 +8,22 @@
  */
 
 #include "Canal.h"
+#include "MiExcepcion.h"
 
 /**
  * Constructor parametrizado
  * @param nNombre Nombre del nuevo canal
- * @pre El nombre del canal debe ser un valor válido
  * @post El nombre del nuevo canal coincidirá con el que se pasa como parámetro
+ * @throw MiExcepcion Si el nombre es una cadena vacía
  */
 Canal::Canal ( std::string nNombre ): _nombre ( nNombre )
-{ }
+{
+   if ( nNombre == "" )
+   {
+      throw MiExcepcion ( "Canal.cpp", "Canal::Canal"
+                        , "Un canal tiene que tener nombre" );
+   }
+}
 
 
 /**
@@ -38,11 +45,17 @@ Canal::~Canal ( )
 /**
  * Cambia el nombre del canal
  * @param nNombre Nuevo nombre para el canal
- * @pre El nombre del canal debe ser un valor válido
  * @post El nombre del canal cambia al valor que se le pasa como parámetro
+ * @throw MiExcepcion Si se intenta asignar como nombre una cadena vacía
  */
 void Canal::setNombre ( std::string nNombre )
 {
+   if ( nNombre == "" )
+   {
+      throw MiExcepcion ( "Canal.cpp", "Canal::setNombre"
+                        , "Un canal tiene que tener nombre" );
+   }
+
    this->_nombre = nNombre;
 }
 

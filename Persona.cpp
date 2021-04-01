@@ -8,18 +8,31 @@
  */
 
 #include "Persona.h"
+#include "MiExcepcion.h"
 
 /**
  * Constructor parametrizado
  * @param nApeNom Apellidos y nombre de la persona
  * @param nNIF NIF de la persona
- * @pre Los parámetros han de tener valores válidos
  * @post Los datos de la nueva persona son iguales a los que se pasan como
  *       parámetros
+ * @throw MiExcepcion Si alguna de las dos cadenas está vacía
  */
 Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
                                                           , _nif ( nNIF )
-{ }
+{
+   if ( nApeNom == "" )
+   {
+      throw MiExcepcion ( "Persona.cpp", "Persona::Persona"
+                        , "El nombre no puede estar vacío" );
+   }
+
+   if ( nNIF == "" )
+   {
+      throw MiExcepcion ( "Persona.cpp", "Persona::Persona"
+                        , "El NIF no puede estar vacío" );
+   }
+}
 
 
 /**
@@ -42,11 +55,17 @@ Persona::~Persona ( )
 /**
  * Cambia el NIF de la persona
  * @param nNif Nuevo valor de NIF
- * @pre El valor de NIF ha de ser válido
  * @post El NIF de la persona cambia al nuevo valor
+ * @throw MiExcepcion Si el nuevo NIF es una cadena vacía
  */
 void Persona::setNif ( std::string nNif )
 {
+   if ( nNif == "" )
+   {
+      throw MiExcepcion ( "Persona.cpp", "Persona::setNif"
+                        , "El NIF no puede estar vacío" );
+   }
+
    this->_nif = nNif;
 }
 
@@ -64,12 +83,18 @@ std::string Persona::getNif ( ) const
 /**
  * Cambia el nombre y los apellidos de la persona
  * @param nApeNom Apellidos y nombre de la persona
- * @pre El valor que se pasa como parámetro ha de ser válido
  * @post La persona cambia sus apellidos y nombre al valor que se pasa como
  *       parámetro
+ * @throw MiExcepcion Si la cadena con el nuevo nombre está vacía
  */
 void Persona::setApeNom ( std::string nApeNom )
 {
+   if ( nApeNom == "" )
+   {
+      throw MiExcepcion ( "Persona.cpp", "Persona::setApeNom"
+                        , "El nombre no puede estar vacío" );
+   }
+
    this->_apeNom = nApeNom;
 }
 

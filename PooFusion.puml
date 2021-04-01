@@ -15,7 +15,7 @@ class Persona {
  + setApeNom ( nApeNom: string )
  + getNif (): string
  + setNif ( nNif: string )
- <b>+ operator= ( otro: Persona ): Persona
+ + operator= ( otro: Persona ): Persona
 }
 
 class ConexionInternet {
@@ -24,14 +24,14 @@ class ConexionInternet {
  + ConexionInternet ()
  + ConexionInternet ( orig: ConexionInternet )
  + ConexionInternet ( nTipo: string, nVel: int )
- + ~ConexionInternet ()
+ + ~Persona ()
  + getTipo (): string
  + setTipo ( nTipo: string )
  + getVelocidad (): int
  + setVelocidad ( nVel: int )
- <b>+ operator< ( otro: ConexionInternet ): bool
- <b>+ operator== ( otro: ConexionInternet ): bool
- <b>+ operator= ( otro: ConexionInternet ): ConexionInternet
+ + operator< ( otro: ConexionInternet ): bool
+ + operator== ( otro: ConexionInternet ): bool
+ + operator= ( otro: ConexionInternet ): ConexionInternet
 }
 
 class Canal {
@@ -42,7 +42,16 @@ class Canal {
  + ~Canal ()
  + setNombre ( nNombre: string )
  + getNombre (): string
- <b>+ operator= ( otro: Canal ): Canal
+ + operator= ( otro: Canal ): Canal
+}
+
+class MiExcepcion{
+ - fichero: string
+ - funcion: string
+ - mensaje: string
+ + MiExcepcion ( nFich: string, nFun: string, msg: string )
+ + MiExcepcion ( orig: MiExcepcion )
+ + quePasa (): string
 }
 
 @enduml

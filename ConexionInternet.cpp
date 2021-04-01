@@ -8,19 +8,35 @@
  */
 
 #include "ConexionInternet.h"
+#include "MiExcepcion.h"
 
 /**
  * Constructor parametrizado
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
  * @param nVel Velocidad de la conexión
- * @pre Los valores de los parámetros deben ser válidos
  * @post La información de la nueva conexión coincide con los valores que se le
  *       pasan
+ * @throw MiExcepcion Si la velocidad es un número menor o igual a cero, o si el
+ *        tipo es una cadena vacía
  */
 ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
                                    _tipo ( nTipo )
                                  , _velocidadMB ( nVel )
-{ }
+{
+   if ( nVel <= 0 )
+   {
+      throw MiExcepcion ( "ConexionInternet.cpp"
+                        , "ConexionInternet::ConexionInternet"
+                        , "La velocidad ha de ser un número positivo" );
+   }
+
+   if ( nTipo == "" )
+   {
+      throw MiExcepcion ( "ConexionInternet.cpp"
+                        , "ConexionInternet::ConexionInternet"
+                        , "El tipo de conexión no puede ser una cadena vacía" );
+   }
+}
 
 
 /**
@@ -44,11 +60,18 @@ ConexionInternet::~ConexionInternet ( )
 /**
  * Cambia la velocidad de la conexión
  * @param nVel Nueva velocidad
- * @pre El valor de nueva velocidad debe ser válido
  * @post La velocidad de la conexión cambia al nuevo valor
+ * @throw MiExcepcion Si la nueva velocidad no es un número positivo
  */
 void ConexionInternet::setVelocidadMB ( int nVel )
 {
+   if ( nVel <= 0 )
+   {
+      throw MiExcepcion ( "ConexionInternet.cpp"
+                        , "ConexionInternet::setVelocidadMB"
+                        , "La velocidad ha de ser un número positivo" );
+   }
+
    this->_velocidadMB = nVel;
 }
 
@@ -66,11 +89,18 @@ int ConexionInternet::getVelocidadMB ( ) const
 /**
  * Cambia el tipo de la conexión
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
- * @pre El tipo de la conexión debe ser un valor válido
  * @post El tipo de la conexión cambia al nuevo valor
+ * @throw MiExcepcion Si el tipo es una cadena vacía
  */
 void ConexionInternet::setTipo ( std::string nTipo )
 {
+   if ( nTipo == "" )
+   {
+      throw MiExcepcion ( "ConexionInternet.cpp"
+                        , "ConexionInternet::setTipo"
+                        , "El tipo de conexión no puede ser una cadena vacía" );
+   }
+
    this->_tipo = nTipo;
 }
 
