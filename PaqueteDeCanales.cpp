@@ -12,20 +12,22 @@
 
 /**
  * Constructor parametrizado
- * @param nC1 Primer canal del paquete
- * @param nC2 Segundo canal del paquete
  * @param nDesc Descuento a aplicar
- * @post El nuevo paquete tiene los valores pasados como parámetros
+ * @post El nuevo paquete tiene el descuento pasado como parámetro
  * @throw MiExcepcion Si el descuento es negativo
  */
-PaqueteDeCanales::PaqueteDeCanales ( Canal* nC1, Canal* nC2, float nDesc ):
-                                   _c1 ( nC1 ), _c2 ( nC2 ), _descuento ( nDesc )
+PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
 {
    if ( nDesc < 0 )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp"
                         , "PaqueteDeCanales::PaqueteDeCanales"
                         , "El descuento no puede ser negativo" );
+   }
+
+   for ( int i = 0; i < MAX_CANALES; i++ )
+   {
+      _canales[i] = nullptr;
    }
 }
 
@@ -36,9 +38,14 @@ PaqueteDeCanales::PaqueteDeCanales ( Canal* nC1, Canal* nC2, float nDesc ):
  * @post El nuevo paquete tiene una copia exacta de los valores del original
  */
 PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
-                                   _c1 ( orig._c1 ), _c2 ( orig._c2 )
-                                 , _descuento ( orig._descuento )
-{ }
+                                                  _descuento ( orig._descuento )
+                                                , _nCanales ( orig._nCanales )
+{
+   for ( int i = 0; i < MAX_CANALES; i++ )
+   {
+      _canales[i] = orig._canales[i];
+   }
+}
 
 
 /**
@@ -48,8 +55,10 @@ PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
  */
 PaqueteDeCanales::~PaqueteDeCanales ( )
 {
-   _c1 = nullptr;
-   _c2 = nullptr;
+   for ( int i = 0; i < _nCanales; i++ )
+   {
+      _canales[i] = nullptr;
+   }
 }
 
 
@@ -82,56 +91,81 @@ float PaqueteDeCanales::getDescuento ( ) const
 
 
 /**
- * Cambia el segundo canal del paquete
- * @param nC2 Dirección de memoria del nuevo canal
- * @post El segundo canal del paquete cambia al valor del parámetro
- * @return La dirección de memoria del antiguo canal, o nullptr, si no estaba
- *         fijado
+ * Añade un nuevo canal al paquete
+ * @param nuevoC Canal a añadir
+ * @pre El canal nuevo no está ya incluido en el paquete
+ * @post El paquete de canales contiene un canal más
+ * @throw MiExcepcion Si no caben más canales en el paquete
  */
-Canal* PaqueteDeCanales::setC2 ( Canal* nC2 )
+void PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
-   Canal* aux = _c2;
-   this->_c2 = nC2;
+   if ( _nCanales == MAX_CANALES )
+   {
+      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
+                          "No caben más canales en el paquete" );
+   }
+
+   _canales[_nCanales] = nuevoC;
+   _nCanales++;
+}
+
+
+/**
+ * Consulta un canal del paquete
+ * @param cual Ordinal del canal que se quiere consultar (rango: 1..número de
+ *        canales)
+ * @return La dirección de memoria del canal
+ * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ */
+Canal* PaqueteDeCanales::getCanal ( int cual )
+{
+   if ( ( cual < 1 ) || ( cual > _nCanales ) )
+   {
+      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
+                          "Valor de índice incorrecto" );
+   }
+
+   return _canales[cual-1];
+}
+
+
+/**
+ * Saca un canal del paquete
+ * @param cual Ordinal del canal que se quiere sacar (rango: 1..número de
+ *        canales)
+ * @post El paquete tiene un canal menos
+ * @return La dirección de memoria del canal que se saca
+ * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ */
+Canal* PaqueteDeCanales::sacaCanal ( int cual )
+{
+   if ( ( cual < 1 ) || ( cual > _nCanales ) )
+   {
+      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
+                          "Valor de índice incorrecto" );
+   }
+
+   Canal* aux = _canales[cual-1];
+
+   // Compactación del vector de punteros
+   for ( int i = cual-1; i < _nCanales-1; i++ )
+   {
+      _canales[i] = _canales[i+1];
+   }
+
+   _nCanales--;
 
    return aux;
 }
 
 
 /**
- * Consulta el segundo canal del paquete
- * @return La dirección de memoria del segundo canal del paquete, o nullptr si
- *         no está fijado
+ * Consulta cuántos canales hay en el paquete
+ * @return El número de canales en el paquete
  */
-Canal* PaqueteDeCanales::getC2 ( ) const
+int PaqueteDeCanales::getNumCanales ( ) const
 {
-   return _c2;
-}
-
-
-/**
- * Cambia el primer canal del paquete
- * @param nC1 Dirección de memoria del nuevo canal
- * @post El primer canal del paquete cambia al valor del parámetro
- * @return La dirección de memoria del antiguo canal, o nullptr si no estaba
- *         asignado
- */
-Canal* PaqueteDeCanales::setC1 ( Canal* nC1 )
-{
-   Canal* aux = _c1;
-   this->_c1 = nC1;
-
-   return aux;
-}
-
-
-/**
- * Consulta el primer canal del paquete
- * @return La dirección de memoria del primer canal del paquete, o nullptr si
- *         no estuviera asignado
- */
-Canal* PaqueteDeCanales::getC1 ( ) const
-{
-   return _c1;
+   return _nCanales;
 }
 
 
@@ -149,8 +183,12 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 {
    if ( this != &otro )
    {
-      _c1 = otro._c1;
-      _c2 = otro._c2;
+      for ( int i = 0; i < MAX_CANALES; i++ )
+      {
+         _canales[i] = otro._canales[i];
+      }
+
+      _nCanales = otro._nCanales;
       _descuento = otro._descuento;
    }
 

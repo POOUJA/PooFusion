@@ -10,15 +10,25 @@
 
 #include "Persona.h"
 #include "MiExcepcion.h"
+#include "Contrato.h"
 
 using namespace std;
 
+/**
+ * @brief Muestra la información de un paquete de canales por consola
+ * @param paramPC Paquete del que se muestra la información
+ */
 void muestraPaqueteCanales ( PaqueteDeCanales& paramPC )
 {
-   std::cout << "Paquete de canales que contiene "
-             << paramPC.getC1 ()->getNombre () << " y "
-             << paramPC.getC2 ()->getNombre ();
+   std::cout << "Paquete de canales (" << paramPC.getDescuento ()
+             << "% de descuento) que contiene ";
+
+   for ( int i = 0; i < paramPC.getNumCanales (); i++ )
+   {
+      std::cout << paramPC.getCanal (i+1)->getNombre () << " ";
+   }
 }
+
 
 /**
  * @brief Muestra la información de una persona por consola
@@ -26,16 +36,36 @@ void muestraPaqueteCanales ( PaqueteDeCanales& paramPC )
  */
 void muestraPersona ( Persona& paramP )
 {
-   std::cout << "La persona se llama " << paramP.getApeNom () << std::endl
-             << "está abonada a ";
-
-   muestraPaqueteCanales ( *paramP.getPaqueteC () );
-
-   std::cout << std::endl
-             << "y tiene contratada una conexión de tipo "
-             << paramP.getConexion ()->getTipo () << " a una velocidad de "
-             << paramP.getConexion ()->getVelocidadMB () << " MB" << std::endl;
+   std::cout << "La persona se llama " << paramP.getApeNom () << ". NIF "
+             << paramP.getNif () << std::endl;
 }
+
+
+/**
+ * Muestra la información relativa a un contrato
+ * @param paramC Contrato del que se muestra la información
+ */
+void muestraContrato ( Contrato& paramC )
+{
+   std::cout << "Contrato con fecha " << paramC.getFechaDeAlta () << std::endl
+             << "===========================" << std::endl
+             << "Abonado: " << paramC.getAbonado ()->getApeNom () << std::endl
+             << "Conexión a Internet: " << paramC.getConexion ()->getTipo ()
+             << " a " << paramC.getConexion ()->getVelocidadMB () << " MB"
+             << std::endl;
+   muestraPaqueteCanales ( *paramC.getPaqueteTV () );
+
+   if ( paramC.estaActivo () )
+   {
+      std::cout << std::endl << "Actualmente activo";
+   }
+   else
+   {
+      std::cout << std::endl << "Actualmente NO activo";
+   }
+   std::cout << std::endl;
+}
+
 
 /**
  * @brief Punto de inicio de la aplicación
@@ -134,14 +164,21 @@ int main ( int argc, char** argv )
    }
 
    // Creación de un paquete de canales
-   PaqueteDeCanales pC1 ( &c2, &aC[1], 20 );
+   PaqueteDeCanales pC1 ( 20 );
+   pC1.addCanal ( &c2 );
+   pC1.addCanal ( &aC[2] );
+   pC1.addCanal ( &aC[1] );
 
-   // Relaciona un paquete de canales y una conexión con una persona
-   p.setPaqueteC ( &pC1 );
-   p.setConexion ( &c );
+   // Crea un nuevo contrato
+   Contrato cto01 ( &p );
 
-   // Comprobamos que se ha relacionado correctamente
-   muestraPersona ( p );
+   // Introduce datos en el contrato
+   cto01.addConexion ( "Fibra", 300 )
+        .addCanalTV ( &c2 ).addCanalTV ( &aC[0] ).addCanalTV ( &aC[2] )
+        .setActivo ( true );
+
+   // Comprobamos el contrato
+   muestraContrato ( cto01 );
 
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
    delete ptrP;

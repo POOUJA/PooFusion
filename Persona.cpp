@@ -42,22 +42,14 @@ Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
  */
 Persona::Persona ( const Persona& orig ): _apeNom ( orig._apeNom )
                                         , _nif ( orig._nif )
-                                        , _miPaquete ( orig._miPaquete )
-                                        , _miConexion ( orig._miConexion )
 { }
 
 
 /**
  * Destructor
- * @note Se rompe la relación de la persona con el paquete de canales y la
- *       conexión que tenga contratadas, pero la conexión y el canal NO se
- *       destruyen. Es responsabilidad externa
  */
 Persona::~Persona ( )
-{
-   _miPaquete = nullptr;
-   _miConexion = nullptr;
-}
+{ }
 
 
 /**
@@ -118,70 +110,12 @@ std::string Persona::getApeNom ( ) const
 
 
 /**
- * Cambia la conexión contratada por la persona
- * @param nuevaC Dirección de memoria de la nueva conexión a vincular
- * @post La conexión a Internet vinculada a la persona cambia al valor del
- *       parámetro
- * @return La dirección de memoria de la conexión anteriormente vinculada a la
- *         persona. Si no había una conexión previa, devuelve nullptr
- */
-ConexionInternet* Persona::setConexion ( ConexionInternet* nuevaC )
-{
-   ConexionInternet* aux = _miConexion;
-   this->_miConexion = nuevaC;
-
-   return aux;
-}
-
-
-/**
- * Consulta la conexión a Internet contratada por la persona
- * @return La dirección de memoria de la conexión contratada. Si no hay una
- *         conexión contratada, devuelve nullptr
- */
-ConexionInternet* Persona::getConexion ( ) const
-{
-   return _miConexion;
-}
-
-
-/**
- * Cambia el paquete de canales contratado por la persona
- * @param nuevoPC Dirección de memoria del nuevo paquete de canales a vincular
- * @post El paquete de canales vinculado a la persona cambia al valor del
- *       parámetro
- * @return La dirección de memoria del paquete de canales anteriormente
- *         vinculado a la persona. Si no había un canal previo, devuelve nullptr
- */
-PaqueteDeCanales* Persona::setPaqueteC ( PaqueteDeCanales* nuevoPC )
-{
-   PaqueteDeCanales* aux = _miPaquete;
-   this->_miPaquete = nuevoPC;
-
-   return aux;
-}
-
-
-/**
- * Consulta el paquete de canales de TV contratado por la persona
- * @return La dirección de memoria del paquete de canales contratado. Si no hay
- *         un paquete contratado previamente, devuelve nullptr
- */
-PaqueteDeCanales* Persona::getPaqueteC ( ) const
-{
-   return _miPaquete;
-}
-
-
-/**
  * Operador de asignación
  * @param otro Persona de la que se copia la información
  * @post La persona tiene exactamente la misma información que la que se pasa
  *       como parámetro
  * @return Una referencia a la persona actual, para permitir asignaciones
  *         encadenadas (a = b = c)
- * @note Los datos anteriormente vinculados a la persona NO se eliminan. Es una
- *       responsabilidad externa
  */
 Persona& Persona::operator= ( const Persona& otro )
 {
@@ -189,8 +123,6 @@ Persona& Persona::operator= ( const Persona& otro )
    {
       _apeNom = otro._apeNom;
       _nif = otro._nif;
-      _miPaquete = otro._miPaquete;
-      _miConexion = otro._miConexion;
    }
 
    return *this;
