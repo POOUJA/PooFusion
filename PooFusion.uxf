@@ -39,8 +39,8 @@ ConexionInternet
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
-      <y>530</y>
+      <x>700</x>
+      <y>680</y>
       <w>130</w>
       <h>60</h>
     </coordinates>
@@ -54,7 +54,7 @@ Canal
     <id>UMLClass</id>
     <coordinates>
       <x>540</x>
-      <y>680</y>
+      <y>730</y>
       <w>130</w>
       <h>90</h>
     </coordinates>
@@ -85,12 +85,12 @@ r1=miConexion</panel_attributes>
       <x>710</x>
       <y>330</y>
       <w>100</w>
-      <h>220</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 contrata v
-r1=miCanal</panel_attributes>
-    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+r1=miPaquete</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -98,21 +98,21 @@ r1=miCanal</panel_attributes>
       <x>590</x>
       <y>330</y>
       <w>30</w>
-      <h>370</h>
+      <h>420</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;350.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;400.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>580</y>
+      <x>660</x>
+      <y>730</y>
       <w>120</w>
-      <h>120</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;100.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;100.0;50.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -120,9 +120,46 @@ r1=miCanal</panel_attributes>
       <x>450</x>
       <y>580</y>
       <w>140</w>
-      <h>120</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>120.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>120.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>520</y>
+      <w>150</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+PaqueteDeCanales
+--
+- descuento: float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>570</y>
+      <w>40</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>570</y>
+      <w>110</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
   </element>
 </diagram>
