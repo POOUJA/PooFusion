@@ -42,20 +42,20 @@ Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
  */
 Persona::Persona ( const Persona& orig ): _apeNom ( orig._apeNom )
                                         , _nif ( orig._nif )
-                                        , _miCanal ( orig._miCanal )
+                                        , _miPaquete ( orig._miPaquete )
                                         , _miConexion ( orig._miConexion )
 { }
 
 
 /**
  * Destructor
- * @post Se rompe la relación de la persona con el canal y la conexión que tenga
- *       contratadas
- * @note La conexión y el canal NO se destruyen
+ * @note Se rompe la relación de la persona con el paquete de canales y la
+ *       conexión que tenga contratadas, pero la conexión y el canal NO se
+ *       destruyen. Es responsabilidad externa
  */
 Persona::~Persona ( )
 {
-   _miCanal = nullptr;
+   _miPaquete = nullptr;
    _miConexion = nullptr;
 }
 
@@ -125,7 +125,7 @@ std::string Persona::getApeNom ( ) const
  * @return La dirección de memoria de la conexión anteriormente vinculada a la
  *         persona. Si no había una conexión previa, devuelve nullptr
  */
-ConexionInternet* Persona::setMiConexion ( ConexionInternet* nuevaC )
+ConexionInternet* Persona::setConexion ( ConexionInternet* nuevaC )
 {
    ConexionInternet* aux = _miConexion;
    this->_miConexion = nuevaC;
@@ -139,36 +139,37 @@ ConexionInternet* Persona::setMiConexion ( ConexionInternet* nuevaC )
  * @return La dirección de memoria de la conexión contratada. Si no hay una
  *         conexión contratada, devuelve nullptr
  */
-ConexionInternet* Persona::getMiConexion ( ) const
+ConexionInternet* Persona::getConexion ( ) const
 {
    return _miConexion;
 }
 
 
 /**
- * Cambia el canal contratado por la persona
- * @param nuevoC Dirección de memoria del nuevo canal a vincular
- * @post El canal vinculado a la persona cambia al valor del parámetro
- * @return La dirección de memoria del canal anteriormente vinculado a la
- *         persona. Si no había un canal previo, devuelve nullptr
+ * Cambia el paquete de canales contratado por la persona
+ * @param nuevoPC Dirección de memoria del nuevo paquete de canales a vincular
+ * @post El paquete de canales vinculado a la persona cambia al valor del
+ *       parámetro
+ * @return La dirección de memoria del paquete de canales anteriormente
+ *         vinculado a la persona. Si no había un canal previo, devuelve nullptr
  */
-Canal* Persona::setMiCanal ( Canal* nuevoC )
+PaqueteDeCanales* Persona::setPaqueteC ( PaqueteDeCanales* nuevoPC )
 {
-   Canal* aux = _miCanal;
-   this->_miCanal = nuevoC;
+   PaqueteDeCanales* aux = _miPaquete;
+   this->_miPaquete = nuevoPC;
 
    return aux;
 }
 
 
 /**
- * Consulta el canal de TV contratado por la persona
- * @return La dirección de memoria del canal contratado. Si no hay un canal
- *         contratado, devuelve nullptr
+ * Consulta el paquete de canales de TV contratado por la persona
+ * @return La dirección de memoria del paquete de canales contratado. Si no hay
+ *         un paquete contratado previamente, devuelve nullptr
  */
-Canal* Persona::getMiCanal ( ) const
+PaqueteDeCanales* Persona::getPaqueteC ( ) const
 {
-   return _miCanal;
+   return _miPaquete;
 }
 
 
@@ -179,6 +180,8 @@ Canal* Persona::getMiCanal ( ) const
  *       como parámetro
  * @return Una referencia a la persona actual, para permitir asignaciones
  *         encadenadas (a = b = c)
+ * @note Los datos anteriormente vinculados a la persona NO se eliminan. Es una
+ *       responsabilidad externa
  */
 Persona& Persona::operator= ( const Persona& otro )
 {
@@ -186,7 +189,7 @@ Persona& Persona::operator= ( const Persona& otro )
    {
       _apeNom = otro._apeNom;
       _nif = otro._nif;
-      _miCanal = otro._miCanal;
+      _miPaquete = otro._miPaquete;
       _miConexion = otro._miConexion;
    }
 

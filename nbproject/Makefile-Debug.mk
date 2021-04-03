@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Canal.o \
 	${OBJECTDIR}/ConexionInternet.o \
 	${OBJECTDIR}/MiExcepcion.o \
+	${OBJECTDIR}/PaqueteDeCanales.o \
 	${OBJECTDIR}/Persona.o \
 	${OBJECTDIR}/main.o
 
@@ -80,6 +81,11 @@ ${OBJECTDIR}/MiExcepcion.o: MiExcepcion.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MiExcepcion.o MiExcepcion.cpp
+
+${OBJECTDIR}/PaqueteDeCanales.o: PaqueteDeCanales.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PaqueteDeCanales.o PaqueteDeCanales.cpp
 
 ${OBJECTDIR}/Persona.o: Persona.cpp
 	${MKDIR} -p ${OBJECTDIR}
