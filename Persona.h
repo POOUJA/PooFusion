@@ -23,8 +23,6 @@ class Persona
    private:
       std::string _apeNom = "";   ///< Apellidos, nombre
       std::string _nif = "";      ///< NIF (formato "XXXXXXXX-X")
-      PaqueteDeCanales* _miPaquete = nullptr;   ///< Paquete de canales contratado
-      ConexionInternet* _miConexion = nullptr;   ///< Conexión contratada
 
    public:
       Persona () = default;
@@ -35,10 +33,6 @@ class Persona
       std::string getNif ( ) const;
       void setApeNom ( std::string nApeNom );
       std::string getApeNom ( ) const;
-      ConexionInternet* setConexion ( ConexionInternet* nuevaC );
-      ConexionInternet* getConexion ( ) const;
-      PaqueteDeCanales* setPaqueteC ( PaqueteDeCanales* nuevoPC );
-      PaqueteDeCanales* getPaqueteC ( ) const;
       Persona& operator= ( const Persona& otro );
 };
 

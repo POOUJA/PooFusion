@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Canal.o \
 	${OBJECTDIR}/ConexionInternet.o \
+	${OBJECTDIR}/Contrato.o \
 	${OBJECTDIR}/MiExcepcion.o \
 	${OBJECTDIR}/PaqueteDeCanales.o \
 	${OBJECTDIR}/Persona.o \
@@ -76,6 +77,11 @@ ${OBJECTDIR}/ConexionInternet.o: ConexionInternet.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConexionInternet.o ConexionInternet.cpp
+
+${OBJECTDIR}/Contrato.o: Contrato.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Contrato.o Contrato.cpp
 
 ${OBJECTDIR}/MiExcepcion.o: MiExcepcion.cpp
 	${MKDIR} -p ${OBJECTDIR}
