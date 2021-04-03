@@ -7,10 +7,14 @@ skinparam classFontStyle bold
 class Persona {
  - apeNom: string
  - nif: string
- + setMiCanal ( nuevoC: Canal ): Canal
- + getMiCanal (): Canal
- + setMiConexion ( nuevaC: ConexionInternet ): ConexionInternet
- + getMiConexion (): ConexionInternet
+ + setPaqueteC ( nuevoC: PaqueteDeCanales ): PaqueteDeCanales
+ + getPaqueteC (): PaqueteDeCanales
+ + setConexion ( nuevaC: ConexionInternet ): ConexionInternet
+ + getConexion (): ConexionInternet
+}
+
+class PaqueteDeCanales{
+ - descuento: float
 }
 
 class ConexionInternet {
@@ -29,9 +33,11 @@ class MiExcepcion{
 }
 
 Persona --> "miConexion" ConexionInternet: Contrata >
-Persona --> "miCanal" Canal: Contrata >
+Persona --> "miPaquete" PaqueteDeCanales: Contrata >
+PaqueteDeCanales o-- "2" Canal
 Canal ..> MiExcepcion
 ConexionInternet ..> MiExcepcion
 Persona ..> MiExcepcion
+PaqueteDeCanales ..> MiExcepcion
 
 @enduml

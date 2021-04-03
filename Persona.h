@@ -12,7 +12,7 @@
 
 #include <string>
 
-#include "Canal.h"
+#include "PaqueteDeCanales.h"
 #include "ConexionInternet.h"
 
 /**
@@ -23,7 +23,7 @@ class Persona
    private:
       std::string _apeNom = "";   ///< Apellidos, nombre
       std::string _nif = "";      ///< NIF (formato "XXXXXXXX-X")
-      Canal* _miCanal = nullptr;   ///< Canal contratado
+      PaqueteDeCanales* _miPaquete = nullptr;   ///< Paquete de canales contratado
       ConexionInternet* _miConexion = nullptr;   ///< Conexión contratada
 
    public:
@@ -35,10 +35,10 @@ class Persona
       std::string getNif ( ) const;
       void setApeNom ( std::string nApeNom );
       std::string getApeNom ( ) const;
-      ConexionInternet* setMiConexion ( ConexionInternet* nuevaC );
-      ConexionInternet* getMiConexion ( ) const;
-      Canal* setMiCanal ( Canal* nuevoC );
-      Canal* getMiCanal ( ) const;
+      ConexionInternet* setConexion ( ConexionInternet* nuevaC );
+      ConexionInternet* getConexion ( ) const;
+      PaqueteDeCanales* setPaqueteC ( PaqueteDeCanales* nuevoPC );
+      PaqueteDeCanales* getPaqueteC ( ) const;
       Persona& operator= ( const Persona& otro );
 };
 
