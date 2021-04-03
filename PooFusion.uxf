@@ -4,21 +4,16 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>200</y>
-      <w>470</w>
-      <h>140</h>
+      <x>210</x>
+      <y>280</y>
+      <w>130</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Persona
 --
 - apeNom: string
-- nif: string
---
-+ setMiConexion ( nuevaC: ConexionInternet ): ConexionInternet
-+ getMiConexion (): ConexionInternet
-+ setMiCanal ( nuevoC: Canal ): Canal
-+ getMiCanal (): Canal</panel_attributes>
+- nif: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -69,39 +64,37 @@ MiExcepcion
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>330</y>
-      <w>110</w>
-      <h>210</h>
+      <x>500</x>
+      <y>350</y>
+      <w>90</w>
+      <h>190</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-contrata v
-r1=miConexion</panel_attributes>
-    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+r1=conexion</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>710</x>
-      <y>330</y>
-      <w>100</w>
-      <h>210</h>
+      <y>350</y>
+      <w>40</w>
+      <h>190</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-contrata v
-r1=miPaquete</panel_attributes>
-    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+r1=tv</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>330</y>
-      <w>30</w>
-      <h>420</h>
+      <x>260</x>
+      <y>340</y>
+      <w>300</w>
+      <h>460</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;400.0;10.0;10.0</additional_attributes>
+    <additional_attributes>280.0;440.0;10.0;440.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -144,11 +137,11 @@ PaqueteDeCanales
     <coordinates>
       <x>750</x>
       <y>570</y>
-      <w>40</w>
+      <w>60</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=2</panel_attributes>
+m2=1..5</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
@@ -161,5 +154,45 @@ m2=2</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>250</y>
+      <w>310</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+Contrato
+--
+- fechaDeAlta: int {Formato: YYYYMMDD}
+- mesesPermanencia: int
+- cuentaBancaria: string
+- activo: bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>310</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=abonado</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>350</y>
+      <w>30</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;380.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

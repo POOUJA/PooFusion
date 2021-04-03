@@ -4,13 +4,16 @@ hide circle
 skinparam classattributeiconsize 0
 skinparam classFontStyle bold
 
+class Contrato {
+ - fechaDeAlta: int {Formato: YYYYMMDD}
+ - mesesPermanencia: int
+ - cuentaBancaria: string
+ - activo: bool
+}
+
 class Persona {
  - apeNom: string
  - nif: string
- + setPaqueteC ( nuevoC: PaqueteDeCanales ): PaqueteDeCanales
- + getPaqueteC (): PaqueteDeCanales
- + setConexion ( nuevaC: ConexionInternet ): ConexionInternet
- + getConexion (): ConexionInternet
 }
 
 class PaqueteDeCanales{
@@ -32,9 +35,11 @@ class MiExcepcion{
  - mensaje: string
 }
 
-Persona --> "miConexion" ConexionInternet: Contrata >
-Persona --> "miPaquete" PaqueteDeCanales: Contrata >
-PaqueteDeCanales o-- "2" Canal
+Contrato *-- "conexion" ConexionInternet
+Contrato *-- "tv" PaqueteDeCanales
+Contrato --> "abonado" Persona
+PaqueteDeCanales o-- "1..5" Canal
+Contrato ..> MiExcepcion
 Canal ..> MiExcepcion
 ConexionInternet ..> MiExcepcion
 Persona ..> MiExcepcion
