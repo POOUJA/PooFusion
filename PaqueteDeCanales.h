@@ -11,19 +11,16 @@
 #define PAQUETEDECANALES_H
 
 #include "Canal.h"
+#include "Contenedores.h"
 
 /**
  * Paquetes de canales de TV con un descuento
  */
-class PaqueteDeCanales
+class PaqueteDeCanales: public Producto
 {
-   public:
-      static const int MAX_CANALES = 5;   ///< Máximo de canales
-
    private:
-      Canal* _canales[MAX_CANALES];   ///< Canales del paquete
-      int _nCanales = 0;   ///< Número de canales que contiene el paquete
       float _descuento = 0;   ///< Descuento por el paquete
+      ContenedorA<Canal> _canales;
   
    public:
       PaqueteDeCanales ( float nDesc );
@@ -36,6 +33,8 @@ class PaqueteDeCanales
       Canal* sacaCanal ( int cual );
       int getNumCanales () const;
       PaqueteDeCanales& operator= ( const PaqueteDeCanales& otro );
+      virtual std::string getDescripcion ();
+      virtual Producto* copia ();
 };
 
 #endif /* PAQUETEDECANALES_H */

@@ -13,6 +13,7 @@
 #include "Persona.h"
 #include "ConexionInternet.h"
 #include "PaqueteDeCanales.h"
+#include "Contenedores.h"
 
 /**
  * Contratos formalizados entre PooFusion y particulares
@@ -25,8 +26,7 @@ class Contrato
       std::string _cuentaBancaria = "";
       bool _activo = true;
       Persona* _abonado = nullptr;
-      ConexionInternet* _conexion = nullptr;
-      PaqueteDeCanales* _tv = nullptr;
+      ContenedorC<>
 
    public:
       Contrato ( Persona* nAbonado );

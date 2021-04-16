@@ -13,10 +13,12 @@
 /**
  * Constructor parametrizado
  * @param nNombre Nombre del nuevo canal
+ * @param precio Precio del canal
  * @post El nombre del nuevo canal coincidirá con el que se pasa como parámetro
  * @throw MiExcepcion Si el nombre es una cadena vacía
  */
-Canal::Canal ( std::string nNombre ): _nombre ( nNombre )
+Canal::Canal ( std::string nNombre, float precio ): Producto ( precio )
+                                                  , _nombre ( nNombre )
 {
    if ( nNombre == "" )
    {
@@ -31,7 +33,7 @@ Canal::Canal ( std::string nNombre ): _nombre ( nNombre )
  * @param orig Canal del que se copia la información
  * @post El nuevo canal tiene exactamente los mismos datos que el original
  */
-Canal::Canal ( const Canal& orig ): _nombre ( orig._nombre )
+Canal::Canal ( const Canal& orig ): Producto ( orig ), _nombre ( orig._nombre )
 { }
 
 
@@ -81,8 +83,21 @@ Canal& Canal::operator= ( const Canal& otro )
 {
    if ( this != &otro )
    {
+      Producto::operator= ( otro );
       _nombre = otro._nombre;
    }
 
    return *this;
+}
+
+std::string Canal::getDescripcion ( )
+{
+   return ( "Canal " + _nombre );
+}
+
+Producto* Canal::copia ( )
+{
+   Producto* aDevolver = new Canal ( *this );
+
+   return aDevolver;
 }

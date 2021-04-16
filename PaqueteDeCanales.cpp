@@ -99,14 +99,15 @@ float PaqueteDeCanales::getDescuento ( ) const
  */
 void PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
-   if ( _nCanales == MAX_CANALES )
+   try
+   {
+      _canales.addElemento ( nuevoC );
+   }
+   catch ( std::length_error &e )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
                           "No caben más canales en el paquete" );
    }
-
-   _canales[_nCanales] = nuevoC;
-   _nCanales++;
 }
 
 
@@ -119,13 +120,19 @@ void PaqueteDeCanales::addCanal ( Canal* nuevoC )
  */
 Canal* PaqueteDeCanales::getCanal ( int cual )
 {
-   if ( ( cual < 1 ) || ( cual > _nCanales ) )
+   Canal* aDevolver = nullptr;
+
+   try
+   {
+      aDevolver = _canales.getElemento ( cual-1 );
+   }
+   catch ( std::out_of_range &e )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
                           "Valor de índice incorrecto" );
    }
 
-   return _canales[cual-1];
+   return aDevolver;
 }
 
 
@@ -139,23 +146,19 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
  */
 Canal* PaqueteDeCanales::sacaCanal ( int cual )
 {
-   if ( ( cual < 1 ) || ( cual > _nCanales ) )
+   Canal* aDevolver = nullptr;
+
+   try
+   {
+      aDevolver = _canales.sacaElemento ( cual-1 );
+   }
+   catch ( std::out_of_range &e )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
                           "Valor de índice incorrecto" );
    }
 
-   Canal* aux = _canales[cual-1];
-
-   // Compactación del vector de punteros
-   for ( int i = cual-1; i < _nCanales-1; i++ )
-   {
-      _canales[i] = _canales[i+1];
-   }
-
-   _nCanales--;
-
-   return aux;
+   return aDevolver;
 }
 
 
@@ -165,7 +168,7 @@ Canal* PaqueteDeCanales::sacaCanal ( int cual )
  */
 int PaqueteDeCanales::getNumCanales ( ) const
 {
-   return _nCanales;
+   return _canales.getNumElementos ();
 }
 
 
@@ -194,3 +197,17 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 
    return *this;
 }
+
+std::string PaqueteDeCanales::getDescripcion ( )
+{
+   std::stringstream aux;
+
+   aux << "Paquete de canales que contiene " << std::endl;
+
+
+}
+
+Producto* PaqueteDeCanales::copia ( )
+{
+}
+

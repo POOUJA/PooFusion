@@ -12,10 +12,12 @@
 
 #include <string>
 
+#include "Producto.h"
+
 /**
  * Los objetos de esta clase representan conexiones a Internet
  */
-class ConexionInternet
+class ConexionInternet: public Producto
 {
    private:
       std::string _tipo = "";   ///< Tipo de conexión
@@ -33,6 +35,8 @@ class ConexionInternet
       ConexionInternet& operator= ( const ConexionInternet& otro );
       bool operator< ( const ConexionInternet& otro );
       bool operator== ( const ConexionInternet& otro );
+      virtual std::string getDescripcion ();
+      virtual Producto* copia ();
 };
 
 #endif /* CONEXIONINTERNET_H */

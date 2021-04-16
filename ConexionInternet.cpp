@@ -162,3 +162,19 @@ bool ConexionInternet::operator== ( const ConexionInternet& otro )
    return ( _velocidadMB == otro._velocidadMB );
 }
 
+std::string ConexionInternet::getDescripcion ( )
+{
+   std::stringstream aux;
+
+   aux << "Conexión a Internet de tipo " << _tipo << " a " << _velocidadMB
+       << " MB por segundo";
+
+   return aux.str ();
+}
+
+Producto* ConexionInternet::copia ( )
+{
+   Producto* aDevolver = new ConexionInternet ( *this );
+
+   return aDevolver;
+}

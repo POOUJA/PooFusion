@@ -12,22 +12,26 @@
 
 #include <string>
 
+#include "Producto.h"
+
 /**
  * Los objetos de esta clase representan canales de TV
  */
-class Canal
+class Canal: public Producto
 {
    private:
       std::string _nombre = "";   ///< Nombre del canal
       
    public:
       Canal () = default;
-      Canal ( std::string nNombre );
+      Canal ( std::string nNombre, float precio );
       Canal ( const Canal& orig );
       ~Canal ();
       void setNombre ( std::string nNombre );
       std::string getNombre ( ) const;
       Canal& operator= ( const Canal& otro );
+      virtual std::string getDescripcion ();
+      virtual Producto* copia ();
 };
 
 #endif /* CANAL_H */
