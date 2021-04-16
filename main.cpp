@@ -191,6 +191,10 @@ int main ( int argc, char** argv )
    // Comprobamos el contrato
    muestraContrato ( cto01 );
 
+   Contrato cto02 ( cto01 );
+
+   muestraContrato ( cto02 );
+
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
    delete ptrP;
    ptrP = nullptr;

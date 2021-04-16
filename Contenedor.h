@@ -1,8 +1,10 @@
-/* 
- * File:   Contenedor.h
- * Author: algarcia
+/** 
+ * @file Contenedor.h
+ * @author algarcia
  *
- * Created on 16 de abril de 2021, 11:55
+ * @date 16 de abril de 2021, 11:55
+ * 
+ * @brief Plantilla de clase contenedora
  */
 
 #ifndef CONTENEDOR_H
@@ -13,36 +15,39 @@
 
 
 /**
- * Contenedor
+ * Contenedor genérico
  */
 template<typename tipo>
 class Contenedor
 {
    public:
-      static const int MAX_TAM = 100;
+      static const int MAX_TAM = 100;   ///< Tamaño máximo del contenedor
 
    private:
-      tipo* _elementos[MAX_TAM];
-      int _numElementos = 0;
-      int _maxElementos = MAX_TAM;
+      tipo _elementos[MAX_TAM];   ///< Espacio para alojar los elementos
+      int _numElementos = 0;   ///< Número de elementos almacenados
+      int _maxElementos = MAX_TAM;   ///< Número máximo de elementos que se van a almacenar
+      tipo _vacio;   ///< Valor que se utiliza para las posiciones vacías
 
       void compactar ( int inicio );
 
    public:
-      Contenedor ( int tamMaximo );
+      Contenedor ( int tamMaximo, tipo vVacio );
       Contenedor ( const Contenedor& orig );
       ~Contenedor ();
-      void addElemento ( tipo* nE );
-      void addElemento ( tipo& nE );
-      tipo* getElemento ( int cual );
-      tipo* sacaElemento ( int cual );
-      void borraElemento ( int cual );
+      void addElemento ( tipo nE );
+      tipo& getElemento ( int cual );
+      tipo sacaElemento ( int cual );
       int getNumElementos () const;
       Contenedor& operator= ( const Contenedor& otro );
-      void borrarTodo ();
-      void nullify ();
 };
 
+/**
+ * Compacta el almacenamiento desplazando los elementos a partir de la
+ * posición que se indica
+ * @param inicio Posición a partir de la cual se desplazan los elementos
+ * @post El almacenamiento queda compactado
+ */
 template<typename tipo>
 void Contenedor<tipo>::compactar ( int inicio )
 {
@@ -51,34 +56,41 @@ void Contenedor<tipo>::compactar ( int inicio )
       _elementos[i] = _elementos[i+1];
    }
    
-   _elementos[_numElementos] = nullptr;
+   _elementos[_numElementos] = _vacio;
 }
 
+
+/**
+ * Constructor parametrizado
+ * @param tamMaximo Máximo número de elementos que se van a almacenar
+ * @param vVacio Valor a utilizar en las posiciones vacías
+ * @throw std::invalid_argument Si el tamaño que se solicita es negativo o
+ *        mayor que el máximo permitido
+ */
 template<typename tipo>
-Contenedor<tipo>::Contenedor ( int tamMaximo ): _maxElementos ( tamMaximo )
+Contenedor<tipo>::Contenedor ( int tamMaximo, tipo vVacio ):
+                             _maxElementos ( tamMaximo ), _vacio ( vVacio )
 {
    if ( ( tamMaximo < 1 ) || ( tamMaximo > MAX_TAM ) )
    {
       throw std::invalid_argument ( "[Contenedor]: el tamaño del nuevo"
                                     " contenedor NO es válido" );
    }
-
-   for ( int i = 0; i < MAX_TAM; i++ )
-   {
-      _elementos[i] = nullptr;
-   }
 }
 
+
+/**
+ * Constructor de copia
+ * @param orig Contenedor del que se copia el contenido
+ * @post El contenedor almacena copias de los valores almacenados en el original
+ */
 template<typename tipo>
 Contenedor<tipo>::Contenedor ( const Contenedor& orig ):
                                             _numElementos ( orig._numElementos )
                                           , _maxElementos ( orig._maxElementos )
+                                          , _vacio ( orig._vacio )
 {
-   // ¡Ojo! este constructor de copia es válido para agregaciones, no para
-   // composiciones
    int i;
-
-   std::cerr << "Creando una copia en modo agregación" << std::endl;
 
    for ( i = 0; i < _numElementos; i++ )
    {
@@ -87,22 +99,27 @@ Contenedor<tipo>::Contenedor ( const Contenedor& orig ):
    
    for ( ; i < MAX_TAM; i++ )
    {
-      _elementos[i] = nullptr;
+      _elementos[i] = _vacio;
    }
 }
 
+
+/**
+ * Destructor
+ */
 template<typename tipo>
 Contenedor<tipo>::~Contenedor ()
-{
-   if ( _numElementos > 0 )
-   {
-      std::cerr << "[Contenedor] Se está intentando destruir un contenedor que"
-                << " no está vacío" << std::endl;
-   }
-}
+{ }
 
+
+/**
+ * Añade un nuevo elemento al contenedor
+ * @param nE Nuevo elemento
+ * @throw std::length_error Si se ha alcanzado el máximo número de elementos
+ *        almacenables
+ */
 template<typename tipo>
-void Contenedor<tipo>::addElemento ( tipo* nE )
+void Contenedor<tipo>::addElemento ( tipo nE )
 {
    if ( _numElementos == _maxElementos )
    {
@@ -113,14 +130,16 @@ void Contenedor<tipo>::addElemento ( tipo* nE )
    _numElementos++;
 }
 
-template<typename tipo>
-void Contenedor<tipo>::addElemento ( tipo& nE )
-{
-   addElemento ( &nE );
-}
 
+/**
+ * Consulta un elemento del contenedor
+ * @param cual Ordinal de la posición que se quiere consultar (valores válidos
+ *        en el rango [0..número de elementos almacenados-1])
+ * @return El elemento almacenado en la posición consultada
+ * @throw std::out_of_range Si el valor del ordinal no es válido
+ */
 template<typename tipo>
-tipo* Contenedor<tipo>::getElemento ( int cual )
+tipo& Contenedor<tipo>::getElemento ( int cual )
 {
    if ( ( cual < 0 ) || ( cual >= _numElementos ) )
    {
@@ -130,86 +149,70 @@ tipo* Contenedor<tipo>::getElemento ( int cual )
    return _elementos[cual];
 }
 
+
+/**
+ * Saca un elemento del contenedor
+ * @param cual Ordinal de la posición que se quiere vaciar (valores válidos
+ *        en el rango [0..número de elementos almacenados -1])
+ * @return El elemento almacenado en la posición indicada
+ * @post El contenedor tiene un elemento menos
+ * @throw std::out_of_range Si el valor del ordinal no es válido
+ */
 template<typename tipo>
-tipo* Contenedor<tipo>::sacaElemento ( int cual )
+tipo Contenedor<tipo>::sacaElemento ( int cual )
 {
    if ( ( cual < 0 ) || ( cual >= _numElementos ) )
    {
       throw std::out_of_range ( "[Contenedor::getElemento]: índice incorrecto" );
    }
 
-   tipo* aDevolver = _elementos[cual];
-   _elementos[cual] = nullptr;
+   tipo aDevolver = _elementos[cual];
+   _elementos[cual] = _vacio;
    _numElementos--;
    compactar ( cual );
 
-   return aDevolver;   
+   return aDevolver;
 }
 
-template<typename tipo>
-void Contenedor<tipo>::borraElemento ( int cual )
-{
-   if ( ( cual < 0 ) || ( cual >= _numElementos ) )
-   {
-      throw std::out_of_range ( "[Contenedor::getElemento]: índice incorrecto" );
-   }
 
-   delete _elementos[cual];
-   _elementos[cual] = nullptr;
-   _numElementos--;
-   compactar ( cual );
-}
-
+/**
+ * Consulta el número de elementos almacenados
+ * @return El número de elementos almacenados
+ */
 template<typename tipo>
 int Contenedor<tipo>::getNumElementos () const
 {
    return _numElementos;
 }
 
+
+/**
+ * Operador de asignación
+ * @param otro Contenedor del que se copia la información
+ * @return Una referencia al propio contenedor, para permitir encadenamiento de
+ *         asignaciones
+ */
 template<typename tipo>
 Contenedor<tipo>& Contenedor<tipo>::operator= ( const Contenedor& otro )
 {
-   // ¡Ojo si se utiliza el contenedor para una composición!
-   // En ese caso, este operador de asignación no vale
-   
-   std::cerr << "Asignando en modo agregación" << std::endl;
    if ( this != &otro )
    {
-      nullify ();
-      
-      for ( int i = 0; i < otro._numElementos; i++ )
+      _numElementos = otro._numElementos;
+      _maxElementos = otro._maxElementos;
+      _vacio = otro._vacio;
+
+      for ( int i = 0; i < _numElementos; i++ )
       {
          _elementos[i] = otro._elementos[i];
       }
-      _numElementos = otro._numElementos;
-      _maxElementos = otro._maxElementos;
+      
+      for ( int i = _numElementos; i < MAX_TAM; i++ )
+      {
+         _elementos[i] = _vacio;
+      }
    }
    
    return *this;
-}
-
-
-template<typename tipo>
-void Contenedor<tipo>::borrarTodo ()
-{
-   for ( int i = 0; i < _numElementos; i++ )
-   {
-      delete _elementos[i];
-      _elementos[i] = 0;
-   }
-   
-   _numElementos = 0;
-}
-
-template<typename tipo>
-void Contenedor<tipo>::nullify ()
-{
-   for ( int i = 0; i < _numElementos; i++ )
-   {
-      _elementos[i] = nullptr;
-   }
-   
-   _numElementos = 0;
 }
 
 #endif /* CONTENEDOR_H */

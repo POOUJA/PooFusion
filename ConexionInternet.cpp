@@ -70,6 +70,8 @@ ConexionInternet::~ConexionInternet ( )
  * @param nVel Nueva velocidad
  * @post La velocidad de la conexión cambia al nuevo valor
  * @throw MiExcepcion Si la nueva velocidad no es un número positivo
+ * @return Una referencia a la propia conexión, para permitir el encadenamiento
+ *         de llamadas a métodos
  */
 ConexionInternet& ConexionInternet::setVelocidadMB ( int nVel )
 {
@@ -101,6 +103,8 @@ int ConexionInternet::getVelocidadMB ( ) const
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
  * @post El tipo de la conexión cambia al nuevo valor
  * @throw MiExcepcion Si el tipo es una cadena vacía
+ * @return Una referencia a la propia conexión, para permitir el encadenamiento
+ *         de llamadas a métodos
  */
 ConexionInternet& ConexionInternet::setTipo ( std::string nTipo )
 {
@@ -175,6 +179,11 @@ bool ConexionInternet::operator== ( const ConexionInternet& otro )
    return ( _velocidadMB == otro._velocidadMB );
 }
 
+
+/**
+ * Consulta la descripción de la conexión
+ * @return Una cadena de texto describiendo la conexión a Internet
+ */
 std::string ConexionInternet::getDescripcion ( )
 {
    std::stringstream aux;
@@ -185,6 +194,12 @@ std::string ConexionInternet::getDescripcion ( )
    return aux.str ();
 }
 
+
+/**
+ * Crea una copia de la conexión
+ * @return La dirección de memoria de un nuevo objeto que copia los atributos
+ *         del objeto actual
+ */
 Producto* ConexionInternet::copia ( ) const
 {
    Producto* aDevolver = new ConexionInternet ( *this );

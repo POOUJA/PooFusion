@@ -20,7 +20,7 @@
  */
 PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto ()
                                                   , _descuento ( nDesc )
-                                                  , _canales ( MAX_CANALES )
+                                                  , _canales ( MAX_CANALES, nullptr )
 {
    if ( nDesc < 0 )
    {
@@ -50,7 +50,10 @@ PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
  */
 PaqueteDeCanales::~PaqueteDeCanales ( )
 {
-   _canales.nullify ();
+   for ( int i = 0; i < _canales.getNumElementos (); i++ )
+   {
+      _canales.sacaElemento ( 0 );
+   }
 }
 
 
@@ -83,6 +86,12 @@ float PaqueteDeCanales::getDescuento ( ) const
    return _descuento;
 }
 
+
+/**
+ * Consulta el precio mensual del paquete de canales
+ * @return El precio mensual del paquete de canales, calculado sumando los
+ *         precios de los canales y aplicando el descuento del paquete
+ */
 float PaqueteDeCanales::getPrecioMensual ( )
 {
    float suma = 0;
@@ -204,6 +213,11 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
    return *this;
 }
 
+
+/**
+ * Consulta la descripción del paquete de canales
+ * @return Una cadena de texto con la información de los canales incluídos
+ */
 std::string PaqueteDeCanales::getDescripcion ( )
 {
    std::stringstream aux;
@@ -218,6 +232,11 @@ std::string PaqueteDeCanales::getDescripcion ( )
    return aux.str ();
 }
 
+
+/**
+ * Crea una copia del propio paquete de canales
+ * @return La dirección de memoria del nuevo paquete de canales
+ */
 Producto* PaqueteDeCanales::copia ( ) const
 {
    Producto* aDevolver = new PaqueteDeCanales ( *this );

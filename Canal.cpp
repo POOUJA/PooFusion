@@ -15,9 +15,9 @@
  * @param nNombre Nombre del nuevo canal
  * @param precio Precio del canal
  * @post El nombre del nuevo canal coincidirá con el que se pasa como parámetro
- * @throw MiExcepcion Si el nombre es una cadena vacía
+ * @throw MiExcepcion Si hay algún problema
  */
-Canal::Canal ( std::string nNombre, float precio ): Producto ( precio )
+Canal::Canal ( std::string nNombre, float precio ) try : Producto ( precio )
                                                   , _nombre ( nNombre )
 {
    if ( nNombre == "" )
@@ -25,6 +25,10 @@ Canal::Canal ( std::string nNombre, float precio ): Producto ( precio )
       throw MiExcepcion ( "Canal.cpp", "Canal::Canal"
                         , "Un canal tiene que tener nombre" );
    }
+}
+catch ( MiExcepcion& e )
+{
+   throw MiExcepcion ( "Canal.cpp", "Canal::Canal", e.quePasa () );
 }
 
 
@@ -49,6 +53,8 @@ Canal::~Canal ( )
  * @param nNombre Nuevo nombre para el canal
  * @post El nombre del canal cambia al valor que se le pasa como parámetro
  * @throw MiExcepcion Si se intenta asignar como nombre una cadena vacía
+ * @return Una referencia al propio canal, para permitir el encadenamiento de
+ *         llamadas a métodos
  */
 Canal& Canal::setNombre ( std::string nNombre )
 {
@@ -92,11 +98,22 @@ Canal& Canal::operator= ( const Canal& otro )
    return *this;
 }
 
+
+/**
+ * Consulta la descripción del canal
+ * @return Una descripción en modo texto del canal
+ */
 std::string Canal::getDescripcion ( )
 {
    return ( "Canal " + _nombre );
 }
 
+
+/**
+ * Crea una copia del canal
+ * @return La dirección de memoria de un nuevo objeto de clase Canal que copia
+ *         los atributos del objeto actual
+ */
 Producto* Canal::copia ( ) const
 {
    Producto* aDevolver = new Canal ( *this );

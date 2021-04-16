@@ -20,19 +20,19 @@
 class Contrato
 {
    public:
-      static const int MAX_PRODUCTOS = 10;
+      static const int MAX_PRODUCTOS = 10;   ///< Máximo número de productos
 
    private:
-      int _fechaDeAlta = 0;
-      int _mesesPermanencia = 0;
-      std::string _cuentaBancaria = "";
-      bool _activo = true;
-      Persona* _abonado = nullptr;
-      Contenedor<Producto> _productos;
+      int _fechaDeAlta = 0;   ///< Fecha de alta del contrato
+      int _mesesPermanencia = 0;   ///< Meses de permanencia del contrato
+      std::string _cuentaBancaria = "";   ///< IBAN de la cuenta de domiciliación
+      bool _activo = true;   ///< Indica si el contrato está activo o no
+      Persona* _abonado = nullptr;   ///< Persona a cuyo nombre está el contrato
+      Contenedor<Producto*> _productos;   ///< Productos contratados
 
    public:
       Contrato ( Persona* nAbonado );
-      Contrato ( const Contrato& orig );
+      Contrato ( Contrato& orig );
       virtual ~Contrato ( );
       Contrato& setFechaDeAlta ( int fechaDeAlta );
       int getFechaDeAlta ( ) const;

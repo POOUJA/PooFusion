@@ -19,11 +19,11 @@
 class PaqueteDeCanales: public Producto
 {
    public:
-      static const int MAX_CANALES = 5;
+      static const int MAX_CANALES = 5;   ///< Máximo de canales por paquete
 
    private:
       float _descuento = 0;   ///< Descuento por el paquete
-      Contenedor<Canal> _canales;
+      Contenedor<Canal*> _canales;   ///< Canales del paquete
   
    public:
       PaqueteDeCanales ( float nDesc );

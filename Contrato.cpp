@@ -11,8 +11,6 @@
 
 #include "Contrato.h"
 #include "MiExcepcion.h"
-#include "ConexionInternet.h"
-#include "PaqueteDeCanales.h"
 
 /**
  * Constructor parametrizado
@@ -21,7 +19,7 @@
  * @throw MiExcepcion Si se le pasa como parámetro nullptr
  */
 Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
-                                        , _productos ( MAX_PRODUCTOS )
+                                        , _productos ( MAX_PRODUCTOS, nullptr )
 {
    if ( nAbonado == nullptr )
    {
@@ -43,16 +41,21 @@ Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
 /**
  * Constructor de copia
  * @param orig Contrato del que se copian los valores
- * @post El nuevo contrato es igual al original. Se duplica la conexión y el
- *       paquete de canales
+ * @post El nuevo contrato tiene copias de los productos del original
  */
-Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
+Contrato::Contrato ( Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
                                   , _mesesPermanencia ( orig._mesesPermanencia )
                                   , _cuentaBancaria ( orig._cuentaBancaria )
                                   , _activo ( orig._activo )
                                   , _abonado ( orig._abonado )
-                                  , _productos ( orig._productos )
-{ }
+                                  , _productos ( MAX_PRODUCTOS, nullptr )
+{
+   // Hay que crear productos nuevos para el contrato copiado
+   for ( int i = 0; i < orig._productos.getNumElementos (); i++ )
+   {
+      _productos.addElemento ( orig._productos.getElemento (i)->copia () );
+   }
+}
 
 
 /**
@@ -63,7 +66,11 @@ Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
 Contrato::~Contrato ( )
 {
    _abonado = nullptr;
-   _productos.borrarTodo ();
+   for ( int i = 0; i < _productos.getNumElementos (); i++ )
+   {
+      Producto* aux = _productos.sacaElemento ( 0 );
+      delete aux;
+   }
 }
 
 
@@ -114,15 +121,36 @@ Contrato& Contrato::addProducto ( const Producto& nP )
    return *this;
 }
 
+
+/**
+ * Consulta el número de productos del contrato
+ * @return El número de productos del contrato
+ */
 int Contrato::getNumProductos ( )
 {
    return _productos.getNumElementos ();
 }
 
+
+/**
+ * Consulta un producto del contrato
+ * @param cual Ordinal del producto que se quiere consultar. El rango de valores
+ *        válidos es [1..número de productos contratados]
+ * @return El producto consultado
+ * @throw MiExcepcion Si hay algún problema
+ */
 Producto* Contrato::getProducto ( int cual )
 {
-   return _productos.getElemento ( cual-1 );
+   try
+   {
+      return _productos.getElemento ( cual-1 );
+   }
+   catch ( std::out_of_range& e )
+   {
+      throw MiExcepcion ( "Contrato.cpp", "Contrato::getProducto", e.what () );
+   }
 }
+
 
 /**
  * Asigna un nuevo abonado al contrato
@@ -149,7 +177,7 @@ Contrato& Contrato::setAbonado ( Persona* abonado )
 
 /**
  * Consulta el abonado asociado al contrato
- * @return Un puntero al abonado
+ * @return Un puntero al abonado, o nullptr si no hay abonado asignado
  */
 Persona* Contrato::getAbonado ( ) const
 {
@@ -243,6 +271,12 @@ int Contrato::getMesesPermanencia ( ) const
    return _mesesPermanencia;
 }
 
+
+/**
+ * Consulta la cuota mensual del contrato
+ * @return La cuota mensual del contrato, calculada sumando los precios de los
+ *         productos contratados
+ */
 float Contrato::getPrecioMensual ( )
 {
    float aDevolver = 0;

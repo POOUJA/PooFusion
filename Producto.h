@@ -1,8 +1,10 @@
-/* 
- * File:   Producto.h
- * Author: algarcia
+/** 
+ * @file Producto.h
+ * @author algarcia
  *
- * Created on 16 de abril de 2021, 12:24
+ * @date 16 de abril de 2021, 12:24
+ * 
+ * @brief Declaración de la clase Producto
  */
 
 #ifndef PRODUCTO_H
@@ -11,10 +13,13 @@
 #include <string>
 
 
+/**
+ * Producto a contratar
+ */
 class Producto
 {
    protected:
-      float _precioMensual = 0;
+      float _precioMensual = 0;   ///< Precio mensual del producto
      
    public:
       Producto ( ) = default;
