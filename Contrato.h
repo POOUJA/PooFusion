@@ -11,22 +11,24 @@
 #define CONTRATO_H
 
 #include "Persona.h"
-#include "ConexionInternet.h"
-#include "PaqueteDeCanales.h"
-#include "Contenedores.h"
+#include "Contenedor.h"
+#include "Producto.h"
 
 /**
  * Contratos formalizados entre PooFusion y particulares
  */
 class Contrato
 {
+   public:
+      static const int MAX_PRODUCTOS = 10;
+
    private:
       int _fechaDeAlta = 0;
       int _mesesPermanencia = 0;
       std::string _cuentaBancaria = "";
       bool _activo = true;
       Persona* _abonado = nullptr;
-      ContenedorC<>
+      Contenedor<Producto> _productos;
 
    public:
       Contrato ( Persona* nAbonado );
@@ -34,10 +36,9 @@ class Contrato
       virtual ~Contrato ( );
       Contrato& setFechaDeAlta ( int fechaDeAlta );
       int getFechaDeAlta ( ) const;
-      Contrato& addCanalTV ( Canal* c );
-      PaqueteDeCanales* getPaqueteTV ( ) const;
-      Contrato& addConexion ( std::string tipo, int velocidad );
-      ConexionInternet* getConexion ( ) const;
+      Contrato& addProducto ( const Producto& nP );
+      int getNumProductos ();
+      Producto* getProducto ( int cual );
       Contrato& setAbonado ( Persona* abonado );
       Persona* getAbonado ( ) const;
       Contrato& setActivo ( bool activo );
@@ -46,6 +47,7 @@ class Contrato
       std::string getCuentaBancaria ( ) const;
       Contrato& setMesesPermanencia ( int mesesPermanencia );
       int getMesesPermanencia ( ) const;
+      float getPrecioMensual ();
 };
 
 #endif /* CONTRATO_H */

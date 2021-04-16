@@ -27,11 +27,11 @@ class Canal: public Producto
       Canal ( std::string nNombre, float precio );
       Canal ( const Canal& orig );
       ~Canal ();
-      void setNombre ( std::string nNombre );
+      Canal& setNombre ( std::string nNombre );
       std::string getNombre ( ) const;
       Canal& operator= ( const Canal& otro );
-      virtual std::string getDescripcion ();
-      virtual Producto* copia ();
+      virtual std::string getDescripcion () override;
+      virtual Producto* copia () const override;
 };
 
 #endif /* CANAL_H */

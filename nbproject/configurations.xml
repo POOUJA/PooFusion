@@ -6,7 +6,7 @@
                    projectFiles="true">
       <itemPath>Canal.h</itemPath>
       <itemPath>ConexionInternet.h</itemPath>
-      <itemPath>Contenedores.h</itemPath>
+      <itemPath>Contenedor.h</itemPath>
       <itemPath>Contrato.h</itemPath>
       <itemPath>MiExcepcion.h</itemPath>
       <itemPath>PaqueteDeCanales.h</itemPath>
@@ -60,7 +60,7 @@
       </item>
       <item path="ConexionInternet.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Contenedores.h" ex="false" tool="3" flavor2="0">
+      <item path="Contenedor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Contrato.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -115,7 +115,7 @@
       </item>
       <item path="ConexionInternet.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Contenedores.h" ex="false" tool="3" flavor2="0">
+      <item path="Contenedor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Contrato.cpp" ex="false" tool="1" flavor2="0">
       </item>

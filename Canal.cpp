@@ -50,7 +50,7 @@ Canal::~Canal ( )
  * @post El nombre del canal cambia al valor que se le pasa como parámetro
  * @throw MiExcepcion Si se intenta asignar como nombre una cadena vacía
  */
-void Canal::setNombre ( std::string nNombre )
+Canal& Canal::setNombre ( std::string nNombre )
 {
    if ( nNombre == "" )
    {
@@ -59,6 +59,8 @@ void Canal::setNombre ( std::string nNombre )
    }
 
    this->_nombre = nNombre;
+
+   return *this;
 }
 
 /**
@@ -95,7 +97,7 @@ std::string Canal::getDescripcion ( )
    return ( "Canal " + _nombre );
 }
 
-Producto* Canal::copia ( )
+Producto* Canal::copia ( ) const
 {
    Producto* aDevolver = new Canal ( *this );
 

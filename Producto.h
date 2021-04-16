@@ -22,8 +22,8 @@ class Producto
       Producto ( const Producto& orig );
       virtual ~Producto ( );
       virtual std::string getDescripcion () = 0;
-      virtual Producto* copia () = 0;
-      float getPrecioMensual () const;
+      virtual Producto* copia () const = 0;
+      virtual float getPrecioMensual ();
       void setPrecioMensual ( float nPM );
       Producto& operator= ( const Producto& otro );
 } ;

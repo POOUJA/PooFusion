@@ -21,6 +21,7 @@
  * @throw MiExcepcion Si se le pasa como parámetro nullptr
  */
 Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
+                                        , _productos ( MAX_PRODUCTOS )
 {
    if ( nAbonado == nullptr )
    {
@@ -50,10 +51,8 @@ Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
                                   , _cuentaBancaria ( orig._cuentaBancaria )
                                   , _activo ( orig._activo )
                                   , _abonado ( orig._abonado )
-{
-   _conexion = new ConexionInternet ( *orig._conexion );
-   _tv = new PaqueteDeCanales ( *orig._tv );
-}
+                                  , _productos ( orig._productos )
+{ }
 
 
 /**
@@ -64,10 +63,7 @@ Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
 Contrato::~Contrato ( )
 {
    _abonado = nullptr;
-   delete _conexion;
-   _conexion = nullptr;
-   delete _tv;
-   _tv = nullptr;
+   _productos.borrarTodo ();
 }
 
 
@@ -95,92 +91,38 @@ int Contrato::getFechaDeAlta ( ) const
 }
 
 /**
- * Añade un canal de TV al paquete contratado por el abonado. El descuento
- * del paquete empieza siendo un 10%, y con cada nuevo canal se incrementa un
- * 2% más
- * @param c Canal de TV que se añade
- * @post El contrato incluye un canal más
- * @throw MiExcepcion Si el contrato no permite más canales
+ * Añade un nuevo producto al contrato (canal de TV, paquete de canales o
+ * conexión a Internet)
+ * @param nP Nuevo producto. Se crea una copia de este objeto dentro del contrato
+ * @post El contrato incluye un producto más
+ * @throw MiExcepcion Si el contrato no permite más productos
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
-Contrato& Contrato::addCanalTV ( Canal* c )
+Contrato& Contrato::addProducto ( const Producto& nP )
 {
-   if ( _tv == nullptr )
-   {
-      // Por defecto, se crea el paquete con un 10% de descuento
-      _tv = new PaqueteDeCanales ( 10 );
-   }
-
    try
    {
-      _tv->addCanal ( c );
-      // Con cada nuevo canal, se aumenta el descuento
-      _tv->setDescuento ( _tv->getDescuento () + 2 );
+      _productos.addElemento ( nP.copia () );
    }
-   catch ( MiExcepcion& e )
+   catch ( std::length_error& e )
    {
       // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addCanalTV",
-                          e.quePasa () );
+      throw MiExcepcion ( "Contrato.cpp", "Contrato::addCanalTV", e.what () );
    }
 
    return *this;
 }
 
-
-/**
- * Consulta el paquete de canales contratado
- * @return Un puntero al paquete de canales contratado. Si no hay paquete de
- *         canales, devuelve nullptr.
- */
-PaqueteDeCanales* Contrato::getPaqueteTV ( ) const
+int Contrato::getNumProductos ( )
 {
-   return _tv;
+   return _productos.getNumElementos ();
 }
 
-
-/**
- * Añade una conexión a Internet al contrato
- * @param tipo Tipo de la nueva conexión (ADSL, Fibra, WiMAX...)
- * @param velocidad Velocidad de la conexión en MB
- * @post El contrato tiene una conexión a Internet vinculada
- * @note Si no había una conexión previa, la crea. Si ya existía, la destruye
- * @return Una referencia al propio objeto, para permitir encadenar llamadas a
- *         métodos
- * @throw MiExcepcion Si hay algún problema
- */
-Contrato& Contrato::addConexion ( std::string tipo, int velocidad )
+Producto* Contrato::getProducto ( int cual )
 {
-   if ( _conexion != nullptr )
-   {
-      delete _conexion;
-   }
-
-   try
-   {
-      _conexion = new ConexionInternet ( tipo, velocidad );
-   }
-   catch ( MiExcepcion& e )
-   {
-      // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addConexion",
-                          e.quePasa () );
-   }
-
-   return *this;
+   return _productos.getElemento ( cual-1 );
 }
-
-
-/**
- * Consulta la conexión a Internet asociada al contrato
- * @return Un puntero a la conexión, o nullptr si no hay conexión vinculada
- */
-ConexionInternet* Contrato::getConexion ( ) const
-{
-   return _conexion;
-}
-
 
 /**
  * Asigna un nuevo abonado al contrato
@@ -299,5 +241,17 @@ Contrato& Contrato::setMesesPermanencia ( int mesesPermanencia )
 int Contrato::getMesesPermanencia ( ) const
 {
    return _mesesPermanencia;
+}
+
+float Contrato::getPrecioMensual ( )
+{
+   float aDevolver = 0;
+
+   for ( int i = 0; i < _productos.getNumElementos (); i++ )
+   {
+      aDevolver += _productos.getElemento ( i )->getPrecioMensual ();
+   }
+
+   return aDevolver;
 }
 

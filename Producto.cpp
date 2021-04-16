@@ -8,9 +8,16 @@
 #include <stdexcept>
 
 #include "Producto.h"
+#include "MiExcepcion.h"
 
 Producto::Producto ( float nPM ): _precioMensual ( nPM )
-{ }
+{
+   if ( nPM < 0 )
+   {
+      throw MiExcepcion ( "Producto.cpp", "Producto::Producto",
+                          "Precio de producto no válido" );
+   }
+}
 
 Producto::Producto ( const Producto& orig ): _precioMensual ( orig._precioMensual )
 { }
@@ -18,7 +25,7 @@ Producto::Producto ( const Producto& orig ): _precioMensual ( orig._precioMensua
 Producto::~Producto ( )
 { }
 
-float Producto::getPrecioMensual ( ) const
+float Producto::getPrecioMensual ( )
 {
    return _precioMensual;
 }
@@ -27,8 +34,8 @@ void Producto::setPrecioMensual ( float nPM )
 {
    if ( nPM < 0 )
    {
-      throw std::invalid_argument ( "[Producto::setPrecioMensual]: precio"
-                                    " incorrecto" );
+      throw MiExcepcion ( "Producto.cpp", "Producto::setPrecioMensual",
+                          "Precio de producto no válido" );
    }
 
    _precioMensual = nPM;

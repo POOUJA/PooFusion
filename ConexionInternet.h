@@ -25,18 +25,18 @@ class ConexionInternet: public Producto
       
    public:
       ConexionInternet () = default;
-      ConexionInternet ( std::string nTipo, int nVel );
+      ConexionInternet ( std::string nTipo, int nVel, float precio );
       ConexionInternet ( const ConexionInternet& orig );
       ~ConexionInternet ();
-      void setVelocidadMB ( int nVel );
+      ConexionInternet& setVelocidadMB ( int nVel );
       int getVelocidadMB ( ) const;
-      void setTipo ( std::string nTipo );
+      ConexionInternet& setTipo ( std::string nTipo );
       std::string getTipo ( ) const;
       ConexionInternet& operator= ( const ConexionInternet& otro );
       bool operator< ( const ConexionInternet& otro );
       bool operator== ( const ConexionInternet& otro );
-      virtual std::string getDescripcion ();
-      virtual Producto* copia ();
+      virtual std::string getDescripcion () override;
+      virtual Producto* copia () const override;
 };
 
 #endif /* CONEXIONINTERNET_H */

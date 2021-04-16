@@ -29,9 +29,9 @@ class Persona
       Persona ( std::string nApeNom, std::string nNIF );
       Persona ( const Persona& orig );
       ~Persona ();
-      void setNif ( std::string nNif );
+      Persona& setNif ( std::string nNif );
       std::string getNif ( ) const;
-      void setApeNom ( std::string nApeNom );
+      Persona& setApeNom ( std::string nApeNom );
       std::string getApeNom ( ) const;
       Persona& operator= ( const Persona& otro );
 };

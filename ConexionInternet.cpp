@@ -7,6 +7,7 @@
  * @brief Implementación de los métodos de la clase ConexionInternet
  */
 
+#include <sstream>
 #include "ConexionInternet.h"
 #include "MiExcepcion.h"
 
@@ -14,14 +15,15 @@
  * Constructor parametrizado
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
  * @param nVel Velocidad de la conexión
+ * @param precio Precio mensual de la conexión
  * @post La información de la nueva conexión coincide con los valores que se le
  *       pasan
- * @throw MiExcepcion Si la velocidad es un número menor o igual a cero, o si el
- *        tipo es una cadena vacía
+ * @throw MiExcepcion Si hay algún problema
  */
-ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
-                                   _tipo ( nTipo )
-                                 , _velocidadMB ( nVel )
+ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
+                                   , float precio ) try : Producto ( precio )
+                                                        , _tipo ( nTipo )
+                                                        , _velocidadMB ( nVel )
 {
    if ( nVel <= 0 )
    {
@@ -37,6 +39,12 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
                         , "El tipo de conexión no puede ser una cadena vacía" );
    }
 }
+catch ( MiExcepcion& e )
+{
+   throw MiExcepcion ( "ConexionInternet.cpp"
+                     , "ConexionInternet::ConexionInternet"
+                     , e.quePasa () );
+}
 
 
 /**
@@ -45,7 +53,7 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
  * @post La nueva conexión tiene exactamente los mismos datos que la original
  */
 ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
-                                   _tipo ( orig._tipo )
+                                   Producto ( orig ), _tipo ( orig._tipo )
                                  , _velocidadMB ( orig._velocidadMB )
 { }
 
@@ -63,7 +71,7 @@ ConexionInternet::~ConexionInternet ( )
  * @post La velocidad de la conexión cambia al nuevo valor
  * @throw MiExcepcion Si la nueva velocidad no es un número positivo
  */
-void ConexionInternet::setVelocidadMB ( int nVel )
+ConexionInternet& ConexionInternet::setVelocidadMB ( int nVel )
 {
    if ( nVel <= 0 )
    {
@@ -73,6 +81,8 @@ void ConexionInternet::setVelocidadMB ( int nVel )
    }
 
    this->_velocidadMB = nVel;
+
+   return *this;
 }
 
 
@@ -92,7 +102,7 @@ int ConexionInternet::getVelocidadMB ( ) const
  * @post El tipo de la conexión cambia al nuevo valor
  * @throw MiExcepcion Si el tipo es una cadena vacía
  */
-void ConexionInternet::setTipo ( std::string nTipo )
+ConexionInternet& ConexionInternet::setTipo ( std::string nTipo )
 {
    if ( nTipo == "" )
    {
@@ -102,6 +112,8 @@ void ConexionInternet::setTipo ( std::string nTipo )
    }
 
    this->_tipo = nTipo;
+
+   return *this;
 }
 
 
@@ -127,6 +139,7 @@ ConexionInternet& ConexionInternet::operator= ( const ConexionInternet& otro )
 {
    if ( this != &otro )
    {
+      Producto::operator = ( otro );
       _tipo = otro._tipo;
       _velocidadMB = otro._velocidadMB;
    }
@@ -172,7 +185,7 @@ std::string ConexionInternet::getDescripcion ( )
    return aux.str ();
 }
 
-Producto* ConexionInternet::copia ( )
+Producto* ConexionInternet::copia ( ) const
 {
    Producto* aDevolver = new ConexionInternet ( *this );
 

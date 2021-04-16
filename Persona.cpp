@@ -58,7 +58,7 @@ Persona::~Persona ( )
  * @post El NIF de la persona cambia al nuevo valor
  * @throw MiExcepcion Si el nuevo NIF es una cadena vacía
  */
-void Persona::setNif ( std::string nNif )
+Persona& Persona::setNif ( std::string nNif )
 {
    if ( nNif == "" )
    {
@@ -67,6 +67,8 @@ void Persona::setNif ( std::string nNif )
    }
 
    this->_nif = nNif;
+
+   return *this;
 }
 
 
@@ -87,7 +89,7 @@ std::string Persona::getNif ( ) const
  *       parámetro
  * @throw MiExcepcion Si la cadena con el nuevo nombre está vacía
  */
-void Persona::setApeNom ( std::string nApeNom )
+Persona& Persona::setApeNom ( std::string nApeNom )
 {
    if ( nApeNom == "" )
    {
@@ -96,6 +98,8 @@ void Persona::setApeNom ( std::string nApeNom )
    }
 
    this->_apeNom = nApeNom;
+
+   return *this;
 }
 
 

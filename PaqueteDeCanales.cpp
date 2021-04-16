@@ -7,6 +7,8 @@
  * @brief Implementación de los métodos de la clase PaqueteDeCanales
  */
 
+#include <sstream>
+
 #include "PaqueteDeCanales.h"
 #include "MiExcepcion.h"
 
@@ -16,18 +18,15 @@
  * @post El nuevo paquete tiene el descuento pasado como parámetro
  * @throw MiExcepcion Si el descuento es negativo
  */
-PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
+PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto ()
+                                                  , _descuento ( nDesc )
+                                                  , _canales ( MAX_CANALES )
 {
    if ( nDesc < 0 )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp"
                         , "PaqueteDeCanales::PaqueteDeCanales"
                         , "El descuento no puede ser negativo" );
-   }
-
-   for ( int i = 0; i < MAX_CANALES; i++ )
-   {
-      _canales[i] = nullptr;
    }
 }
 
@@ -38,14 +37,10 @@ PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
  * @post El nuevo paquete tiene una copia exacta de los valores del original
  */
 PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
-                                                  _descuento ( orig._descuento )
-                                                , _nCanales ( orig._nCanales )
-{
-   for ( int i = 0; i < MAX_CANALES; i++ )
-   {
-      _canales[i] = orig._canales[i];
-   }
-}
+                                   Producto ( orig )
+                                 , _descuento ( orig._descuento )
+                                 , _canales ( orig._canales )
+{ }
 
 
 /**
@@ -55,10 +50,7 @@ PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
  */
 PaqueteDeCanales::~PaqueteDeCanales ( )
 {
-   for ( int i = 0; i < _nCanales; i++ )
-   {
-      _canales[i] = nullptr;
-   }
+   _canales.nullify ();
 }
 
 
@@ -68,7 +60,7 @@ PaqueteDeCanales::~PaqueteDeCanales ( )
  * @post El descuento del paquete cambia al valor pasado como parámetro
  * @throw MiExcepcion Si el nuevo descuento es un número negativo
  */
-void PaqueteDeCanales::setDescuento ( float nDesc )
+PaqueteDeCanales& PaqueteDeCanales::setDescuento ( float nDesc )
 {
    if ( nDesc < 0 )
    {
@@ -77,6 +69,8 @@ void PaqueteDeCanales::setDescuento ( float nDesc )
    }
 
    this->_descuento = nDesc;
+
+   return *this;
 }
 
 
@@ -89,6 +83,20 @@ float PaqueteDeCanales::getDescuento ( ) const
    return _descuento;
 }
 
+float PaqueteDeCanales::getPrecioMensual ( )
+{
+   float suma = 0;
+
+   for ( int i = 0; i < _canales.getNumElementos (); i++ )
+   {
+      suma += _canales.getElemento (i)->getPrecioMensual ();
+   }
+
+   suma -= ( suma * _descuento / 100.0 );
+
+   return suma;
+}
+
 
 /**
  * Añade un nuevo canal al paquete
@@ -97,7 +105,7 @@ float PaqueteDeCanales::getDescuento ( ) const
  * @post El paquete de canales contiene un canal más
  * @throw MiExcepcion Si no caben más canales en el paquete
  */
-void PaqueteDeCanales::addCanal ( Canal* nuevoC )
+PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
    try
    {
@@ -106,8 +114,10 @@ void PaqueteDeCanales::addCanal ( Canal* nuevoC )
    catch ( std::length_error &e )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
-                          "No caben más canales en el paquete" );
+                          e.what () );
    }
+
+   return *this;
 }
 
 
@@ -129,7 +139,7 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
    catch ( std::out_of_range &e )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
-                          "Valor de índice incorrecto" );
+                          e.what () );
    }
 
    return aDevolver;
@@ -155,7 +165,7 @@ Canal* PaqueteDeCanales::sacaCanal ( int cual )
    catch ( std::out_of_range &e )
    {
       throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
-                          "Valor de índice incorrecto" );
+                          e.what () );
    }
 
    return aDevolver;
@@ -186,12 +196,8 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 {
    if ( this != &otro )
    {
-      for ( int i = 0; i < MAX_CANALES; i++ )
-      {
-         _canales[i] = otro._canales[i];
-      }
-
-      _nCanales = otro._nCanales;
+      Producto::operator = ( otro );
+      _canales = otro._canales;
       _descuento = otro._descuento;
    }
 
@@ -202,12 +208,20 @@ std::string PaqueteDeCanales::getDescripcion ( )
 {
    std::stringstream aux;
 
-   aux << "Paquete de canales que contiene " << std::endl;
+   aux << "Paquete de canales que contiene ";
 
+   for ( int i = 0; i < _canales.getNumElementos (); i++ )
+   {
+      aux << std::endl << "\t" << _canales.getElemento (i)->getNombre ();
+   }
 
+   return aux.str ();
 }
 
-Producto* PaqueteDeCanales::copia ( )
+Producto* PaqueteDeCanales::copia ( ) const
 {
+   Producto* aDevolver = new PaqueteDeCanales ( *this );
+
+   return aDevolver;
 }
 
