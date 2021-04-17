@@ -1,21 +1,21 @@
 /** 
- * @file MiExcepcion.h
+ * @file PooFusionExc.h
  * @author algarcia
  *
  * @date 31 de marzo de 2021, 18:08
  * 
- * @brief Declaración de la clase MiExcepcion
+ * @brief Declaración de la clase PooFusionExc
  */
 
-#ifndef MIEXCEPCION_H
-#define MIEXCEPCION_H
+#ifndef POOFUSIONEXC_H
+#define POOFUSIONEXC_H
 
 #include <string>
 
 /**
  * Los objetos de esta clase guardan información relativa a excepciones
  */
-class MiExcepcion
+class PooFusionExc
 {
    private:
       std::string _fichero = "";
@@ -23,11 +23,11 @@ class MiExcepcion
       std::string _mensaje = "";
 
    public:
-      MiExcepcion ( std::string nFich, std::string nFun, std::string msg );
-      MiExcepcion ( const MiExcepcion& orig );
-      virtual ~MiExcepcion ( );
+      PooFusionExc ( std::string nFun, std::string msg, std::string nFich = "" );
+      PooFusionExc ( const PooFusionExc& orig );
+      virtual ~PooFusionExc ( );
       std::string quePasa () const;
 };
 
-#endif /* MIEXCEPCION_H */
+#endif /* POOFUSIONEXC_H */
 

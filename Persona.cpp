@@ -8,7 +8,7 @@
  */
 
 #include "Persona.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -23,14 +23,14 @@ Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
 {
    if ( nApeNom == "" )
    {
-      throw MiExcepcion ( "Persona.cpp", "Persona::Persona"
-                        , "El nombre no puede estar vacío" );
+      throw PooFusionExc ( "Persona::Persona", "El nombre no puede estar vacío"
+                         , "Persona.cpp" );
    }
 
    if ( nNIF == "" )
    {
-      throw MiExcepcion ( "Persona.cpp", "Persona::Persona"
-                        , "El NIF no puede estar vacío" );
+      throw PooFusionExc ( "Persona::Persona", "El NIF no puede estar vacío"
+                         , "Persona.cpp" );
    }
 }
 
@@ -62,8 +62,8 @@ Persona& Persona::setNif ( std::string nNif )
 {
    if ( nNif == "" )
    {
-      throw MiExcepcion ( "Persona.cpp", "Persona::setNif"
-                        , "El NIF no puede estar vacío" );
+      throw PooFusionExc ( "Persona::setNif", "El NIF no puede estar vacío"
+                         , "Persona.cpp" );
    }
 
    this->_nif = nNif;
@@ -93,8 +93,8 @@ Persona& Persona::setApeNom ( std::string nApeNom )
 {
    if ( nApeNom == "" )
    {
-      throw MiExcepcion ( "Persona.cpp", "Persona::setApeNom"
-                        , "El nombre no puede estar vacío" );
+      throw PooFusionExc ( "Persona::setApeNom", "El nombre no puede estar vacío"
+                         , "Persona.cpp" );
    }
 
    this->_apeNom = nApeNom;

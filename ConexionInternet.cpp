@@ -9,7 +9,7 @@
 
 #include <sstream>
 #include "ConexionInternet.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -27,23 +27,22 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
 {
    if ( nVel <= 0 )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
-                        , "ConexionInternet::ConexionInternet"
-                        , "La velocidad ha de ser un número positivo" );
+      throw PooFusionExc ( "ConexionInternet::ConexionInternet"
+                         , "La velocidad ha de ser un número positivo"
+                         , "ConexionInternet.cpp" );
    }
 
    if ( nTipo == "" )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
-                        , "ConexionInternet::ConexionInternet"
-                        , "El tipo de conexión no puede ser una cadena vacía" );
+      throw PooFusionExc ( "ConexionInternet::ConexionInternet"
+                         , "El tipo de conexión no puede ser una cadena vacía"
+                         , "ConexionInternet.cpp" );
    }
 }
-catch ( MiExcepcion& e )
+catch ( PooFusionExc& e )
 {
-   throw MiExcepcion ( "ConexionInternet.cpp"
-                     , "ConexionInternet::ConexionInternet"
-                     , e.quePasa () );
+   throw PooFusionExc ( "ConexionInternet::ConexionInternet", e.quePasa ()
+                      , "ConexionInternet.cpp" );
 }
 
 
@@ -77,9 +76,9 @@ ConexionInternet& ConexionInternet::setVelocidadMB ( int nVel )
 {
    if ( nVel <= 0 )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
-                        , "ConexionInternet::setVelocidadMB"
-                        , "La velocidad ha de ser un número positivo" );
+      throw PooFusionExc ( "ConexionInternet::setVelocidadMB"
+                         , "La velocidad ha de ser un número positivo"
+                         , "ConexionInternet.cpp" );
    }
 
    this->_velocidadMB = nVel;
@@ -110,9 +109,9 @@ ConexionInternet& ConexionInternet::setTipo ( std::string nTipo )
 {
    if ( nTipo == "" )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
-                        , "ConexionInternet::setTipo"
-                        , "El tipo de conexión no puede ser una cadena vacía" );
+      throw PooFusionExc ( "ConexionInternet::setTipo"
+                         , "El tipo de conexión no puede ser una cadena vacía"
+                         , "ConexionInternet.cpp" );
    }
 
    this->_tipo = nTipo;

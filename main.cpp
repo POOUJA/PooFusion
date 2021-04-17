@@ -9,32 +9,16 @@
 #include <iostream>
 
 #include "Persona.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 #include "Contrato.h"
 
 using namespace std;
 
 /**
- * @brief Muestra la información de un paquete de canales por consola
- * @param paramPC Paquete del que se muestra la información
- */
-void muestraPaqueteCanales ( PaqueteDeCanales& paramPC )
-{
-   std::cout << "Paquete de canales (" << paramPC.getDescuento ()
-             << "% de descuento) que contiene ";
-
-   for ( int i = 0; i < paramPC.getNumCanales (); i++ )
-   {
-      std::cout << paramPC.getCanal (i+1)->getNombre () << " ";
-   }
-}
-
-
-/**
  * @brief Muestra la información de una persona por consola
  * @param paramP Persona de la que muestra la información
  */
-void muestraPersona ( Persona& paramP )
+void mostrar ( Persona& paramP )
 {
    std::cout << "La persona se llama " << paramP.getApeNom () << ". NIF "
              << paramP.getNif () << std::endl;
@@ -45,7 +29,7 @@ void muestraPersona ( Persona& paramP )
  * Muestra la información relativa a un contrato
  * @param paramC Contrato del que se muestra la información
  */
-void muestraContrato ( Contrato& paramC )
+void mostrar ( Contrato& paramC )
 {
    std::cout << "Contrato con fecha " << paramC.getFechaDeAlta () << std::endl
              << "===========================" << std::endl
@@ -96,22 +80,21 @@ int main ( int argc, char** argv )
    Canal c2;
    c2.setNombre ( "DAZN" ).setPrecioMensual ( 5 );
 
-   std::cout << "La persona se llama " << p.getApeNom () << std::endl
-             << "El canal de televisión es " << c2.getNombre () << std::endl
-             << "La conexión es " << c.getTipo () << " a "
-             << c.getVelocidadMB () << " MB" << std::endl << std::endl;
+   mostrar ( p );
+   std::cout << c2.getDescripcion () << std::endl
+             << c.getDescripcion () << std::endl;
 
    // Creación de copia en memoria automática (pila)
    Persona p2 ( p );
 
-   std::cout << "La persona copiada se llama " << p2.getApeNom ()
-             << std::endl << std::endl;
+   std::cout << "La persona copiada en memoria automática es: " << std::endl;
+   mostrar ( p2 );
 
    // Creación de copia en memoria dinámica (heap)
    Persona* ptrP = new Persona ( p );
 
-   std::cout << "La persona copiada se llama " << ptrP->getApeNom ()
-             << std::endl << std::endl;
+   std::cout << "La persona copiada en memoria dinámica es: " << std::endl;
+   mostrar ( *ptrP );
 
    // Creación de array de objetos en memoria automática (pila)
    Persona aP[3];
@@ -131,11 +114,13 @@ int main ( int argc, char** argv )
    aC[2].setNombre ( "#Vamos" ).setPrecioMensual ( 7 );
 
    // Uso del operador de asignación
-   std::cout << "Antes de la asignación, el nombre es " << p2.getApeNom ()
-             << std::endl;
+   std::cout << "Antes de la asignación: " << std::endl;
+   mostrar ( p2 );
+
    p2 = aP[0];
-   std::cout << "Después de la asignación el nombre es " << p2.getApeNom ()
-             << std::endl << std::endl;
+
+   std::cout << "Después de la asignación: " << std::endl;
+   mostrar ( p2 );
 
    // Uso de los operadores de comparación
    if ( c < otraC )
@@ -166,7 +151,7 @@ int main ( int argc, char** argv )
    {
       aP[2].setApeNom ("");
    }
-   catch ( MiExcepcion& e )
+   catch ( PooFusionExc& e )
    {
       std::cerr << e.quePasa () << std::endl << std::endl;
    }
@@ -189,11 +174,19 @@ int main ( int argc, char** argv )
         .setActivo ( true );
 
    // Comprobamos el contrato
-   muestraContrato ( cto01 );
+   mostrar ( cto01 );
 
    Contrato cto02 ( cto01 );
 
-   muestraContrato ( cto02 );
+   mostrar ( cto02 );
+
+   // Utilizamos la plantilla de contenedor que hemos creado
+   Contenedor<Persona> clientes ( 3 );
+   clientes.addElemento ( Persona ( "Er pobre Migué", "1234-X" ) )
+           .addElemento ( Persona ( "El Risitas", "9876-Y" ) );
+
+   mostrar ( clientes.getElemento ( 0 ) );
+   mostrar ( clientes.getElemento ( 1 ) );
 
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
    delete ptrP;

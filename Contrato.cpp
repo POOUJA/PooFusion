@@ -10,7 +10,7 @@
 #include <ctime>
 
 #include "Contrato.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -23,8 +23,9 @@ Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
 {
    if ( nAbonado == nullptr )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::Contrato"
-                        , "El contrato ha de tener un abonado" );
+      throw PooFusionExc ( "Contrato::Contrato"
+                         , "El contrato ha de tener un abonado"
+                         , "Contrato.cpp" );
    }
 
    // Toma la fecha actual para el contrato
@@ -115,7 +116,7 @@ Contrato& Contrato::addProducto ( const Producto& nP )
    catch ( std::length_error& e )
    {
       // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addCanalTV", e.what () );
+      throw PooFusionExc ( "Contrato::addCanalTV", e.what (), "Contrato.cpp" );
    }
 
    return *this;
@@ -147,7 +148,7 @@ Producto* Contrato::getProducto ( int cual )
    }
    catch ( std::out_of_range& e )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::getProducto", e.what () );
+      throw PooFusionExc ( "Contrato::getProducto", e.what (), "Contrato.cpp" );
    }
 }
 
@@ -165,8 +166,9 @@ Contrato& Contrato::setAbonado ( Persona* abonado )
 {
    if ( abonado == nullptr )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::setAbonado"
-                        , "El contrato tiene que tener un abonado" );
+      throw PooFusionExc ( "Contrato::setAbonado"
+                         , "El contrato tiene que tener un abonado"
+                         , "Contrato.cpp" );
    }
 
    this->_abonado = abonado;
@@ -221,8 +223,9 @@ Contrato& Contrato::setCuentaBancaria ( std::string cuentaBancaria )
 {
    if ( cuentaBancaria == "" )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::setCuentaBancaria"
-                        , "El contrato tiene que tener cuenta bancaria" );
+      throw PooFusionExc ( "Contrato::setCuentaBancaria"
+                         , "El contrato tiene que tener cuenta bancaria"
+                         , "Contrato.cpp" );
    }
 
    this->_cuentaBancaria = cuentaBancaria;
@@ -252,8 +255,9 @@ Contrato& Contrato::setMesesPermanencia ( int mesesPermanencia )
 {
    if ( mesesPermanencia < 0 )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::setMesesPermanencia"
-                        , "El contrato no puede tener una permanencia negativa" );
+      throw PooFusionExc ( "Contrato::setMesesPermanencia"
+                         , "El contrato no puede tener una permanencia negativa"
+                         , "Contrato.cpp" );
    }
 
    this->_mesesPermanencia = mesesPermanencia;

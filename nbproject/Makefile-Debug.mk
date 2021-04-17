@@ -38,9 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Canal.o \
 	${OBJECTDIR}/ConexionInternet.o \
 	${OBJECTDIR}/Contrato.o \
-	${OBJECTDIR}/MiExcepcion.o \
 	${OBJECTDIR}/PaqueteDeCanales.o \
 	${OBJECTDIR}/Persona.o \
+	${OBJECTDIR}/PooFusionExc.o \
 	${OBJECTDIR}/Producto.o \
 	${OBJECTDIR}/main.o
 
@@ -84,11 +84,6 @@ ${OBJECTDIR}/Contrato.o: Contrato.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Contrato.o Contrato.cpp
 
-${OBJECTDIR}/MiExcepcion.o: MiExcepcion.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MiExcepcion.o MiExcepcion.cpp
-
 ${OBJECTDIR}/PaqueteDeCanales.o: PaqueteDeCanales.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -98,6 +93,11 @@ ${OBJECTDIR}/Persona.o: Persona.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Persona.o Persona.cpp
+
+${OBJECTDIR}/PooFusionExc.o: PooFusionExc.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PooFusionExc.o PooFusionExc.cpp
 
 ${OBJECTDIR}/Producto.o: Producto.cpp
 	${MKDIR} -p ${OBJECTDIR}

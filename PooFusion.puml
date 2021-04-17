@@ -4,45 +4,77 @@ hide circle
 skinparam classattributeiconsize 0
 skinparam classFontStyle bold
 
-class Contrato {
- - fechaDeAlta: int {Formato: YYYYMMDD}
- - mesesPermanencia: int
- - cuentaBancaria: string
- - activo: bool
-}
+note as Nota1
+  El diagrama no incluye constructores
+  por defecto y de copia, destructores,
+  setters y getters
+
+  Los tipos, salvo casos concretos, no
+  llevan & ni *, pero a la hora de
+  implementar sí hay que ponerlos ;-). 
+  Está así por hacer que el UML sea lo
+  más "ajeno" posible al lenguaje de
+  programación
+end note
+
+note top of Contrato
+  El método aplicaDto aplica de forma
+  permanente un descuento al precio de
+  todos los productos del contrato,
+  y además devuelve el nuevo importe
+  mensual total del mismo
+end note
+
+class std::runtime_error
+
+class ExcepciónEnContrato<<Exception>>
 
 class Persona {
  - apeNom: string
  - nif: string
 }
 
-class PaqueteDeCanales{
- - descuento: float
+class Contrato {
+ - fechaAlta: Fecha
+ - mesesPermanencia: int
+ - cuentaBancaria: string
+ - activo: bool
+ + Contrato ( p1: Persona, p2: Producto )
+ + nuevoProducto ( p: Producto )
+ + aplicaDto ( dto: float ): float
+}
+
+abstract class Producto {
+ # precioMensual: float
+ + Producto ( precio: float )
+ + copia(): Producto* {redefinido en derivadas}
+ + {abstract} getDescripcion(): string
 }
 
 class ConexionInternet {
  - tipo: string
  - velocidadMB: int
+ + copia(): Producto*
 }
 
 class Canal {
  - nombre: string
+ + copia(): Producto*
 }
 
-class MiExcepcion{
- - fichero: string
- - función: string
- - mensaje: string
+class PaqueteDeCanales {
+ - descuento: float
+ + addCanal ( c: Canal )
+ + copia(): Producto*
 }
 
-Contrato *-- "conexion" ConexionInternet
-Contrato *-- "tv" PaqueteDeCanales
-Contrato --> "abonado" Persona
-PaqueteDeCanales o-- "1..5" Canal
-Contrato ..> MiExcepcion
-Canal ..> MiExcepcion
-ConexionInternet ..> MiExcepcion
-Persona ..> MiExcepcion
-PaqueteDeCanales ..> MiExcepcion
+Contrato -- "1\nabonado" Persona: >
+Contrato *-- "1..10" Producto
+Producto <|-- ConexionInternet 
+Producto <|-- Canal
+Producto <|-- PaqueteDeCanales
+PaqueteDeCanales o- "1..5"Canal
+Contrato ..> ExcepciónEnContrato: <<throws>>
+std::runtime_error <|-- ExcepciónEnContrato 
 
 @enduml

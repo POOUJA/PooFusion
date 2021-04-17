@@ -10,7 +10,7 @@
 #include <sstream>
 
 #include "PaqueteDeCanales.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -24,9 +24,9 @@ PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto ()
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp"
-                        , "PaqueteDeCanales::PaqueteDeCanales"
-                        , "El descuento no puede ser negativo" );
+      throw PooFusionExc ( "PaqueteDeCanales::PaqueteDeCanales"
+                         , "El descuento no puede ser negativo"
+                         , "PaqueteDeCanales.cpp" );
    }
 }
 
@@ -67,8 +67,9 @@ PaqueteDeCanales& PaqueteDeCanales::setDescuento ( float nDesc )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
-                        , "El descuento no puede ser negativo" );
+      throw PooFusionExc ( "PaqueteDeCanales::setDescuento"
+                         , "El descuento no puede ser negativo"
+                         , "PaqueteDeCanales.cpp" );
    }
 
    this->_descuento = nDesc;
@@ -122,8 +123,8 @@ PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
    }
    catch ( std::length_error &e )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
-                          e.what () );
+      throw PooFusionExc ( "PaqueteDeCanales::addCanal", e.what ()
+                         , "PaqueteDeCanales.cpp" );
    }
 
    return *this;
@@ -147,8 +148,8 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
    }
    catch ( std::out_of_range &e )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
-                          e.what () );
+      throw PooFusionExc ( "PaqueteDeCanales::getCanal", e.what ()
+                         , "PaqueteDeCanales.cpp" );
    }
 
    return aDevolver;
@@ -173,8 +174,8 @@ Canal* PaqueteDeCanales::sacaCanal ( int cual )
    }
    catch ( std::out_of_range &e )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
-                          e.what () );
+      throw PooFusionExc ( "PaqueteDeCanales::sacaCanal", e.what ()
+                         , "PaqueteDeCanales.cpp" );
    }
 
    return aDevolver;

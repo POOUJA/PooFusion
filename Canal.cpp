@@ -8,7 +8,7 @@
  */
 
 #include "Canal.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -22,13 +22,13 @@ Canal::Canal ( std::string nNombre, float precio ) try : Producto ( precio )
 {
    if ( nNombre == "" )
    {
-      throw MiExcepcion ( "Canal.cpp", "Canal::Canal"
-                        , "Un canal tiene que tener nombre" );
+      throw PooFusionExc ( "Canal::Canal", "Un canal tiene que tener nombre"
+                         , "Canal.cpp" );
    }
 }
-catch ( MiExcepcion& e )
+catch ( PooFusionExc& e )
 {
-   throw MiExcepcion ( "Canal.cpp", "Canal::Canal", e.quePasa () );
+   throw PooFusionExc ( "Canal::Canal", e.quePasa (), "Canal.cpp" );
 }
 
 
@@ -60,8 +60,8 @@ Canal& Canal::setNombre ( std::string nNombre )
 {
    if ( nNombre == "" )
    {
-      throw MiExcepcion ( "Canal.cpp", "Canal::setNombre"
-                        , "Un canal tiene que tener nombre" );
+      throw PooFusionExc ( "Canal::setNombre", "Un canal tiene que tener nombre"
+                         , "Canal.cpp" );
    }
 
    this->_nombre = nNombre;
