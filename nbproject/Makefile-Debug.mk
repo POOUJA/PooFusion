@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/MiExcepcion.o \
 	${OBJECTDIR}/PaqueteDeCanales.o \
 	${OBJECTDIR}/Persona.o \
+	${OBJECTDIR}/Producto.o \
 	${OBJECTDIR}/main.o
 
 
@@ -97,6 +98,11 @@ ${OBJECTDIR}/Persona.o: Persona.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Persona.o Persona.cpp
+
+${OBJECTDIR}/Producto.o: Producto.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Producto.o Producto.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

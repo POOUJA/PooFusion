@@ -10,6 +10,7 @@
       <itemPath>MiExcepcion.h</itemPath>
       <itemPath>PaqueteDeCanales.h</itemPath>
       <itemPath>Persona.h</itemPath>
+      <itemPath>Producto.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -24,6 +25,7 @@
       <itemPath>MiExcepcion.cpp</itemPath>
       <itemPath>PaqueteDeCanales.cpp</itemPath>
       <itemPath>Persona.cpp</itemPath>
+      <itemPath>Producto.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -75,6 +77,10 @@
       </item>
       <item path="PooFusion.puml" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Producto.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Producto.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -123,6 +129,10 @@
       <item path="Persona.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PooFusion.puml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Producto.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Producto.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -15,7 +15,7 @@
 /**
  * Paquetes de canales de TV con un descuento
  */
-class PaqueteDeCanales
+class PaqueteDeCanales: public Producto
 {
    public:
       static const int MAX_CANALES = 5;   ///< Máximo de canales

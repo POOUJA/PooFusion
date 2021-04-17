@@ -19,9 +19,9 @@
  * @throw MiExcepcion Si la velocidad es un número menor o igual a cero, o si el
  *        tipo es una cadena vacía
  */
-ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
-                                   _tipo ( nTipo )
-                                 , _velocidadMB ( nVel )
+ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ): Producto ()
+                                   , _tipo ( nTipo )
+                                   , _velocidadMB ( nVel )
 {
    if ( nVel <= 0 )
    {
@@ -45,7 +45,8 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ):
  * @post La nueva conexión tiene exactamente los mismos datos que la original
  */
 ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
-                                   _tipo ( orig._tipo )
+                                   Producto ( orig )
+                                 , _tipo ( orig._tipo )
                                  , _velocidadMB ( orig._velocidadMB )
 { }
 
@@ -127,6 +128,7 @@ ConexionInternet& ConexionInternet::operator= ( const ConexionInternet& otro )
 {
    if ( this != &otro )
    {
+      this->Producto::operator = ( otro );
       _tipo = otro._tipo;
       _velocidadMB = otro._velocidadMB;
    }

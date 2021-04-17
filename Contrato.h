@@ -19,14 +19,17 @@
  */
 class Contrato
 {
+   public:
+      static const int MAX_PRODUCTOS = 10;
+
    private:
       int _fechaDeAlta = 0;
       int _mesesPermanencia = 0;
       std::string _cuentaBancaria = "";
       bool _activo = true;
       Persona* _abonado = nullptr;
-      ConexionInternet* _conexion = nullptr;
-      PaqueteDeCanales* _tv = nullptr;
+      Producto* _productos[MAX_PRODUCTOS];
+      int _numProductos = 0;
 
    public:
       Contrato ( Persona* nAbonado );
@@ -34,10 +37,8 @@ class Contrato
       virtual ~Contrato ( );
       Contrato& setFechaDeAlta ( int fechaDeAlta );
       int getFechaDeAlta ( ) const;
-      Contrato& addCanalTV ( Canal* c );
-      PaqueteDeCanales* getPaqueteTV ( ) const;
+      Contrato& addPaqueteCanales ( PaqueteDeCanales* pc );
       Contrato& addConexion ( std::string tipo, int velocidad );
-      ConexionInternet* getConexion ( ) const;
       Contrato& setAbonado ( Persona* abonado );
       Persona* getAbonado ( ) const;
       Contrato& setActivo ( bool activo );

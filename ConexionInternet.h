@@ -12,10 +12,12 @@
 
 #include <string>
 
+#include "Producto.h"
+
 /**
  * Los objetos de esta clase representan conexiones a Internet
  */
-class ConexionInternet
+class ConexionInternet: public Producto
 {
    private:
       std::string _tipo = "";   ///< Tipo de conexión
