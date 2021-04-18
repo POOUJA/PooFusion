@@ -199,9 +199,9 @@ std::string ConexionInternet::getDescripcion ( )
  * @return La dirección de memoria de un nuevo objeto que copia los atributos
  *         del objeto actual
  */
-Producto* ConexionInternet::copia ( ) const
+Duplicable* ConexionInternet::copia ( ) const
 {
-   Producto* aDevolver = new ConexionInternet ( *this );
+   Duplicable* aDevolver = new ConexionInternet ( *this );
 
    return aDevolver;
 }

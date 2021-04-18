@@ -31,7 +31,7 @@ class Canal: public Producto
       std::string getNombre ( ) const;
       Canal& operator= ( const Canal& otro );
       virtual std::string getDescripcion () override;
-      virtual Producto* copia () const override;
+      virtual Duplicable* copia () const override;
 };
 
 #endif /* CANAL_H */

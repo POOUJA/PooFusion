@@ -114,9 +114,9 @@ std::string Canal::getDescripcion ( )
  * @return La dirección de memoria de un nuevo objeto de clase Canal que copia
  *         los atributos del objeto actual
  */
-Producto* Canal::copia ( ) const
+Duplicable* Canal::copia ( ) const
 {
-   Producto* aDevolver = new Canal ( *this );
+   Duplicable* aDevolver = new Canal ( *this );
 
    return aDevolver;
 }

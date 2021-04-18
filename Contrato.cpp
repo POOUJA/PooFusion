@@ -54,7 +54,8 @@ Contrato::Contrato ( Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
    // Hay que crear productos nuevos para el contrato copiado
    for ( int i = 0; i < orig._productos.getNumElementos (); i++ )
    {
-      _productos.addElemento ( orig._productos.getElemento (i)->copia () );
+      _productos.addElemento ( dynamic_cast<Producto*> (
+                                  orig._productos.getElemento (i)->copia () ) );
    }
 }
 
@@ -111,7 +112,7 @@ Contrato& Contrato::addProducto ( const Producto& nP )
 {
    try
    {
-      _productos.addElemento ( nP.copia () );
+      _productos.addElemento ( dynamic_cast<Producto*> ( nP.copia () ) );
    }
    catch ( std::length_error& e )
    {
@@ -192,9 +193,27 @@ Persona* Contrato::getAbonado ( ) const
  * @param activo Nuevo estado del contrato
  * @post El contrato cambia de estado según el parámetro que se le pasa
  * @return Una referencia al propio contrato
+ * @throw PooFusionExc Si se intenta activar un contrato al que le faltan datos
  */
 Contrato& Contrato::setActivo ( bool activo )
 {
+   if ( activo )
+   {
+      if ( !_abonado )
+      {
+         throw PooFusionExc ( "Contrato::setActivo"
+                            , "El contrato no tiene un abonado asociado"
+                            , "Contrato.cpp" );
+      }
+
+      if ( _cuentaBancaria == "" )
+      {
+         throw PooFusionExc ( "Contrato::setActivo"
+                            , "El contrato no tiene una cuenta de domiciliación"
+                            , "Contrato.cpp" );
+      }
+   }
+
    this->_activo = activo;
 
    return *this;

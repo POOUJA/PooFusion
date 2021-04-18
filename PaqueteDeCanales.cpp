@@ -238,9 +238,9 @@ std::string PaqueteDeCanales::getDescripcion ( )
  * Crea una copia del propio paquete de canales
  * @return La dirección de memoria del nuevo paquete de canales
  */
-Producto* PaqueteDeCanales::copia ( ) const
+Duplicable* PaqueteDeCanales::copia ( ) const
 {
-   Producto* aDevolver = new PaqueteDeCanales ( *this );
+   Duplicable* aDevolver = new PaqueteDeCanales ( *this );
 
    return aDevolver;
 }

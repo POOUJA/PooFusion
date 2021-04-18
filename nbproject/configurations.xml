@@ -8,6 +8,7 @@
       <itemPath>ConexionInternet.h</itemPath>
       <itemPath>Contenedor.h</itemPath>
       <itemPath>Contrato.h</itemPath>
+      <itemPath>Duplicable.h</itemPath>
       <itemPath>PaqueteDeCanales.h</itemPath>
       <itemPath>Persona.h</itemPath>
       <itemPath>PooFusionExc.h</itemPath>
@@ -66,6 +67,8 @@
       </item>
       <item path="Contrato.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Duplicable.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="PaqueteDeCanales.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PaqueteDeCanales.h" ex="false" tool="3" flavor2="0">
@@ -120,6 +123,8 @@
       <item path="Contrato.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Contrato.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Duplicable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PaqueteDeCanales.cpp" ex="false" tool="1" flavor2="0">
       </item>
