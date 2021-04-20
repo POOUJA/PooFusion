@@ -88,11 +88,11 @@ Contrato -- "1\nabonado" Persona: >
 Producto <|-- ConexionInternet 
 Producto <|-- Canal
 Producto <|-- PaqueteDeCanales
-Contenedor <|.. CP: <<bind>>\n<T->Producto>
+Contenedor <|.. CP: <<bind>>\n<T->Producto*>
 Contrato ..> CP
 Contrato *-- "1..10" Producto
 Duplicable <|.. Producto: <<implements>>
-Contenedor <|.. CC: <<bind>>\n<T->Canal>
+Contenedor <|.. CC: <<bind>>\n<T->Canal*>
 PaqueteDeCanales o-- "1..5"Canal
 PaqueteDeCanales ..> CC
 

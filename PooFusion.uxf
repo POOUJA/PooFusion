@@ -203,7 +203,7 @@ Contenedor
       <h>54</h>
     </coordinates>
     <panel_attributes>style=autoresize
-template=Producto
+template=Producto*
 Contenedor</panel_attributes>
     <additional_attributes/>
   </element>
@@ -216,7 +216,7 @@ Contenedor</panel_attributes>
       <h>54</h>
     </coordinates>
     <panel_attributes>style=autoresize
-template=Canal
+template=Canal*
 Contenedor</panel_attributes>
     <additional_attributes/>
   </element>
@@ -305,7 +305,7 @@ m2=1..10</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 &lt;&lt;bind&gt;&gt;
-&lt;T-&gt;Producto&gt;</panel_attributes>
+&lt;T-&gt;Producto*&gt;</panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
@@ -318,7 +318,7 @@ m2=1..10</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;bind&gt;&gt;
-&lt;T-&gt;Canal&gt;</panel_attributes>
+&lt;T-&gt;Canal*&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
