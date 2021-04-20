@@ -77,18 +77,24 @@ note bottom
    salvo Contenedor
 end note
 
+class "Contenedor<Canal*>" as CC {
+}
+
+class "Contenedor<Producto*>" as CP{
+}
+
 
 Contrato -- "1\nabonado" Persona: >
 Producto <|-- ConexionInternet 
 Producto <|-- Canal
 Producto <|-- PaqueteDeCanales
-Contenedor <|.. ContenedorProductos: <<bind>>\n<T->Producto>
-Contrato *-- ContenedorProductos
-ContenedorProductos *-- "1..10" Producto
+Contenedor <|.. CP: <<bind>>\n<T->Producto>
+Contrato ..> CP
+Contrato *-- "1..10" Producto
 Duplicable <|.. Producto: <<implements>>
-Contenedor <|.. ContenedorCanales: <<bind>>\n<T->Canal>
-ContenedorCanales o-- "1..5"Canal
-PaqueteDeCanales *- ContenedorCanales
+Contenedor <|.. CC: <<bind>>\n<T->Canal>
+PaqueteDeCanales o-- "1..5"Canal
+PaqueteDeCanales ..> CC
 
 note as Nota1
    El diagrama no incluye constructores

@@ -111,14 +111,14 @@ PaqueteDeCanales
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>972</x>
-      <y>702</y>
-      <w>54</w>
-      <h>117</h>
+      <x>837</x>
+      <y>729</y>
+      <w>189</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1..5</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0;160.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -156,7 +156,7 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>846</x>
+      <x>954</x>
       <y>162</y>
       <w>342</w>
       <h>216</h>
@@ -197,25 +197,27 @@ Contenedor
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>252</y>
-      <w>153</w>
-      <h>36</h>
+      <x>675</x>
+      <y>234</y>
+      <w>135</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>style=autoresize
-ContenedorProductos</panel_attributes>
+template=Producto
+Contenedor</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>918</x>
+      <x>1035</x>
       <y>675</y>
-      <w>135</w>
-      <h>36</h>
+      <w>117</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>style=autoresize
-ContenedorCanales</panel_attributes>
+template=Canal
+Contenedor</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -253,11 +255,11 @@ Producto
     <coordinates>
       <x>837</x>
       <y>684</y>
-      <w>99</w>
+      <w>216</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;220.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -274,50 +276,50 @@ Producto
     <id>Relation</id>
     <coordinates>
       <x>603</x>
-      <y>279</y>
+      <y>144</y>
       <w>54</w>
-      <h>117</h>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m2=1..10</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>144</y>
+      <w>27</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
-      <y>144</y>
-      <w>27</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>684</x>
+      <x>765</x>
       <y>252</y>
-      <w>180</w>
+      <w>207</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 &lt;&lt;bind&gt;&gt;
 &lt;T-&gt;Producto&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>945</x>
+      <x>1053</x>
       <y>369</y>
       <w>108</w>
-      <h>324</h>
+      <h>333</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;bind&gt;&gt;
 &lt;T-&gt;Canal&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;340.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
