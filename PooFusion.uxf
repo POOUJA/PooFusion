@@ -71,23 +71,23 @@ PooFusionExc
     <id>Relation</id>
     <coordinates>
       <x>495</x>
-      <y>468</y>
+      <y>486</y>
       <w>81</w>
-      <h>225</h>
+      <h>207</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;230.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;210.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>621</x>
-      <y>468</y>
+      <y>486</y>
       <w>90</w>
-      <h>225</h>
+      <h>207</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;230.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -226,10 +226,11 @@ Contenedor</panel_attributes>
       <x>522</x>
       <y>378</y>
       <w>180</w>
-      <h>99</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>style=autoresize
-Producto
+&lt;&lt;abstract&gt;&gt;
+/Producto/
 --
 # precioMensual: float
 --
@@ -265,12 +266,12 @@ Producto
     <id>Relation</id>
     <coordinates>
       <x>594</x>
-      <y>468</y>
+      <y>486</y>
       <w>351</w>
-      <h>414</h>
+      <h>396</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>370.0;440.0;10.0;440.0;10.0;10.0</additional_attributes>
+    <additional_attributes>370.0;420.0;10.0;420.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
