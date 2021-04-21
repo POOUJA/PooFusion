@@ -77,6 +77,11 @@ Contenedor<T>::Contenedor ( int tamMaximo, T vVacio ):
       throw std::invalid_argument ( "[Contenedor]: el tamaño del nuevo"
                                     " contenedor NO es válido" );
    }
+   
+   for ( int i = 0; i < MAX_TAM; i++ )
+   {
+      _elementos[i] = _vacio;
+   }
 }
 
 
