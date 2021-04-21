@@ -68,7 +68,9 @@ Contrato::Contrato ( Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
 Contrato::~Contrato ( )
 {
    _abonado = nullptr;
-   for ( int i = 0; i < _productos.getNumElementos (); i++ )
+   int nProd = _productos.getNumElementos ();
+
+   for ( int i = 0; i < nProd; i++ )
    {
       Producto* aux = _productos.sacaElemento ( 0 );
       delete aux;

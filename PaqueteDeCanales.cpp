@@ -50,7 +50,9 @@ PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
  */
 PaqueteDeCanales::~PaqueteDeCanales ( )
 {
-   for ( int i = 0; i < _canales.getNumElementos (); i++ )
+   int nCanales = _canales.getNumElementos ();
+
+   for ( int i = 0; i < nCanales; i++ )
    {
       _canales.sacaElemento ( 0 );
    }

@@ -171,6 +171,7 @@ int main ( int argc, char** argv )
         .addProducto ( aC[0] )
         .addProducto ( aC[2] )
         .addProducto ( pC1 )
+        .setCuentaBancaria ( "ES23 1234 1234 1234 1234" )
         .setActivo ( true );
 
    // Comprobamos el contrato
