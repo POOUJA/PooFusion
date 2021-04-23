@@ -119,7 +119,7 @@ Contrato& Contrato::addProducto ( const Producto& nP )
    catch ( std::length_error& e )
    {
       // Añade a la información de la primera excepción los datos de este método
-      throw PooFusionExc ( "Contrato::addCanalTV", e.what (), "Contrato.cpp" );
+      throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
    }
 
    return *this;
