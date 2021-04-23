@@ -19,8 +19,7 @@
  */
 PooFusionExc::PooFusionExc ( std::string nFun, std::string msg
                            , std::string nFich )
-        :std::logic_error( nFun+"::"+msg )
-        , _funcion ( nFun )
+        : _funcion ( nFun )
         , _mensaje ( msg )
         , _fichero ( nFich )
 { }
@@ -33,8 +32,7 @@ PooFusionExc::PooFusionExc ( std::string nFun, std::string msg
  *       pasa como parámetro
  */
 PooFusionExc::PooFusionExc ( const PooFusionExc& orig )
-    : std::logic_error(orig)
-    , _fichero ( orig._fichero )
+    : _fichero ( orig._fichero )
     , _funcion ( orig._funcion )
     , _mensaje ( orig._mensaje )
 { }

@@ -116,7 +116,7 @@ float PaqueteDeCanales::getPrecioMensual ( )
  * @pre El canal nuevo no está ya incluido en el paquete
  * @post El paquete de canales contiene un canal más
  * @throw std::invalid_argument si nuevoC no está inicializado (nullptr)
- * @throw std::length_error Si no caben más canales en el paquete
+ * @throw std::PooFusionExc Si no caben más canales en el paquete
  */
 PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {

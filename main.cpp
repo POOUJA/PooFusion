@@ -177,18 +177,20 @@ int main(int argc, char** argv)
     {
         std::cerr << e.quePasa() << std::endl << std::endl;
     }
-    //Captura de excepciones mediante polimorfismo
+
     try
     {
-        pC1.addCanal(nullptr);
+        pC1.addCanal(nullptr); //No se admite un canal nulo en la agregación
     }
-    catch (std::exception &e)
+    catch (std::invalid_argument &e)
     {
-        //Captura de excepciones std::invalid_argument o POOFusionExc generadas por addCanal
         std::cerr << e.what() << std::endl << std::endl;
     }
-
-
+    catch (PooFusionExc &e)
+    {
+        std::cerr << e.quePasa() << std::endl << std::endl;
+    }
+    
     // Crea un nuevo contrato
     Contrato cto01(&p);
 
