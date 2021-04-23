@@ -17,8 +17,8 @@
 class Duplicable
 {
    public:
-      virtual ~Duplicable () {  };
       virtual Duplicable* copia () const = 0;
+      virtual ~Duplicable () = default;
 };
 
 #endif /* DUPLICABLE_H */

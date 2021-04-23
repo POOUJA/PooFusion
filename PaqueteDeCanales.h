@@ -12,6 +12,7 @@
 
 #include "Canal.h"
 #include "Contenedor.h"
+#include "Producto.h"
 
 /**
  * Paquetes de canales de TV con un descuento
