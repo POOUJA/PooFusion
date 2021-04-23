@@ -299,15 +299,15 @@ m2=1..10</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>765</x>
+      <x>756</x>
       <y>252</y>
-      <w>207</w>
+      <w>216</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 &lt;&lt;bind&gt;&gt;
 &lt;T-&gt;Producto*&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
