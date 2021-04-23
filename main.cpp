@@ -165,6 +165,15 @@ int main ( int argc, char** argv )
    // Crea un nuevo contrato
    Contrato cto01 ( &p );
 
+   try
+   {
+      cto01.addProducto ( c2 );
+   }
+   catch ( PooFusionExc& e )
+   {
+      std::cerr << "Capturada excepción: " << e.quePasa () << std::endl;
+   }
+
    // Introduce datos en el contrato
    cto01.addProducto ( ConexionInternet ( "Fibra", 300, 30 ) )
         .addProducto ( c2 )

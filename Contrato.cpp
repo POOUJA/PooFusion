@@ -106,7 +106,7 @@ int Contrato::getFechaDeAlta ( ) const
  * conexión a Internet)
  * @param nP Nuevo producto. Se crea una copia de este objeto dentro del contrato
  * @post El contrato incluye un producto más
- * @throw PooFusionExc Si el contrato no permite más productos
+ * @throw PooFusionExc Si hay algún error
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
@@ -114,7 +114,30 @@ Contrato& Contrato::addProducto ( const Producto& nP )
 {
    try
    {
-      _productos.addElemento ( dynamic_cast<Producto*> ( nP.copia () ) );
+      Producto* nuevoProducto = dynamic_cast<Producto*> ( nP.copia () );
+
+      if ( ( dynamic_cast<Canal*> ( nuevoProducto ) != nullptr )
+           || ( dynamic_cast<PaqueteDeCanales*> ( nuevoProducto ) != nullptr ) )
+      {
+         bool hayConexion = false;
+
+         for ( int i = 0 ; i < _productos.getNumElementos (); i++ )
+         {
+            if ( dynamic_cast<ConexionInternet*> ( _productos.getElemento ( i ) ) )
+            {
+               hayConexion = true;
+            }
+         }
+
+         if ( !hayConexion )
+         {
+            throw PooFusionExc ( "Contrato::addProducto"
+                               , "¡No hay una conexión a Internet!"
+                               , "Contrato.cpp" );
+         }
+      }
+
+      _productos.addElemento ( nuevoProducto );
    }
    catch ( std::length_error& e )
    {
