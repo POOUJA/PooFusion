@@ -18,7 +18,7 @@
  * @param precio Precio mensual de la conexión
  * @post La información de la nueva conexión coincide con los valores que se le
  *       pasan
- * @throw MiExcepcion Si hay algún problema
+ * @throw PooFusionExc Si hay algún problema
  */
 ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
                                    , float precio ) try : Producto ( precio )
@@ -68,7 +68,7 @@ ConexionInternet::~ConexionInternet ( )
  * Cambia la velocidad de la conexión
  * @param nVel Nueva velocidad
  * @post La velocidad de la conexión cambia al nuevo valor
- * @throw MiExcepcion Si la nueva velocidad no es un número positivo
+ * @throw PooFusionExc Si la nueva velocidad no es un número positivo
  * @return Una referencia a la propia conexión, para permitir el encadenamiento
  *         de llamadas a métodos
  */
@@ -101,7 +101,7 @@ int ConexionInternet::getVelocidadMB ( ) const
  * Cambia el tipo de la conexión
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
  * @post El tipo de la conexión cambia al nuevo valor
- * @throw MiExcepcion Si el tipo es una cadena vacía
+ * @throw PooFusionExc Si el tipo es una cadena vacía
  * @return Una referencia a la propia conexión, para permitir el encadenamiento
  *         de llamadas a métodos
  */

@@ -15,7 +15,7 @@
  * @param nNombre Nombre del nuevo canal
  * @param precio Precio del canal
  * @post El nombre del nuevo canal coincidirá con el que se pasa como parámetro
- * @throw MiExcepcion Si hay algún problema
+ * @throw PooFusionExc Si hay algún problema
  */
 Canal::Canal ( std::string nNombre, float precio ) try : Producto ( precio )
                                                   , _nombre ( nNombre )
@@ -52,7 +52,7 @@ Canal::~Canal ( )
  * Cambia el nombre del canal
  * @param nNombre Nuevo nombre para el canal
  * @post El nombre del canal cambia al valor que se le pasa como parámetro
- * @throw MiExcepcion Si se intenta asignar como nombre una cadena vacía
+ * @throw PooFusionExc Si se intenta asignar como nombre una cadena vacía
  * @return Una referencia al propio canal, para permitir el encadenamiento de
  *         llamadas a métodos
  */

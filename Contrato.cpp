@@ -16,7 +16,7 @@
  * Constructor parametrizado
  * @param nAbonado Persona a nombre de quien se hace el contrato
  * @post El nuevo contrato no tiene servicios aún, aunque sí está activo
- * @throw MiExcepcion Si se le pasa como parámetro nullptr
+ * @throw PooFusionExc Si se le pasa como parámetro nullptr
  */
 Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
                                         , _productos ( MAX_PRODUCTOS, nullptr )
@@ -106,7 +106,7 @@ int Contrato::getFechaDeAlta ( ) const
  * conexión a Internet)
  * @param nP Nuevo producto. Se crea una copia de este objeto dentro del contrato
  * @post El contrato incluye un producto más
- * @throw MiExcepcion Si el contrato no permite más productos
+ * @throw PooFusionExc Si el contrato no permite más productos
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
@@ -114,28 +114,7 @@ Contrato& Contrato::addProducto ( const Producto& nP )
 {
    try
    {
-      Producto* nuevoProducto = dynamic_cast<Producto*> ( nP.copia () );
-
-      if ( ( dynamic_cast<Canal*> ( nuevoProducto ) != nullptr )
-           || ( dynamic_cast<PaqueteDeCanales*> ( nuevoProducto ) != nullptr ) )
-      {
-         bool hayConexion = false;
-
-         for ( int i = 0; i < _productos.getNumElementos (); i++ )
-         {
-            if ( dynamic_cast<ConexionInternet*> ( _productos.getElemento ( i ) ) )
-            {
-               hayConexion = true;
-            }
-         }
-
-         if ( !hayConexion )
-         {
-            throw
-         }
-      }
-
-      _productos.addElemento ( nuevoProducto );
+      _productos.addElemento ( dynamic_cast<Producto*> ( nP.copia () ) );
    }
    catch ( std::length_error& e )
    {
@@ -162,7 +141,7 @@ int Contrato::getNumProductos ( )
  * @param cual Ordinal del producto que se quiere consultar. El rango de valores
  *        válidos es [1..número de productos contratados]
  * @return El producto consultado
- * @throw MiExcepcion Si hay algún problema
+ * @throw PooFusionExc Si hay algún problema
  */
 Producto* Contrato::getProducto ( int cual )
 {
@@ -182,7 +161,7 @@ Producto* Contrato::getProducto ( int cual )
  * @param abonado Nuevo abonado
  * @post El contrato cambia de abonado
  * @return Una referencia al propio contrato
- * @throw MiExcepcion Si el parámetro es nullptr
+ * @throw PooFusionExc Si el parámetro es nullptr
  * @note El abonado anterior NO se destruye. Es una responsabilidad externa a
  *       esta clase
  */
@@ -259,7 +238,7 @@ bool Contrato::estaActivo ( ) const
  * @param cuentaBancaria Nueva cuenta bancaria (formato IBAN)
  * @post El contrato tiene una nueva cuenta de domiciliación
  * @return Una referencia al propio contrato
- * @throw MiExcepcion Si se le pasa como parámetro una cadena vacía
+ * @throw PooFusionExc Si se le pasa como parámetro una cadena vacía
  */
 Contrato& Contrato::setCuentaBancaria ( std::string cuentaBancaria )
 {
@@ -291,7 +270,7 @@ std::string Contrato::getCuentaBancaria ( ) const
  * @param mesesPermanencia Número de meses
  * @post La permanencia del contrato cambia según el parámetro
  * @return Una referencia al propio contrato
- * @throw MiExcepcion Si el número de meses es negativo
+ * @throw PooFusionExc Si el número de meses es negativo
  */
 Contrato& Contrato::setMesesPermanencia ( int mesesPermanencia )
 {

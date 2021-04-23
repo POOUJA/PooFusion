@@ -15,7 +15,7 @@
 /**
  * Constructor parametrizado
  * @param nPM Precio del producto que se crea
- * @throw MiExcepcion Si el precio del producto es negativo
+ * @throw PooFusionExc Si el precio del producto es negativo
  */
 Producto::Producto ( float nPM ): _precioMensual ( nPM )
 {
@@ -55,7 +55,7 @@ float Producto::getPrecioMensual ( )
 /**
  * Cambia el precio mensual del producto
  * @param nPM Nuevo precio mensual
- * @throw MiExcepcion Si el nuevo precio es menor de cero
+ * @throw PooFusionExc Si el nuevo precio es menor de cero
  */
 void Producto::setPrecioMensual ( float nPM )
 {

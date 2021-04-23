@@ -1,10 +1,10 @@
 /**
- * @file MiExcepcion.cpp
+ * @file PooFusionExc.cpp
  * @author algarcia
  *
  * @date 31 de marzo de 2021, 18:08
  *
- * @brief Implementación de los métodos de la clase MiExcepcion
+ * @brief Implementación de los métodos de la clase PooFusionExc
  */
 
 #include <sstream>
