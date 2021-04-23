@@ -114,12 +114,33 @@ Contrato& Contrato::addProducto ( const Producto& nP )
 {
    try
    {
-      _productos.addElemento ( dynamic_cast<Producto*> ( nP.copia () ) );
+      Producto* nuevoProducto = dynamic_cast<Producto*> ( nP.copia () );
+
+      if ( ( dynamic_cast<Canal*> ( nuevoProducto ) != nullptr )
+           || ( dynamic_cast<PaqueteDeCanales*> ( nuevoProducto ) != nullptr ) )
+      {
+         bool hayConexion = false;
+
+         for ( int i = 0; i < _productos.getNumElementos (); i++ )
+         {
+            if ( dynamic_cast<ConexionInternet*> ( _productos.getElemento ( i ) ) )
+            {
+               hayConexion = true;
+            }
+         }
+
+         if ( !hayConexion )
+         {
+            throw
+         }
+      }
+
+      _productos.addElemento ( nuevoProducto );
    }
    catch ( std::length_error& e )
    {
       // Añade a la información de la primera excepción los datos de este método
-      throw PooFusionExc ( "Contrato::addCanalTV", e.what (), "Contrato.cpp" );
+      throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
    }
 
    return *this;
