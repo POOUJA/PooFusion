@@ -16,7 +16,7 @@
  * @param nNIF NIF de la persona
  * @post Los datos de la nueva persona son iguales a los que se pasan como
  *       parámetros
- * @throw MiExcepcion Si alguna de las dos cadenas está vacía
+ * @throw PooFusionExc Si alguna de las dos cadenas está vacía
  */
 Persona::Persona ( std::string nApeNom, std::string nNIF ): _apeNom ( nApeNom )
                                                           , _nif ( nNIF )
@@ -56,7 +56,7 @@ Persona::~Persona ( )
  * Cambia el NIF de la persona
  * @param nNif Nuevo valor de NIF
  * @post El NIF de la persona cambia al nuevo valor
- * @throw MiExcepcion Si el nuevo NIF es una cadena vacía
+ * @throw PooFusionExc Si el nuevo NIF es una cadena vacía
  */
 Persona& Persona::setNif ( std::string nNif )
 {
@@ -87,7 +87,7 @@ std::string Persona::getNif ( ) const
  * @param nApeNom Apellidos y nombre de la persona
  * @post La persona cambia sus apellidos y nombre al valor que se pasa como
  *       parámetro
- * @throw MiExcepcion Si la cadena con el nuevo nombre está vacía
+ * @throw PooFusionExc Si la cadena con el nuevo nombre está vacía
  */
 Persona& Persona::setApeNom ( std::string nApeNom )
 {

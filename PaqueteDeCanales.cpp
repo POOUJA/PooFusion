@@ -16,7 +16,7 @@
  * Constructor parametrizado
  * @param nDesc Descuento a aplicar
  * @post El nuevo paquete tiene el descuento pasado como parámetro
- * @throw MiExcepcion Si el descuento es negativo
+ * @throw PooFusionExc Si el descuento es negativo
  */
 PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto ()
                                                   , _descuento ( nDesc )
@@ -63,7 +63,7 @@ PaqueteDeCanales::~PaqueteDeCanales ( )
  * Cambia el descuento del paquete de canales
  * @param descuento Nuevo valor de descuento a aplicar
  * @post El descuento del paquete cambia al valor pasado como parámetro
- * @throw MiExcepcion Si el nuevo descuento es un número negativo
+ * @throw PooFusionExc Si el nuevo descuento es un número negativo
  */
 PaqueteDeCanales& PaqueteDeCanales::setDescuento ( float nDesc )
 {
@@ -115,7 +115,7 @@ float PaqueteDeCanales::getPrecioMensual ( )
  * @param nuevoC Canal a añadir
  * @pre El canal nuevo no está ya incluido en el paquete
  * @post El paquete de canales contiene un canal más
- * @throw MiExcepcion Si no caben más canales en el paquete
+ * @throw PooFusionExc Si no caben más canales en el paquete
  */
 PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
@@ -138,7 +138,7 @@ PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
  * @param cual Ordinal del canal que se quiere consultar (rango: 1..número de
  *        canales)
  * @return La dirección de memoria del canal
- * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ * @throw PooFusionExc Si el ordinal está fuera del rango indicado
  */
 Canal* PaqueteDeCanales::getCanal ( int cual )
 {
@@ -164,7 +164,7 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
  *        canales)
  * @post El paquete tiene un canal menos
  * @return La dirección de memoria del canal que se saca
- * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ * @throw PooFusionExc Si el ordinal está fuera del rango indicado
  */
 Canal* PaqueteDeCanales::sacaCanal ( int cual )
 {
