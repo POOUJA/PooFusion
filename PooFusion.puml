@@ -69,6 +69,7 @@ class PooFusionExc<<Exception>> extends std::logic_error{
    - fichero: string
    - función: string
    - mensaje: string
+   + quePasa(): cadena
 }
 note bottom of PooFusionExc
    Todas las clases lanzan
@@ -82,8 +83,9 @@ class std::exception {
 
 class std::logic_error extends std::exception {
   +std::logic_error(mensaje)
+  + what(): cadena
 }
-class std::out_of_range extends std::logic_error
+class std::invalid_argument extends std::logic_error
 
 class "Contenedor<Canal*>" as CC {
 }
