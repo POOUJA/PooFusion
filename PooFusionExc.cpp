@@ -18,9 +18,11 @@
  * @param nFich (opcional) Nombre del archivo desde donde se lanza la excepción
  */
 PooFusionExc::PooFusionExc ( std::string nFun, std::string msg
-                           , std::string nFich ): _funcion ( nFun )
-                                                , _mensaje ( msg )
-                                                , _fichero ( nFich )
+                           , std::string nFich )
+        :std::logic_error( nFun+"::"+msg )
+        , _funcion ( nFun )
+        , _mensaje ( msg )
+        , _fichero ( nFich )
 { }
 
 
@@ -30,16 +32,11 @@ PooFusionExc::PooFusionExc ( std::string nFun, std::string msg
  * @post El nuevo objeto tiene exactamente la misma información que el que se
  *       pasa como parámetro
  */
-PooFusionExc::PooFusionExc ( const PooFusionExc& orig ): _fichero ( orig._fichero )
-                                                    , _funcion ( orig._funcion )
-                                                    , _mensaje ( orig._mensaje )
-{ }
-
-
-/**
- * Destructor
- */
-PooFusionExc::~PooFusionExc ( )
+PooFusionExc::PooFusionExc ( const PooFusionExc& orig )
+    : std::logic_error(orig)
+    , _fichero ( orig._fichero )
+    , _funcion ( orig._funcion )
+    , _mensaje ( orig._mensaje )
 { }
 
 
@@ -60,5 +57,4 @@ std::string PooFusionExc::quePasa ( ) const
 
    return aux.str ();
 }
-
 

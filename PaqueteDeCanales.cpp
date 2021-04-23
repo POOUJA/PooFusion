@@ -115,19 +115,26 @@ float PaqueteDeCanales::getPrecioMensual ( )
  * @param nuevoC Canal a añadir
  * @pre El canal nuevo no está ya incluido en el paquete
  * @post El paquete de canales contiene un canal más
- * @throw PooFusionExc Si no caben más canales en el paquete
+ * @throw std::invalid_argument si nuevoC no está inicializado (nullptr)
+ * @throw std::length_error Si no caben más canales en el paquete
  */
 PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
-   try
-   {
-      _canales.addElemento ( nuevoC );
-   }
-   catch ( std::length_error &e )
-   {
-      throw PooFusionExc ( "PaqueteDeCanales::addCanal", e.what ()
-                         , "PaqueteDeCanales.cpp" );
-   }
+
+    if (nuevoC == nullptr)
+    {
+        throw std::invalid_argument("PaqueteDeCanales::addCanal: Debe proporcionarse un canal");
+    }
+    try
+    {
+        //lanza std::length_error si no caben más elementos en el contenedor
+        _canales.addElemento(nuevoC);
+    }
+    catch (std::length_error &e)
+    {
+        throw PooFusionExc("PaqueteDeCanales::addCanal", e.what()
+                           , "PaqueteDeCanales.cpp");
+    }
 
    return *this;
 }
