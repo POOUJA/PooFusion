@@ -62,7 +62,7 @@ Canal
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
 PooFusionExc
-bg=green
+//bg=green
 --
 - fichero: string
 - funcion: string
@@ -103,11 +103,11 @@ bg=green
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
-bg=green
+//bg=green
 --
 - descuento: float
 --
-*+ addCanal ( c: Canal ) *
++ addCanal ( c: Canal ) 
 + copia (): Duplicable
 + getDescripcion (): string
 + getPrecioMensual (): float</panel_attributes>
@@ -384,7 +384,7 @@ programación</panel_attributes>
     </coordinates>
     <panel_attributes>style=autoresize
 std::Exception
-bg=pink
+//bg=pink
 --
 + what(): cadena</panel_attributes>
     <additional_attributes/>
@@ -399,7 +399,7 @@ bg=pink
     </coordinates>
     <panel_attributes>style=autoresize
 std::logic_error
-bg=pink
+//bg=pink
 --
 + logic_error(mensaje)
 + what(): cadena</panel_attributes>
@@ -426,7 +426,7 @@ bg=pink
     </coordinates>
     <panel_attributes>style=autoresize
 std::invalid_argument
-bg=pink</panel_attributes>
+//bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

@@ -159,7 +159,7 @@ int main(int argc, char** argv)
     // Creación de un paquete de canales
     PaqueteDeCanales pC1(20);
     
-    //Captura de excepciones independientes
+    //Tratamiento personalizado de excepciones polimórficas (primero más específicas)
     try
     {
         pC1.addCanal(&c1);
@@ -169,20 +169,21 @@ int main(int argc, char** argv)
         pC1.addCanal(&aC[0]);
         pC1.addCanal(&aC[3]); //este canal no se podrá añadir
     }
-    catch (std::invalid_argument &e)
-    {
-        std::cerr << e.what() << std::endl << std::endl;
-    }
     catch (PooFusionExc &e)
     {
         std::cerr << e.quePasa() << std::endl << std::endl;
     }
+    catch (std::logic_error &e)
+    {
+        std::cerr << e.what() << std::endl << std::endl;
+    }
+
     //Captura de excepciones mediante polimorfismo
     try
     {
         pC1.addCanal(nullptr);
     }
-    catch (std::exception &e)
+    catch (std::logic_error &e)
     {
         //Captura de excepciones std::invalid_argument o POOFusionExc generadas por addCanal
         std::cerr << e.what() << std::endl << std::endl;
