@@ -40,6 +40,7 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>PooFusion.uxf</itemPath>
     </logicalFolder>
     <itemPath>PooFusion.puml</itemPath>
   </logicalFolder>
