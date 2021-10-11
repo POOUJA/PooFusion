@@ -62,6 +62,7 @@ Canal
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
 PooFusionExc
+//bg=green
 --
 - fichero: string
 - funcion: string
@@ -102,6 +103,7 @@ PooFusionExc
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
+//bg=green
 --
 - descuento: float
 --
@@ -375,14 +377,78 @@ programación</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+      <x>117</x>
+      <y>81</y>
+      <w>117</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+std::Exception
+//bg=pink
+--
++ what(): cadena</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>117</x>
+      <y>162</y>
+      <w>153</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+std::logic_error
+//bg=pink
+--
++ logic_error(mensaje)
++ what(): cadena</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>126</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
       <x>18</x>
       <y>261</y>
       <w>153</w>
-      <h>45</h>
+      <h>36</h>
     </coordinates>
     <panel_attributes>style=autoresize
 std::invalid_argument
-</panel_attributes>
+//bg=pink</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>216</y>
+      <w>99</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;50.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>216</y>
+      <w>81</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>70.0;50.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -18,17 +18,17 @@ using namespace std;
  * @brief Muestra la información de una persona por consola
  * @param paramP Persona de la que muestra la información
  */
-void mostrar(Persona& paramP)
+void mostrar ( Persona& paramP )
 {
-    std::cout << "La persona se llama " << paramP.getApeNom() << ". NIF "
-            << paramP.getNif() << std::endl;
+   std::cout << "La persona se llama " << paramP.getApeNom () << ". NIF "
+             << paramP.getNif () << std::endl;
 }
 
 /**
  * Muestra la información relativa a un contrato
  * @param paramC Contrato del que se muestra la información
  */
-void mostrar(Contrato& paramC)
+void mostrar ( Contrato& paramC )
 {
     std::cout << "Contrato con fecha " << paramC.getFechaDeAlta() << std::endl
             << "===========================" << std::endl
@@ -56,23 +56,23 @@ void mostrar(Contrato& paramC)
 /**
  * @brief Punto de inicio de la aplicación
  */
-int main(int argc, char** argv)
+int main ( int argc, char** argv )
 {
-    // Creación de un objeto de clase Persona
-    Persona p;
-    p.setApeNom("Martínez, Manuel")
-            .setNif("12345678-K");
+   // Creación de un objeto de clase Persona
+   Persona p;
+   p.setApeNom ( "Martínez, Manuel" )
+    .setNif ( "12345678-K" );
 
-    // Creación de objetos de clase ConexionInternet
-    ConexionInternet c, otraC;
+   // Creación de objetos de clase ConexionInternet
+   ConexionInternet c, otraC;
 
-    c.setTipo("Fibra")
-            .setVelocidadMB(300)
-            .setPrecioMensual(30);
+   c.setTipo ( "Fibra" )
+    .setVelocidadMB ( 300 )
+    .setPrecioMensual ( 30 );
 
-    otraC.setTipo("WiMAX")
-            .setVelocidadMB(20)
-            .setPrecioMensual(20);
+   otraC.setTipo ( "WiMAX" )
+        .setVelocidadMB ( 20 )
+        .setPrecioMensual ( 20 );
 
     // Creación de objetos de clase Canal
     Canal c1, c2;
@@ -83,27 +83,27 @@ int main(int argc, char** argv)
     std::cout << c2.getDescripcion() << std::endl
             << c.getDescripcion() << std::endl;
 
-    // Creación de copia en memoria automática (pila)
-    Persona p2(p);
+   // Creación de copia en memoria automática (pila)
+   Persona p2 ( p );
 
-    std::cout << "La persona copiada en memoria automática es: " << std::endl;
-    mostrar(p2);
+   std::cout << "La persona copiada en memoria automática es: " << std::endl;
+   mostrar ( p2 );
 
-    // Creación de copia en memoria dinámica (heap)
-    Persona* ptrP = new Persona(p);
+   // Creación de copia en memoria dinámica (heap)
+   Persona* ptrP = new Persona ( p );
 
-    std::cout << "La persona copiada en memoria dinámica es: " << std::endl;
-    mostrar(*ptrP);
+   std::cout << "La persona copiada en memoria dinámica es: " << std::endl;
+   mostrar ( *ptrP );
 
-    // Creación de array de objetos en memoria automática (pila)
-    Persona aP[3];
+   // Creación de array de objetos en memoria automática (pila)
+   Persona aP[3];
 
-    aP[0].setApeNom("Pérez, Pedro")
-            .setNif("11111111-A");
-    aP[1].setApeNom("Álvarez, Antonio")
-            .setNif("22222222-B");
-    aP[2].setApeNom("González, Gabriel")
-            .setNif("33333333-C");
+   aP[0].setApeNom ( "Pérez, Pedro" )
+        .setNif ( "11111111-A" );
+   aP[1].setApeNom ( "Álvarez, Antonio" )
+        .setNif ( "22222222-B" );
+   aP[2].setApeNom ( "González, Gabriel" )
+        .setNif ( "33333333-C" );
 
     // Creación de array de objetos en memoria dinámica (heap)
     Canal* aC = new Canal[4];
@@ -117,10 +117,10 @@ int main(int argc, char** argv)
     std::cout << "Antes de la asignación: " << std::endl;
     mostrar(p2);
 
-    p2 = aP[0];
+   p2 = aP[0];
 
-    std::cout << "Después de la asignación: " << std::endl;
-    mostrar(p2);
+   std::cout << "Después de la asignación: " << std::endl;
+   mostrar ( p2 );
 
     // Uso de los operadores de comparación
     if (c < otraC)
@@ -128,22 +128,22 @@ int main(int argc, char** argv)
         std::cout << "La conexión " << c.getTipo()
                 << " es más lenta que la conexión " << otraC.getTipo()
                 << std::endl << std::endl;
-    }
-    else
-    {
-        if (c == otraC)
-        {
-            std::cout << "La conexión " << c.getTipo()
-                    << " es igual de rápida que la conexión " << otraC.getTipo()
-                    << std::endl << std::endl;
-        }
-        else
-        {
-            std::cout << "La conexión " << c.getTipo()
-                    << " es más rápida que la conexión " << otraC.getTipo()
-                    << std::endl << std::endl;
-        }
-    }
+   }
+   else
+   {
+      if ( c == otraC )
+      {
+         std::cout << "La conexión " << c.getTipo ()
+                   << " es igual de rápida que la conexión " << otraC.getTipo ()
+                   << std::endl << std::endl;
+      }
+      else
+      {
+         std::cout << "La conexión " << c.getTipo ()
+                   << " es más rápida que la conexión " << otraC.getTipo ()
+                   << std::endl << std::endl;
+      }
+   }
 
     // Captura de excepciones
     //aP[0].setNif ( "" ); // Descomenta esta línea para ver qué pasa si no se captura
@@ -158,7 +158,7 @@ int main(int argc, char** argv)
 
     // Creación de un paquete de canales
     PaqueteDeCanales pC1(20);
-    
+
     //Captura de excepciones independientes
     try
     {
@@ -177,7 +177,6 @@ int main(int argc, char** argv)
     {
         std::cerr << e.quePasa() << std::endl << std::endl;
     }
-
     try
     {
         pC1.addCanal(nullptr); //No se admite un canal nulo en la agregación
@@ -190,51 +189,51 @@ int main(int argc, char** argv)
     {
         std::cerr << e.quePasa() << std::endl << std::endl;
     }
-    
-    // Crea un nuevo contrato
-    Contrato cto01(&p);
 
-    try
-    {
-        cto01.addProducto(c2);
-    }
-    catch (PooFusionExc& e)
-    {
-        std::cerr << "Capturada excepción: " << e.quePasa() << std::endl  << std::endl ;
-    }
+   // Crea un nuevo contrato
+   Contrato cto01 ( &p );
 
-    // Introduce datos en el contrato
-    cto01.addProducto(ConexionInternet("Fibra", 300, 30))
-            .addProducto(c2)
-            .addProducto(aC[0])
-            .addProducto(aC[2])
-            .addProducto(pC1)
-            .setCuentaBancaria("ES23 1234 1234 1234 1234")
-            .setActivo(true);
+   try
+   {
+      cto01.addProducto ( c2 );
+   }
+   catch ( PooFusionExc& e )
+   {
+      std::cerr << "Capturada excepción: " << e.quePasa () << std::endl;
+   }
 
-    // Comprobamos el contrato
-    mostrar(cto01);
+   // Introduce datos en el contrato
+   cto01.addProducto ( ConexionInternet ( "Fibra", 300, 30 ) )
+        .addProducto ( c2 )
+        .addProducto ( aC[0] )
+        .addProducto ( aC[2] )
+        .addProducto ( pC1 )
+        .setCuentaBancaria ( "ES23 1234 1234 1234 1234" )
+        .setActivo ( true );
 
-    Contrato cto02(cto01);
+   // Comprobamos el contrato
+   mostrar ( cto01 );
 
-    mostrar(cto02);
+   Contrato cto02 ( cto01 );
 
-    // Utilizamos la plantilla de contenedor que hemos creado
-    Contenedor<Persona> clientes(3);
-    clientes.addElemento(Persona("Er pobre Migué", "1234-X"))
-            .addElemento(Persona("El Risitas", "9876-Y"));
+   mostrar ( cto02 );
 
-    mostrar(clientes.getElemento(0));
-    mostrar(clientes.getElemento(1));
+   // Utilizamos la plantilla de contenedor que hemos creado
+   Contenedor<Persona> clientes ( 3 );
+   clientes.addElemento ( Persona ( "Er pobre Migué", "1234-X" ) )
+           .addElemento ( Persona ( "El Risitas", "9876-Y" ) );
 
-    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
-    delete ptrP;
-    ptrP = nullptr;
+   mostrar ( clientes.getElemento ( 0 ) );
+   mostrar ( clientes.getElemento ( 1 ) );
 
-    delete [] aC;
-    aC = nullptr;
+   // Hay que liberar la memoria dinámica reservada antes de finalizar el programa
+   delete ptrP;
+   ptrP = nullptr;
 
-    // La memoria automática se libera automáticamente (valga la redundancia)
-    return 0;
+   delete [] aC;
+   aC = nullptr;
+
+   // La memoria automática se libera automáticamente (valga la redundancia)
+   return 0;
 }
 

@@ -56,3 +56,4 @@ std::string PooFusionExc::quePasa ( ) const
    return aux.str ();
 }
 
+

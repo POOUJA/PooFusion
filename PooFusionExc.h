@@ -26,7 +26,7 @@ class PooFusionExc
       PooFusionExc ( std::string nFun, std::string msg, std::string nFich = "" );
       PooFusionExc ( const PooFusionExc& orig );
 
-      virtual ~PooFusionExc ( ) = default;
+      virtual ~PooFusionExc ( ) noexcept = default;
 
       std::string quePasa () const;
 };
