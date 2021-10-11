@@ -2,28 +2,33 @@
  * @file Producto.h
  * @author algarcia
  *
- * @date 14 de abril de 2021, 20:16
+ * @date 16 de abril de 2021, 12:24
+ * 
+ * @brief Declaración de la clase Producto
  */
 
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
 
+#include <string>
+
 /**
- * Producto de PooFusion
+ * Producto a contratar
  */
 class Producto
 {
    protected:
       float _precioMensual = 0;   ///< Precio mensual del producto
-  
+     
    public:
       Producto ( ) = default;
+      Producto ( float nPM );
       Producto ( const Producto& orig );
       virtual ~Producto ( );
-      float getPrecioMensual ( ) const;
+      float getPrecioMensual ();
       void setPrecioMensual ( float nPM );
       Producto& operator= ( const Producto& otro );
-};
+} ;
 
 #endif /* PRODUCTO_H */
 

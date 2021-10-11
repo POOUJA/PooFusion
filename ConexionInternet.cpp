@@ -19,9 +19,10 @@
  * @throw MiExcepcion Si la velocidad es un número menor o igual a cero, o si el
  *        tipo es una cadena vacía
  */
-ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ): Producto ()
-                                   , _tipo ( nTipo )
-                                   , _velocidadMB ( nVel )
+ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
+                                   , float precio ) try : Producto ( precio )
+                                                        , _tipo ( nTipo )
+                                                        , _velocidadMB ( nVel )
 {
    if ( nVel <= 0 )
    {
@@ -36,6 +37,9 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel ): Producto ()
                         , "ConexionInternet::ConexionInternet"
                         , "El tipo de conexión no puede ser una cadena vacía" );
    }
+} catch ( MiExcepcion &e ) {
+    throw MiExcepcion ( "ConexionInternet.cpp", "ConexionInternet::ConexionInternet"
+            , e.quePasa() );
 }
 
 
@@ -49,7 +53,6 @@ ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
                                  , _tipo ( orig._tipo )
                                  , _velocidadMB ( orig._velocidadMB )
 { }
-
 
 /**
  * Destructor

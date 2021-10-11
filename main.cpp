@@ -173,8 +173,8 @@ int main ( int argc, char** argv )
    Contrato cto01 ( &p );
 
    // Introduce datos en el contrato
-   cto01.addConexion ( "Fibra", 300 )
-        .addCanalTV ( &c2 ).addCanalTV ( &aC[0] ).addCanalTV ( &aC[2] )
+   cto01.addConexion ( "Fibra", 300 , 100)
+        .addCanal ( &c2 ).addCanal ( &aC[0] ).addCanal ( &aC[2] )
         .setActivo ( true );
 
    // Comprobamos el contrato

@@ -16,8 +16,7 @@
  * @post El nuevo paquete tiene el descuento pasado como parámetro
  * @throw MiExcepcion Si el descuento es negativo
  */
-PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto ()
-                                                  , _descuento ( nDesc )
+PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
 {
    if ( nDesc < 0 )
    {
@@ -39,8 +38,7 @@ PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto ()
  * @post El nuevo paquete tiene una copia exacta de los valores del original
  */
 PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
-                                                  Producto ( orig )
-                                                , _descuento ( orig._descuento )
+                                                _descuento ( orig._descuento )
                                                 , _nCanales ( orig._nCanales )
 {
    for ( int i = 0; i < MAX_CANALES; i++ )
@@ -185,13 +183,10 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 {
    if ( this != &otro )
    {
-      this->Producto::operator = ( otro );
-
       for ( int i = 0; i < MAX_CANALES; i++ )
       {
          _canales[i] = otro._canales[i];
       }
-
       _nCanales = otro._nCanales;
       _descuento = otro._descuento;
    }

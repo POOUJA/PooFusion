@@ -11,7 +11,6 @@
 #define CONEXIONINTERNET_H
 
 #include <string>
-
 #include "Producto.h"
 
 /**
@@ -25,7 +24,7 @@ class ConexionInternet: public Producto
       
    public:
       ConexionInternet () = default;
-      ConexionInternet ( std::string nTipo, int nVel );
+      ConexionInternet ( std::string nTipo, int nVel, float precio );
       ConexionInternet ( const ConexionInternet& orig );
       ~ConexionInternet ();
       void setVelocidadMB ( int nVel );

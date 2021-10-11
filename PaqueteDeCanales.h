@@ -11,6 +11,7 @@
 #define PAQUETEDECANALES_H
 
 #include "Canal.h"
+#include "Producto.h"
 
 /**
  * Paquetes de canales de TV con un descuento

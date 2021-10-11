@@ -16,13 +16,17 @@
  * @post El nombre del nuevo canal coincidirá con el que se pasa como parámetro
  * @throw MiExcepcion Si el nombre es una cadena vacía
  */
-Canal::Canal ( std::string nNombre ): _nombre ( nNombre )
+Canal::Canal ( std::string nNombre, float precio ) try : Producto ( precio )
+                                                  , _nombre ( nNombre )
 {
    if ( nNombre == "" )
    {
       throw MiExcepcion ( "Canal.cpp", "Canal::Canal"
                         , "Un canal tiene que tener nombre" );
    }
+} catch ( MiExcepcion &e ) {
+    throw MiExcepcion ( "Canal.cpp", "Canal::Canal"
+            , e.quePasa() );
 }
 
 
@@ -31,7 +35,7 @@ Canal::Canal ( std::string nNombre ): _nombre ( nNombre )
  * @param orig Canal del que se copia la información
  * @post El nuevo canal tiene exactamente los mismos datos que el original
  */
-Canal::Canal ( const Canal& orig ): _nombre ( orig._nombre )
+Canal::Canal ( const Canal& orig ): Producto ( orig ), _nombre ( orig._nombre )
 { }
 
 
@@ -81,8 +85,19 @@ Canal& Canal::operator= ( const Canal& otro )
 {
    if ( this != &otro )
    {
+      Producto::operator= ( otro );
       _nombre = otro._nombre;
    }
 
    return *this;
+}
+
+
+/**
+ * Consulta el nombre del canal
+ * @return El nombre del canal
+ */
+std::string Canal::getNombre ( )
+{
+   return  _nombre ;
 }
