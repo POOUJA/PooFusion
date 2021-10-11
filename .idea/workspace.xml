@@ -14,23 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f8fad2e-17d0-4b0f-90ee-bdb2d4667a21" name="Changes" comment="generic cmake support">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Canal.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Canal.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Canal.h" beforeDir="false" afterPath="$PROJECT_DIR$/Canal.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConexionInternet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ConexionInternet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConexionInternet.h" beforeDir="false" afterPath="$PROJECT_DIR$/ConexionInternet.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contrato.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Contrato.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contrato.h" beforeDir="false" afterPath="$PROJECT_DIR$/Contrato.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Duplicable.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaqueteDeCanales.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/PaqueteDeCanales.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaqueteDeCanales.h" beforeDir="false" afterPath="$PROJECT_DIR$/PaqueteDeCanales.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PooFusion.puml" beforeDir="false" afterPath="$PROJECT_DIR$/PooFusion.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PooFusion.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/PooFusion.uxf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Producto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Producto.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Producto.h" beforeDir="false" afterPath="$PROJECT_DIR$/Producto.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="9f8fad2e-17d0-4b0f-90ee-bdb2d4667a21" name="Changes" comment="generic cmake support" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Sesion_4_4" />
+        <entry key="$PROJECT_DIR$" value="Sesion_4_3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,7 +91,7 @@
       <workItem from="1631873821179" duration="58000" />
       <workItem from="1631873885342" duration="1450000" />
       <workItem from="1633943014060" duration="961000" />
-      <workItem from="1633943987910" duration="7763000" />
+      <workItem from="1633943987910" duration="9995000" />
     </task>
     <task id="LOCAL-00001" summary="generic cmake support">
       <created>1631874587470</created>
@@ -123,7 +107,28 @@
       <option name="project" value="LOCAL" />
       <updated>1633947514858</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="generic cmake support">
+      <created>1633951911005</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633951911005</updated>
+    </task>
+    <task id="LOCAL-00004" summary="generic cmake support">
+      <created>1633954054790</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1633954054790</updated>
+    </task>
+    <task id="LOCAL-00005" summary="generic cmake support">
+      <created>1633954152926</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633954152926</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

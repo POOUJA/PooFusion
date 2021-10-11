@@ -30,7 +30,7 @@ class Canal: public Producto
       Canal& setNombre ( std::string nNombre );
       std::string getNombre ( ) const;
       Canal& operator= ( const Canal& otro );
-      virtual std::string getDescripcion () override;
+      std::string getNombre ();
 };
 
 #endif /* CANAL_H */

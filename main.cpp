@@ -36,7 +36,7 @@ void mostrar ( Contrato& paramC )
 
     for (int i = 1; i <= paramC.getNumProductos(); i++)
     {
-        std::cout << paramC.getProducto(i)->getDescripcion() << std::endl;
+        std::cout << "Precio producto " << i << " " << paramC.getProducto(i)->getPrecioMensual() << std::endl;
     }
 
     std::cout << "El precio mensual del contrato es "
@@ -80,8 +80,8 @@ int main ( int argc, char** argv )
     c2.setNombre("POO 24h").setPrecioMensual(42);
 
     mostrar(p);
-    std::cout << c2.getDescripcion() << std::endl
-            << c.getDescripcion() << std::endl;
+    std::cout << c2.getNombre() << std::endl
+            << c.getTipo() << std::endl;
 
    // Creación de copia en memoria automática (pila)
    Persona p2 ( p );

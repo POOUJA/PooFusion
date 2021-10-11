@@ -32,13 +32,12 @@ class PaqueteDeCanales: public Producto
       virtual ~PaqueteDeCanales ( );
       PaqueteDeCanales& setDescuento ( float nDesc );
       float getDescuento ( ) const;
-      virtual float getPrecioMensual ( ) override;
+      float getPrecioMensual ( );
       PaqueteDeCanales& addCanal ( Canal* nuevoC );
       Canal* getCanal ( int cual );
       Canal* sacaCanal ( int cual );
       int getNumCanales () const;
       PaqueteDeCanales& operator= ( const PaqueteDeCanales& otro );
-      virtual std::string getDescripcion () override;
 };
 
 #endif /* PAQUETEDECANALES_H */

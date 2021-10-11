@@ -100,17 +100,10 @@ Canal& Canal::operator= ( const Canal& otro )
 
 
 /**
- * Consulta la descripción del canal
- * @return Una descripción en modo texto del canal
+ * Consulta el nombre del canal
+ * @return El nombre del canal
  */
-std::string Canal::getDescripcion ( )
+std::string Canal::getNombre ( )
 {
-   return ( "Canal " + _nombre );
+   return  _nombre ;
 }
-
-
-/**
- * Crea una copia del canal
- * @return La dirección de memoria de un nuevo objeto de clase Canal que copia
- *         los atributos del objeto actual
- */

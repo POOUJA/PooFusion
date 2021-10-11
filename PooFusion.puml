@@ -25,25 +25,20 @@ class Contrato {
 class Producto {
    # precioMensual: float
    + Producto ( precio: float )
-   + getDescripcion(): string
 }
 
 class ConexionInternet {
    - tipo: string
    - velocidadMB: int
-   + getDescripcion (): string
 }
 
 class Canal {
    - nombre: string
-   + getDescripcion (): string
 }
 
 class PaqueteDeCanales {
    - descuento: float
    + addCanal ( c: Canal )
-   + getDescripcion (): string
-   + getPrecioMensual (): float
 }
 
 class Contenedor<T> {

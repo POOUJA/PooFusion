@@ -224,22 +224,4 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 }
 
 
-/**
- * Consulta la descripción del paquete de canales
- * @return Una cadena de texto con la información de los canales incluídos
- */
-std::string PaqueteDeCanales::getDescripcion ( )
-{
-   std::stringstream aux;
-
-   aux << "Paquete de canales que contiene ";
-
-   for ( int i = 0; i < _canales.getNumElementos (); i++ )
-   {
-      aux << std::endl << "\t" << _canales.getElemento (i)->getNombre ();
-   }
-
-   return aux.str ();
-}
-
 

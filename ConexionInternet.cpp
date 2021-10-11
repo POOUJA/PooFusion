@@ -178,17 +178,3 @@ bool ConexionInternet::operator== ( const ConexionInternet& otro )
    return ( _velocidadMB == otro._velocidadMB );
 }
 
-
-/**
- * Consulta la descripción de la conexión
- * @return Una cadena de texto describiendo la conexión a Internet
- */
-std::string ConexionInternet::getDescripcion ( )
-{
-   std::stringstream aux;
-
-   aux << "Conexión a Internet de tipo " << _tipo << " a " << _velocidadMB
-       << " MB por segundo";
-
-   return aux.str ();
-}
