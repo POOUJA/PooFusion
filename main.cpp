@@ -214,8 +214,10 @@ int main ( int argc, char** argv )
    // Comprobamos el contrato
    mostrar ( cto01 );
 
+   //Creamos una copia del contrato
    Contrato cto02 ( cto01 );
 
+   std::cout << "COPIA DEL PRIMER CONTRATO" << std::endl;
    mostrar ( cto02 );
 
    // Utilizamos la plantilla de contenedor que hemos creado

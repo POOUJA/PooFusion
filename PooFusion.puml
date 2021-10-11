@@ -65,7 +65,7 @@ class Contenedor<T> {
    + vaciar ()
 }
 
-class PooFusionExc<<Exception>> extends std::logic_error{
+class PooFusionExc<<Exception>> {
    - fichero: string
    - función: string
    - mensaje: string
@@ -77,15 +77,7 @@ note bottom of PooFusionExc
    salvo Contenedor
 end note
 
-class std::exception {
-  + what(): cadena
-}
-
-class std::logic_error extends std::exception {
-  +std::logic_error(mensaje)
-  + what(): cadena
-}
-class std::invalid_argument extends std::logic_error
+class std::invalid_argument
 
 class "Contenedor<Canal*>" as CC {
 }
