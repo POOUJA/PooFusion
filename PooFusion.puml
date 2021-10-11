@@ -22,30 +22,26 @@ class Contrato {
    + addProducto ( p: Producto )
 }
 
-abstract class Producto {
+class Producto {
    # precioMensual: float
    + Producto ( precio: float )
-   + {abstract} copia(): Duplicable
-   + {abstract} getDescripcion(): string
+   + getDescripcion(): string
 }
 
 class ConexionInternet {
    - tipo: string
    - velocidadMB: int
-   + copia(): Duplicable
    + getDescripcion (): string
 }
 
 class Canal {
    - nombre: string
-   + copia(): Duplicable
    + getDescripcion (): string
 }
 
 class PaqueteDeCanales {
    - descuento: float
    + addCanal ( c: Canal )
-   + copia(): Duplicable
    + getDescripcion (): string
    + getPrecioMensual (): float
 }

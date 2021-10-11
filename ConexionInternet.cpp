@@ -192,16 +192,3 @@ std::string ConexionInternet::getDescripcion ( )
 
    return aux.str ();
 }
-
-
-/**
- * Crea una copia de la conexión
- * @return La dirección de memoria de un nuevo objeto que copia los atributos
- *         del objeto actual
- */
-Duplicable* ConexionInternet::copia ( ) const
-{
-   Duplicable* aDevolver = new ConexionInternet ( *this );
-
-   return aDevolver;
-}

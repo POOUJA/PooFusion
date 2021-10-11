@@ -36,7 +36,6 @@ class ConexionInternet: public Producto
       bool operator< ( const ConexionInternet& otro );
       bool operator== ( const ConexionInternet& otro );
       virtual std::string getDescripcion () override;
-      virtual Duplicable* copia () const override;
 };
 
 #endif /* CONEXIONINTERNET_H */

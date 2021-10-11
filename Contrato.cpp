@@ -42,7 +42,7 @@ Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
 /**
  * Constructor de copia
  * @param orig Contrato del que se copian los valores
- * @post El nuevo contrato tiene copias de los productos del original
+ * @post El nuevo contrato No tiene copias de los productos del original
  */
 Contrato::Contrato ( Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
                                   , _mesesPermanencia ( orig._mesesPermanencia )
@@ -51,12 +51,7 @@ Contrato::Contrato ( Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
                                   , _abonado ( orig._abonado )
                                   , _productos ( MAX_PRODUCTOS, nullptr )
 {
-   // Hay que crear productos nuevos para el contrato copiado
-   for ( int i = 0; i < orig._productos.getNumElementos (); i++ )
-   {
-      _productos.addElemento ( dynamic_cast<Producto*> (
-                                  orig._productos.getElemento (i)->copia () ) );
-   }
+   // ToDo más adelante copiaremos los productos del contrato original
 }
 
 
@@ -92,6 +87,7 @@ Contrato& Contrato::setFechaDeAlta ( int fechaDeAlta )
 }
 
 
+
 /**
  * Consulta de la fecha de alta del contrato
  * @return La fecha de alta del contrato en formato YYYYMMDD
@@ -101,9 +97,96 @@ int Contrato::getFechaDeAlta ( ) const
    return _fechaDeAlta;
 }
 
+
+
 /**
- * Añade un nuevo producto al contrato (canal de TV, paquete de canales o
- * conexión a Internet)
+ * Añade una nueva conexión a Internet al contrato
+ * @param nCI Nueva conexión a Internet. Se crea una copia de este objeto dentro del contrato
+ * @post El contrato incluye un producto más
+ * @throw PooFusionExc Si hay algún error
+ * @return Una referencia al objeto actual, para permitir encadenamiento de
+ *         llamadas a métodos
+ */
+Contrato& Contrato::addProducto ( const ConexionInternet& nCI )
+{
+    try
+    {
+        ConexionInternet* nuevaConexionInternet = new ConexionInternet(nCI);
+
+        _conexionInternet = true;
+        _productos.addElemento ( nuevaConexionInternet );
+    }
+    catch ( std::length_error& e )
+    {
+        // Añade a la información de la primera excepción los datos de este método
+        throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
+    }
+
+    return *this;
+}
+/**
+ * Añade un nuevo canal al contrato
+ * @param nC Nuevo canal. Se crea una copia de este objeto dentro del contrato
+ * @post El contrato incluye un producto más
+ * @throw PooFusionExc Si hay algún error
+ * @return Una referencia al objeto actual, para permitir encadenamiento de
+ *         llamadas a métodos
+ */
+Contrato& Contrato::addProducto ( const Canal& nC )
+{
+    try
+    {
+        Producto* nuevoProducto = new Canal(nC);
+
+        if ( _conexionInternet == false)
+        {
+            throw PooFusionExc ( "Contrato::addProducto"
+                    , "¡No hay una conexión a Internet!"
+                    , "Contrato.cpp" );
+        }
+        _productos.addElemento ( nuevoProducto );
+    }
+    catch ( std::length_error& e )
+    {
+        // Añade a la información de la primera excepción los datos de este método
+        throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
+    }
+
+    return *this;
+}
+/**
+ * Añade un nuevo paquete de canales al contrato
+ * @param nPC Nuevo paquete de canales. Se crea una copia de este objeto dentro del contrato
+ * @post El contrato incluye un producto más
+ * @throw PooFusionExc Si hay algún error
+ * @return Una referencia al objeto actual, para permitir encadenamiento de
+ *         llamadas a métodos
+ */
+Contrato& Contrato::addProducto ( const PaqueteDeCanales& nPC )
+{
+    try
+    {
+        PaqueteDeCanales* nuevoPaqueteCanales = new PaqueteDeCanales(nPC);
+
+        if ( _conexionInternet == false)
+        {
+            throw PooFusionExc ( "Contrato::addProducto"
+                    , "¡No hay una conexión a Internet!"
+                    , "Contrato.cpp" );
+        }
+        _productos.addElemento ( nuevoPaqueteCanales );
+    }
+    catch ( std::length_error& e )
+    {
+        // Añade a la información de la primera excepción los datos de este método
+        throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
+    }
+
+    return *this;
+}
+
+/**
+ * Añade un nuevo producto genérico al contrato
  * @param nP Nuevo producto. Se crea una copia de este objeto dentro del contrato
  * @post El contrato incluye un producto más
  * @throw PooFusionExc Si hay algún error
@@ -112,41 +195,27 @@ int Contrato::getFechaDeAlta ( ) const
  */
 Contrato& Contrato::addProducto ( const Producto& nP )
 {
-   try
-   {
-      Producto* nuevoProducto = dynamic_cast<Producto*> ( nP.copia () );
+    try
+    {
+        Producto* nuevoProducto = new Producto(nP);
 
-      if ( ( dynamic_cast<Canal*> ( nuevoProducto ) != nullptr )
-           || ( dynamic_cast<PaqueteDeCanales*> ( nuevoProducto ) != nullptr ) )
-      {
-         bool hayConexion = false;
-
-         for ( int i = 0 ; i < _productos.getNumElementos (); i++ )
-         {
-            if ( dynamic_cast<ConexionInternet*> ( _productos.getElemento ( i ) ) )
-            {
-               hayConexion = true;
-            }
-         }
-
-         if ( !hayConexion )
-         {
+        if ( _conexionInternet == false)
+        {
             throw PooFusionExc ( "Contrato::addProducto"
-                               , "¡No hay una conexión a Internet!"
-                               , "Contrato.cpp" );
-         }
-      }
+                    , "¡No hay una conexión a Internet!"
+                    , "Contrato.cpp" );
+        }
+        _productos.addElemento ( nuevoProducto );
+    }
+    catch ( std::length_error& e )
+    {
+        // Añade a la información de la primera excepción los datos de este método
+        throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
+    }
 
-      _productos.addElemento ( nuevoProducto );
-   }
-   catch ( std::length_error& e )
-   {
-      // Añade a la información de la primera excepción los datos de este método
-      throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
-   }
-
-   return *this;
+    return *this;
 }
+
 
 
 /**
@@ -335,5 +404,9 @@ float Contrato::getPrecioMensual ( )
    }
 
    return aDevolver;
+}
+
+bool Contrato::tieneConexionInternet() const {
+    return _conexionInternet;
 }
 

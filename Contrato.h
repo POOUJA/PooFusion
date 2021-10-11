@@ -27,6 +27,7 @@ class Contrato
       int _mesesPermanencia = 0;   ///< Meses de permanencia del contrato
       std::string _cuentaBancaria = "";   ///< IBAN de la cuenta de domiciliación
       bool _activo = true;   ///< Indica si el contrato está activo o no
+      bool _conexionInternet = false; ///< Se ha añadido al contrato una conexión a Internet
       Persona* _abonado = nullptr;   ///< Persona a cuyo nombre está el contrato
       Contenedor<Producto*> _productos;   ///< Productos contratados
 
@@ -36,6 +37,10 @@ class Contrato
       virtual ~Contrato ( );
       Contrato& setFechaDeAlta ( int fechaDeAlta );
       int getFechaDeAlta ( ) const;
+      bool tieneConexionInternet() const;
+      Contrato& addProducto ( const ConexionInternet& nCI );
+      Contrato& addProducto ( const Canal& nC );
+      Contrato& addProducto ( const PaqueteDeCanales& nPC );
       Contrato& addProducto ( const Producto& nP );
       int getNumProductos ();
       Producto* getProducto ( int cual );

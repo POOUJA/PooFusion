@@ -84,3 +84,7 @@ Producto& Producto::operator = ( const Producto& otro )
 
    return *this;
 }
+
+std::string Producto::getDescripcion() {
+    return "Producto genérico";
+}

@@ -243,14 +243,3 @@ std::string PaqueteDeCanales::getDescripcion ( )
 }
 
 
-/**
- * Crea una copia del propio paquete de canales
- * @return La dirección de memoria del nuevo paquete de canales
- */
-Duplicable* PaqueteDeCanales::copia ( ) const
-{
-   Duplicable* aDevolver = new PaqueteDeCanales ( *this );
-
-   return aDevolver;
-}
-

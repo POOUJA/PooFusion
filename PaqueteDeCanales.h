@@ -39,7 +39,6 @@ class PaqueteDeCanales: public Producto
       int getNumCanales () const;
       PaqueteDeCanales& operator= ( const PaqueteDeCanales& otro );
       virtual std::string getDescripcion () override;
-      virtual Duplicable* copia () const override;
 };
 
 #endif /* PAQUETEDECANALES_H */

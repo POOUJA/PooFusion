@@ -19,9 +19,9 @@ Persona
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>357</x>
+      <x>343</x>
       <y>504</y>
-      <w>140</w>
+      <w>154</w>
       <h>77</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -30,8 +30,8 @@ ConexionInternet
 - tipo: string
 - velocidad: int
 --
-*+ copia (): Duplicable*
-+ getDescripcion (): string
+*+ getDescripcion (): string*
+
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -40,16 +40,15 @@ bg=green</panel_attributes>
     <coordinates>
       <x>763</x>
       <y>602</y>
-      <w>140</w>
-      <h>63</h>
+      <w>154</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
 --
 - nombre: string
 --
-*+ copia (): Duplicable*
-+ getDescripcion (): string
+*+ getDescripcion (): string*
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -76,32 +75,32 @@ PooFusionExc
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>350</y>
-      <w>63</w>
-      <h>168</h>
+      <x>413</x>
+      <y>343</y>
+      <w>77</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;220.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;230.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>525</x>
-      <y>350</y>
+      <y>343</y>
       <w>70</w>
-      <h>168</h>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;220.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;230.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>553</x>
       <y>504</y>
-      <w>147</w>
-      <h>84</h>
+      <w>168</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
@@ -110,23 +109,22 @@ PaqueteDeCanales
 - descuento: float
 --
 + addCanal ( c: Canal ) 
-*+ copia (): Duplicable*
-+ getDescripcion (): string
-+ getPrecioMensual (): float
+*+ getDescripcion (): string*
+*+ getPrecioMensual (): float*
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>686</x>
+      <x>714</x>
       <y>546</y>
-      <w>147</w>
+      <w>119</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1..5</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;10.0;170.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0;130.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -190,22 +188,6 @@ Contenedor
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>203</x>
-      <y>280</y>
-      <w>112</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>style=autoresize
-&lt;&lt;Interfaz&gt;&gt;
-/Duplicable/
---
-/+ copia(): Duplicable/
-bg=green</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>567</x>
       <y>161</y>
       <w>105</w>
@@ -234,32 +216,19 @@ Contenedor</panel_attributes>
     <coordinates>
       <x>448</x>
       <y>273</y>
-      <w>154</w>
-      <h>84</h>
+      <w>168</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>style=autoresize
-&lt;&lt;abstract&gt;&gt;
 /Producto/
 --
 # precioMensual: float
 --
 + Producto ( precio: float )
-*/+ copia (): Duplicable/*
-*/+ getDescripcion (): string/*
+*+ getDescripcion (): string*
+*+ getPrecioMensual (): float*
 bg=green</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>308</x>
-      <y>287</y>
-      <w>154</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-&lt;&lt;Implementa&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -276,12 +245,12 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>350</y>
+      <y>343</y>
       <w>273</w>
-      <h>315</h>
+      <h>322</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>370.0;430.0;10.0;430.0;10.0;10.0</additional_attributes>
+    <additional_attributes>370.0;440.0;10.0;440.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

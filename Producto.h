@@ -12,13 +12,10 @@
 
 #include <string>
 
-#include "Duplicable.h"
-
-
 /**
  * Producto a contratar
  */
-class Producto: public Duplicable
+class Producto
 {
    protected:
       float _precioMensual = 0;   ///< Precio mensual del producto
@@ -28,8 +25,7 @@ class Producto: public Duplicable
       Producto ( float nPM );
       Producto ( const Producto& orig );
       virtual ~Producto ( );
-      virtual std::string getDescripcion () = 0;
-      virtual Duplicable* copia () const override = 0;
+      virtual std::string getDescripcion ();
       virtual float getPrecioMensual ();
       void setPrecioMensual ( float nPM );
       Producto& operator= ( const Producto& otro );
