@@ -53,7 +53,7 @@ void muestraContrato ( Contrato& paramC )
              << "Conexión a Internet: " << paramC.getConexion ()->getTipo ()
              << " a " << paramC.getConexion ()->getVelocidadMB () << " MB"
              << std::endl;
-   muestraPaqueteCanales ( *paramC.getPaqueteTV () );
+   muestraPaqueteCanales ( *paramC.getPaqueteCanales() );
 
    if ( paramC.estaActivo () )
    {
@@ -174,7 +174,7 @@ int main ( int argc, char** argv )
 
    // Introduce datos en el contrato
    cto01.addConexion ( "Fibra", 300 )
-        .addCanalTV ( &c2 ).addCanalTV ( &aC[0] ).addCanalTV ( &aC[2] )
+        .addCanal ( &c2 ).addCanal ( &aC[0] ).addCanal ( &aC[2] )
         .setActivo ( true );
 
    // Comprobamos el contrato

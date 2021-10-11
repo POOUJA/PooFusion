@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
+<diagram program="umlet" version="13.3">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -37,7 +37,7 @@ ConexionInternet
       <x>700</x>
       <y>680</y>
       <w>130</w>
-      <h>60</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
@@ -65,25 +65,25 @@ MiExcepcion
     <id>Relation</id>
     <coordinates>
       <x>500</x>
-      <y>350</y>
+      <y>340</y>
       <w>90</w>
-      <h>190</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 r1=conexion</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>710</x>
-      <y>350</y>
-      <w>40</w>
-      <h>190</h>
+      <y>340</y>
+      <w>80</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
-r1=tv</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+r1=canales</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -124,7 +124,7 @@ r1=tv</panel_attributes>
       <x>680</x>
       <y>520</y>
       <w>150</w>
-      <h>60</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
@@ -136,24 +136,24 @@ PaqueteDeCanales
     <id>Relation</id>
     <coordinates>
       <x>750</x>
-      <y>570</y>
-      <w>60</w>
-      <h>130</h>
+      <y>560</y>
+      <w>50</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1..5</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>620</x>
-      <y>570</y>
+      <y>560</y>
       <w>110</w>
-      <h>180</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -161,7 +161,7 @@ m2=1..5</panel_attributes>
       <x>500</x>
       <y>250</y>
       <w>310</w>
-      <h>110</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Contrato

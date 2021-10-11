@@ -36,6 +36,7 @@ Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
    _fechaDeAlta = ( ahora2->tm_year + 1900 ) * 10000;
    _fechaDeAlta += ( ahora2->tm_mon + 1 ) * 100;
    _fechaDeAlta += ahora2->tm_mday;
+    _canales = new PaqueteDeCanales (0 );
 }
 
 
@@ -52,7 +53,7 @@ Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
                                   , _abonado ( orig._abonado )
 {
    _conexion = new ConexionInternet ( *orig._conexion );
-   _tv = new PaqueteDeCanales ( *orig._tv );
+    _canales = new PaqueteDeCanales (*orig._canales );
 }
 
 
@@ -66,8 +67,8 @@ Contrato::~Contrato ( )
    _abonado = nullptr;
    delete _conexion;
    _conexion = nullptr;
-   delete _tv;
-   _tv = nullptr;
+   delete _canales;
+    _canales = nullptr;
 }
 
 
@@ -104,19 +105,14 @@ int Contrato::getFechaDeAlta ( ) const
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
-Contrato& Contrato::addCanalTV ( Canal* c )
+Contrato& Contrato::addCanal ( Canal* c )
 {
-   if ( _tv == nullptr )
-   {
-      // Por defecto, se crea el paquete con un 10% de descuento
-      _tv = new PaqueteDeCanales ( 10 );
-   }
 
    try
    {
-      _tv->addCanal ( c );
+      _canales->addCanal (c );
       // Con cada nuevo canal, se aumenta el descuento
-      _tv->setDescuento ( _tv->getDescuento () + 2 );
+      _canales->setDescuento (_canales->getDescuento () + 2 );
    }
    catch ( MiExcepcion& e )
    {
@@ -134,9 +130,9 @@ Contrato& Contrato::addCanalTV ( Canal* c )
  * @return Un puntero al paquete de canales contratado. Si no hay paquete de
  *         canales, devuelve nullptr.
  */
-PaqueteDeCanales* Contrato::getPaqueteTV ( ) const
+PaqueteDeCanales* Contrato::getPaqueteCanales ( ) const
 {
-   return _tv;
+   return _canales;
 }
 
 

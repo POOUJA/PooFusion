@@ -36,7 +36,7 @@ class MiExcepcion{
 }
 
 Contrato *-- "conexion" ConexionInternet
-Contrato *-- "tv" PaqueteDeCanales
+Contrato *-- "canales" PaqueteDeCanales
 Contrato --> "abonado" Persona
 PaqueteDeCanales o-- "1..5" Canal
 Contrato ..> MiExcepcion

@@ -26,16 +26,16 @@ class Contrato
       bool _activo = true;
       Persona* _abonado = nullptr;
       ConexionInternet* _conexion = nullptr;
-      PaqueteDeCanales* _tv = nullptr;
+      PaqueteDeCanales* _canales = nullptr;
 
    public:
-      Contrato ( Persona* nAbonado );
+      Contrato ( Persona* nAbonado = nullptr);
       Contrato ( const Contrato& orig );
       virtual ~Contrato ( );
       Contrato& setFechaDeAlta ( int fechaDeAlta );
       int getFechaDeAlta ( ) const;
-      Contrato& addCanalTV ( Canal* c );
-      PaqueteDeCanales* getPaqueteTV ( ) const;
+      Contrato& addCanal ( Canal* c );
+      PaqueteDeCanales* getPaqueteCanales ( ) const;
       Contrato& addConexion ( std::string tipo, int velocidad );
       ConexionInternet* getConexion ( ) const;
       Contrato& setAbonado ( Persona* abonado );
