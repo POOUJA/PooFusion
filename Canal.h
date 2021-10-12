@@ -22,7 +22,7 @@ class Canal: public Producto
       
    public:
       Canal () = default;
-      Canal ( std::string nNombre, float precio );
+      Canal ( std::string nNombre);
       Canal ( const Canal& orig );
       ~Canal ();
       void setNombre ( std::string nNombre );

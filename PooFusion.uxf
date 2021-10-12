@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>248</x>
-      <y>24</y>
+      <x>288</x>
+      <y>56</y>
       <w>104</w>
       <h>56</h>
     </coordinates>
@@ -19,10 +19,10 @@ Persona
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
-      <y>528</y>
-      <w>288</w>
-      <h>96</h>
+      <x>392</x>
+      <y>608</y>
+      <w>112</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>style=autoresize
 ConexionInternet
@@ -30,8 +30,6 @@ ConexionInternet
 - tipo: string
 - velocidad: int
 --
-*+ ConexionInternet(tipo, velocidad, precio)*
-+ getTipo (): string
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -39,33 +37,30 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>800</x>
-      <y>640</y>
-      <w>168</w>
-      <h>72</h>
+      <x>848</x>
+      <y>720</y>
+      <w>104</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
 --
 - nombre: string
 --
-*+ Canal(nombre, precio)*
-+ getNombre (): string
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>144</x>
-      <y>208</y>
+      <x>184</x>
+      <y>240</y>
       <w>120</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
-PooFusionExc
-//bg=green
+MiExcepcion
 --
 - fichero: string
 - funcion: string
@@ -77,63 +72,62 @@ PooFusionExc
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>392</y>
-      <w>136</w>
-      <h>152</h>
+      <x>464</x>
+      <y>408</y>
+      <w>72</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;170.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;250.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
-      <y>392</y>
-      <w>184</w>
-      <h>144</h>
+      <x>576</x>
+      <y>408</y>
+      <w>80</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>210.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;250.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>672</x>
-      <y>520</y>
-      <w>200</w>
+      <x>608</x>
+      <y>608</y>
+      <w>192</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
-//bg=green
 --
 - descuento: float
 --
-*+ PaqueteCanales(dto, precio)*
 + addCanal ( c: Canal ) 
+*+ getPrecioMensual (): float*
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>584</y>
-      <w>40</w>
-      <h>72</h>
+      <x>792</x>
+      <y>656</y>
+      <w>136</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1..5</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0;130.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>0</y>
-      <w>296</w>
-      <h>136</h>
+      <x>472</x>
+      <y>32</y>
+      <w>264</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Contrato
@@ -142,18 +136,22 @@ Contrato
 - mesesPermanencia: int
 - cuentaBancaria: string
 - activo: bool
+*- conexionInternet: bool*
 --
 + Contrato ( p: Persona )
-*+ addConexion ( ci: ConexionInternet )*
-*+ addCanal ( c: Canal )*
-*+ addPaqueteCanalesl ( pc: PaqueteCanales )*</panel_attributes>
+*+ addProducto ( ci: ConexionInternet )*
+*+ addProducto ( c: Canal )*
+*+ addProducto ( pc: PaqueteDeCanales )*
+*+ addProducto ( p: Producto )*
+*+ tieneConexionInternet(): bool*
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>344</x>
-      <y>48</y>
+      <x>384</x>
+      <y>80</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
@@ -165,8 +163,8 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>832</x>
-      <y>120</y>
+      <x>872</x>
+      <y>152</y>
       <w>304</w>
       <h>192</h>
     </coordinates>
@@ -191,8 +189,8 @@ Contenedor
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>184</y>
+      <x>624</x>
+      <y>216</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -204,8 +202,8 @@ Contenedor</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>928</x>
-      <y>536</y>
+      <x>944</x>
+      <y>608</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
@@ -217,97 +215,97 @@ Contenedor</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>328</y>
-      <w>168</w>
+      <x>488</x>
+      <y>344</y>
+      <w>200</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>style=autoresize
-/Producto/
+Producto
 --
 # precioMensual: float
 --
-+ Producto ( precio: float )
-+ getPrecioMensual (): float
+*+ Producto ( precio: float )*
+*+ getPrecioMensual (): string*
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>560</y>
-      <w>80</w>
+      <x>792</x>
+      <y>616</y>
+      <w>168</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>392</y>
+      <x>552</x>
+      <y>408</y>
       <w>312</w>
-      <h>296</h>
+      <h>352</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>370.0;350.0;160.0;280.0;10.0;10.0</additional_attributes>
+    <additional_attributes>370.0;420.0;10.0;420.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>128</y>
+      <x>560</x>
+      <y>200</y>
       <w>48</w>
-      <h>216</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m2=1..10</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
-      <y>128</y>
+      <x>656</x>
+      <y>200</y>
       <w>24</w>
-      <h>80</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>664</x>
-      <y>200</y>
-      <w>184</w>
+      <x>696</x>
+      <y>232</y>
+      <w>192</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 &lt;&lt;bind&gt;&gt;
 &lt;T-&gt;Producto*&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>304</y>
-      <w>128</w>
-      <h>240</h>
+      <x>960</x>
+      <y>336</y>
+      <w>96</w>
+      <h>296</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;bind&gt;&gt;
 &lt;T-&gt;Canal*&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;280.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>272</x>
-      <y>232</y>
+      <x>312</x>
+      <y>264</y>
       <w>208</w>
       <h>40</h>
     </coordinates>
@@ -320,8 +318,8 @@ lanzan excepciones de este tipo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>248</x>
-      <y>240</y>
+      <x>288</x>
+      <y>272</y>
       <w>40</w>
       <h>24</h>
     </coordinates>
@@ -331,8 +329,8 @@ lanzan excepciones de este tipo</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>56</x>
-      <y>528</y>
+      <x>48</x>
+      <y>560</y>
       <w>216</w>
       <h>144</h>
     </coordinates>
@@ -353,14 +351,14 @@ programación</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>208</y>
+      <x>40</x>
+      <y>240</y>
       <w>136</w>
-      <h>24</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>style=autoresize
 std::invalid_argument
-//bg=pink</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

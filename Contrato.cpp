@@ -105,7 +105,7 @@ int Contrato::getFechaDeAlta ( ) const
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
-Contrato& Contrato::addCanal ( Canal* c )
+Contrato& Contrato::addProducto ( Canal& c )
 {
 
    try

@@ -20,8 +20,7 @@
  *        tipo es una cadena vacía
  */
 ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
-                                   , float precio ) try : Producto ( precio )
-                                                        , _tipo ( nTipo )
+                                   , float precio ) :    _tipo ( nTipo )
                                                         , _velocidadMB ( nVel )
 {
    if ( nVel <= 0 )
@@ -37,9 +36,6 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
                         , "ConexionInternet::ConexionInternet"
                         , "El tipo de conexión no puede ser una cadena vacía" );
    }
-} catch ( MiExcepcion &e ) {
-    throw MiExcepcion ( "ConexionInternet.cpp", "ConexionInternet::ConexionInternet"
-            , e.quePasa() );
 }
 
 
@@ -49,8 +45,7 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
  * @post La nueva conexión tiene exactamente los mismos datos que la original
  */
 ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
-                                   Producto ( orig )
-                                 , _tipo ( orig._tipo )
+                                 _tipo ( orig._tipo )
                                  , _velocidadMB ( orig._velocidadMB )
 { }
 

@@ -4,45 +4,102 @@ hide circle
 skinparam classattributeiconsize 0
 skinparam classFontStyle bold
 
-class Contrato {
- - fechaDeAlta: int {Formato: YYYYMMDD}
- - mesesPermanencia: int
- - cuentaBancaria: string
- - activo: bool
+interface Duplicable<<Interfaz>> {
+   + {abstract} copia (): Duplicable
 }
 
 class Persona {
- - apeNom: string
- - nif: string
+   - apeNom: string
+   - nif: string
 }
 
-class PaqueteDeCanales{
- - descuento: float
+class Contrato {
+   - fechaAlta: int {Formato: YYYYMMDD}
+   - mesesPermanencia: int
+   - cuentaBancaria: string
+   - activo: bool
+   + Contrato ( p: Persona )
+   + addProducto ( p: Producto )
+}
+
+class Producto {
+   # precioMensual: float
+   + Producto ( precio: float )
 }
 
 class ConexionInternet {
- - tipo: string
- - velocidadMB: int
+   - tipo: string
+   - velocidadMB: int
 }
 
 class Canal {
- - nombre: string
+   - nombre: string
 }
 
-class MiExcepcion{
- - fichero: string
- - función: string
- - mensaje: string
+class PaqueteDeCanales {
+   - descuento: float
+   + addCanal ( c: Canal )
 }
 
-Contrato *-- "conexion" ConexionInternet
-Contrato *-- "tv" PaqueteDeCanales
-Contrato --> "abonado" Persona
-PaqueteDeCanales o-- "1..5" Canal
-Contrato ..> MiExcepcion
-Canal ..> MiExcepcion
-ConexionInternet ..> MiExcepcion
-Persona ..> MiExcepcion
-PaqueteDeCanales ..> MiExcepcion
+class Contenedor<T> {
+   - elementos[MAX_TAM]: T
+   - numElementos: int
+   - maxElementos: int
+   - vacio: T
+
+   - compactar ( inicio: int )
+   + Contenedor ( tamMaximo: int, vVacio: T = T() )
+   + addElemento ( nE: T )
+   + getElemento ( cual: int ): T
+   + sacaElemento ( cual: int ): T
+   + getNumElementos (): int
+   + vaciar ()
+}
+
+class PooFusionExc<<Exception>> {
+   - fichero: string
+   - función: string
+   - mensaje: string
+   + quePasa(): cadena
+}
+note bottom of PooFusionExc
+   Todas las clases lanzan
+   excepciones de este tipo
+   salvo Contenedor
+end note
+
+class std::invalid_argument
+
+class "Contenedor<Canal*>" as CC {
+}
+
+class "Contenedor<Producto*>" as CP{
+}
+
+
+Contrato -- "1\nabonado" Persona: >
+Producto <|-- ConexionInternet 
+Producto <|-- Canal
+Producto <|-- PaqueteDeCanales
+Contenedor <|.. CP: <<bind>>\n<T->Producto*>
+Contrato ..> CP
+Contrato *-- "1..10" Producto
+Duplicable <|.. Producto: <<implements>>
+Contenedor <|.. CC: <<bind>>\n<T->Canal*>
+PaqueteDeCanales o-- "1..5"Canal
+PaqueteDeCanales ..> CC
+
+note as Nota1
+   El diagrama no incluye constructores
+   por defecto y de copia, destructores,
+   setters y getters
+
+   Los tipos, salvo casos concretos, no
+   llevan & ni *, pero a la hora de
+   implementar sí hay que ponerlos ;-). 
+   Está así por hacer que el UML sea lo
+   más "ajeno" posible al lenguaje de
+   programación
+end note
 
 @enduml
