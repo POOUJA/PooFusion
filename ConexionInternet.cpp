@@ -19,8 +19,7 @@
  * @throw MiExcepcion Si la velocidad es un número menor o igual a cero, o si el
  *        tipo es una cadena vacía
  */
-ConexionInternet::ConexionInternet ( std::string nTipo, int nVel
-                                   , float precio ) :    _tipo ( nTipo )
+ConexionInternet::ConexionInternet ( std::string nTipo, int nVel) :    _tipo ( nTipo )
                                                         , _velocidadMB ( nVel )
 {
    if ( nVel <= 0 )

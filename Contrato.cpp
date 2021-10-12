@@ -20,7 +20,7 @@
  * @post El nuevo contrato no tiene servicios aún, aunque sí está activo
  * @throw MiExcepcion Si se le pasa como parámetro nullptr
  */
-Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
+Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado ), _numProductos(0), _conexionInternet(false)
 {
    if ( nAbonado == nullptr )
    {
@@ -36,24 +36,23 @@ Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
    _fechaDeAlta = ( ahora2->tm_year + 1900 ) * 10000;
    _fechaDeAlta += ( ahora2->tm_mon + 1 ) * 100;
    _fechaDeAlta += ahora2->tm_mday;
-    _canales = new PaqueteDeCanales (0 );
 }
 
 
 /**
  * Constructor de copia
  * @param orig Contrato del que se copian los valores
- * @post El nuevo contrato es igual al original. Se duplica la conexión y el
- *       paquete de canales
+ * @post El nuevo contrato tiene los mismos datos pero no copia los productos (por ahora)
  */
 Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
                                   , _mesesPermanencia ( orig._mesesPermanencia )
                                   , _cuentaBancaria ( orig._cuentaBancaria )
                                   , _activo ( orig._activo )
                                   , _abonado ( orig._abonado )
+                                  , _conexionInternet(false)
+                                  , _numProductos(0)
 {
-   _conexion = new ConexionInternet ( *orig._conexion );
-    _canales = new PaqueteDeCanales (*orig._canales );
+    //ToDo por ahora no sabemos cómo copiar los productos según el tipo de cada uno...
 }
 
 
@@ -65,10 +64,10 @@ Contrato::Contrato ( const Contrato& orig ): _fechaDeAlta ( orig._fechaDeAlta )
 Contrato::~Contrato ( )
 {
    _abonado = nullptr;
-   delete _conexion;
-   _conexion = nullptr;
-   delete _canales;
-    _canales = nullptr;
+    for (int i = 0; i < _numProductos; ++i) {
+        delete _productos[i];
+        _productos[i]= nullptr;
+    }
 }
 
 
@@ -96,87 +95,123 @@ int Contrato::getFechaDeAlta ( ) const
 }
 
 /**
- * Añade un canal de TV al paquete contratado por el abonado. El descuento
- * del paquete empieza siendo un 10%, y con cada nuevo canal se incrementa un
- * 2% más
+ * Añade una Conexión de Internet al Contrato
+ * @param ci Conexión que se añade
+ * @post El contrato incluye un producto más
+ * @throw MiExcepcion Si el contrato no permite más productos
+ * @return Una referencia al objeto actual, para permitir encadenamiento de
+ *         llamadas a métodos
+ */
+Contrato& Contrato::addProducto ( const ConexionInternet& ci )
+{
+
+    if (_numProductos==MAX_PRODUCTOS) {
+        throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                            "Este contrato no admite más productos" );
+    }
+    _conexionInternet=true;
+
+    _productos[_numProductos]= new ConexionInternet(ci);
+    _numProductos++;
+
+    return *this;
+}
+
+
+/**
+ * Añade un canal al Contrato
  * @param c Canal de TV que se añade
  * @post El contrato incluye un canal más
  * @throw MiExcepcion Si el contrato no permite más canales
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
-Contrato& Contrato::addProducto ( Canal& c )
+Contrato& Contrato::addProducto ( const Canal& c )
 {
 
-   try
-   {
-      _canales->addCanal (c );
-      // Con cada nuevo canal, se aumenta el descuento
-      _canales->setDescuento (_canales->getDescuento () + 2 );
+   if (_conexionInternet==false) {
+       throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                           "No se puede añadir un canal sin disponer de conexión a internet" );
    }
-   catch ( MiExcepcion& e )
-   {
-      // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addCanalTV",
-                          e.quePasa () );
+   if (_numProductos==MAX_PRODUCTOS) {
+       throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                           "Este contrato no admite más productos" );
    }
+   _productos[_numProductos]= new Canal(c);
+   _numProductos++;
 
    return *this;
 }
+/**
+ * Añade un paquete de canales al Contrato
+ * @param pc Paquete de canales que se añade
+ * @post El contrato incluye un producto más
+ * @throw MiExcepcion Si el contrato no permite más productos
+ * @return Una referencia al objeto actual, para permitir encadenamiento de
+ *         llamadas a métodos
+ */
+Contrato& Contrato::addProducto ( const PaqueteDeCanales& pc )
+{
 
+    if (_conexionInternet==false) {
+        throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                            "No se puede añadir un PaqueteDeCanales sin disponer de conexión a internet" );
+    }
+    if (_numProductos==MAX_PRODUCTOS) {
+        throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                            "Este contrato no admite más productos" );
+    }
+    _productos[_numProductos]= new PaqueteDeCanales(pc);
+    _numProductos++;
+
+    return *this;
+}
 
 /**
- * Consulta el paquete de canales contratado
- * @return Un puntero al paquete de canales contratado. Si no hay paquete de
- *         canales, devuelve nullptr.
+ * Añade un producto al Contrato
+ * @param p Producto que se añade
+ * @post El contrato incluye un producto más
+ * @throw MiExcepcion Si el contrato no permite más canales
+ * @return Una referencia al objeto actual, para permitir encadenamiento de
+ *         llamadas a métodos
  */
-PaqueteDeCanales* Contrato::getPaqueteTV ( ) const
+Contrato& Contrato::addProducto ( const Producto& p )
 {
-   return _canales;
+
+    //ToDo por ahora no tenemos una forma de saber si el producto es una ConexionInternet
+    if (_conexionInternet==false) {
+        throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                            "No se puede añadir un producto sin disponer de conexión a internet" );
+    }
+    if (_numProductos==MAX_PRODUCTOS) {
+        throw MiExcepcion ( "Contrato.cpp", "Contrato::addProducto",
+                            "Este contrato no admite más productos" );
+    }
+    _productos[_numProductos]= new Producto(p);
+    _numProductos++;
+
+    return *this;
 }
 
 
 /**
- * Añade una conexión a Internet al contrato
- * @param tipo Tipo de la nueva conexión (ADSL, Fibra, WiMAX...)
- * @param velocidad Velocidad de la conexión en MB
- * @post El contrato tiene una conexión a Internet vinculada
- * @note Si no había una conexión previa, la crea. Si ya existía, la destruye
- * @return Una referencia al propio objeto, para permitir encadenar llamadas a
- *         métodos
- * @throw MiExcepcion Si hay algún problema
+ * Devuelve el i-esimo producto
+ * @return Una referencia al producto del contrato
  */
-Contrato& Contrato::addConexion ( std::string tipo, int velocidad, float precio )
+Producto& Contrato::getProducto(int cual)
 {
-   if ( _conexion != nullptr )
-   {
-      delete _conexion;
-   }
-
-   try
-   {
-      _conexion = new ConexionInternet ( tipo, velocidad, precio );
-   }
-   catch ( MiExcepcion& e )
-   {
-      // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addConexion",
-                          e.quePasa () );
-   }
-
-   return *this;
+    if (cual>=_numProductos==MAX_PRODUCTOS)
+    {
+        throw MiExcepcion ( "Contrato.cpp", "Contrato::getProducto",
+                            "No existe ese producto" );
+    }
+    return *_productos[cual-1];
 }
 
-
-/**
- * Consulta la conexión a Internet asociada al contrato
- * @return Un puntero a la conexión, o nullptr si no hay conexión vinculada
- */
-ConexionInternet* Contrato::getConexion ( ) const
+int Contrato::getNumProductos() const
 {
-   return _conexion;
+    return _numProductos;
 }
-
 
 /**
  * Asigna un nuevo abonado al contrato
@@ -297,4 +332,7 @@ int Contrato::getMesesPermanencia ( ) const
    return _mesesPermanencia;
 }
 
+bool Contrato::tieneConexionInternet() const {
+    return _conexionInternet;
+}
 

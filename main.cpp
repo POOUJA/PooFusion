@@ -15,22 +15,6 @@
 using namespace std;
 
 /**
- * @brief Muestra la información de un paquete de canales por consola
- * @param paramPC Paquete del que se muestra la información
- */
-void muestraPaqueteCanales ( PaqueteDeCanales& paramPC )
-{
-   std::cout << "Paquete de canales (" << paramPC.getDescuento ()
-             << "% de descuento) que contiene ";
-
-   for ( int i = 0; i < paramPC.getNumCanales (); i++ )
-   {
-      std::cout << paramPC.getCanal (i+1)->getNombre () << " ";
-   }
-}
-
-
-/**
  * @brief Muestra la información de una persona por consola
  * @param paramP Persona de la que muestra la información
  */
@@ -39,7 +23,6 @@ void muestraPersona ( Persona& paramP )
    std::cout << "La persona se llama " << paramP.getApeNom () << ". NIF "
              << paramP.getNif () << std::endl;
 }
-
 
 /**
  * Muestra la información relativa a un contrato
@@ -50,20 +33,25 @@ void muestraContrato ( Contrato& paramC )
    std::cout << "Contrato con fecha " << paramC.getFechaDeAlta () << std::endl
              << "===========================" << std::endl
              << "Abonado: " << paramC.getAbonado ()->getApeNom () << std::endl
-             << "Conexión a Internet: " << paramC.getConexion ()->getTipo ()
-             << " a " << paramC.getConexion ()->getVelocidadMB () << " MB"
+             << "Tiene conexión a Internet: " << (paramC.tieneConexionInternet()?"Sí":"No")
              << std::endl;
-   muestraPaqueteCanales ( *paramC.getPaqueteTV () );
+    if ( paramC.estaActivo () )
+    {
+        std::cout  << "Actualmente activo" << std::endl;
+    }
+    else
+    {
+        std::cout << "Actualmente NO activo" << std::endl;
+    }
 
-   if ( paramC.estaActivo () )
-   {
-      std::cout << std::endl << "Actualmente activo";
-   }
-   else
-   {
-      std::cout << std::endl << "Actualmente NO activo";
-   }
-   std::cout << std::endl;
+    std::cout << "Productos del contrato " << std::endl;
+
+    for ( int i = 1; i <= paramC.getNumProductos(); i++ )
+    {
+        std::cout << "Producto " << i
+                  << " precio " << paramC.getProducto(i).getPrecioMensual()
+                  << std::endl;
+    }
 }
 
 
@@ -171,10 +159,17 @@ int main ( int argc, char** argv )
 
    // Crea un nuevo contrato
    Contrato cto01 ( &p );
+   // Los canales y las líneas pueden tener un precio ahora
+   c.setPrecioMensual(100);
+   c2.setPrecioMensual(10);
+   std::cout << "Precio del canal " << c2.getNombre() << ": "
+             << c2.getPrecioMensual() << std::endl;
+   aC[0].setPrecioMensual(12);
+   aC[2].setPrecioMensual(15);
 
    // Introduce datos en el contrato
-   cto01.addConexion ( "Fibra", 300 , 100)
-        .addCanal ( &c2 ).addCanal ( &aC[0] ).addCanal ( &aC[2] )
+   cto01.addProducto ( c )
+        .addProducto ( c2 ).addProducto ( aC[0] ).addProducto ( aC[2] )
         .setActivo ( true );
 
    // Comprobamos el contrato

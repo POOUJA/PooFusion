@@ -4,10 +4,6 @@ hide circle
 skinparam classattributeiconsize 0
 skinparam classFontStyle bold
 
-interface Duplicable<<Interfaz>> {
-   + {abstract} copia (): Duplicable
-}
-
 class Persona {
    - apeNom: string
    - nif: string
@@ -18,6 +14,8 @@ class Contrato {
    - mesesPermanencia: int
    - cuentaBancaria: string
    - activo: bool
+   - productos[MAX_PRODUCTOS]: Producto*
+   - numProductos: int = 0
    + Contrato ( p: Persona )
    + addProducto ( p: Producto )
 }
@@ -41,28 +39,14 @@ class PaqueteDeCanales {
    + addCanal ( c: Canal )
 }
 
-class Contenedor<T> {
-   - elementos[MAX_TAM]: T
-   - numElementos: int
-   - maxElementos: int
-   - vacio: T
 
-   - compactar ( inicio: int )
-   + Contenedor ( tamMaximo: int, vVacio: T = T() )
-   + addElemento ( nE: T )
-   + getElemento ( cual: int ): T
-   + sacaElemento ( cual: int ): T
-   + getNumElementos (): int
-   + vaciar ()
-}
-
-class PooFusionExc<<Exception>> {
+class MiExcepcion<<Exception>> {
    - fichero: string
    - función: string
    - mensaje: string
    + quePasa(): cadena
 }
-note bottom of PooFusionExc
+note bottom of MiExcepcion
    Todas las clases lanzan
    excepciones de este tipo
    salvo Contenedor
@@ -70,24 +54,12 @@ end note
 
 class std::invalid_argument
 
-class "Contenedor<Canal*>" as CC {
-}
-
-class "Contenedor<Producto*>" as CP{
-}
-
-
 Contrato -- "1\nabonado" Persona: >
 Producto <|-- ConexionInternet 
 Producto <|-- Canal
 Producto <|-- PaqueteDeCanales
-Contenedor <|.. CP: <<bind>>\n<T->Producto*>
-Contrato ..> CP
 Contrato *-- "1..10" Producto
-Duplicable <|.. Producto: <<implements>>
-Contenedor <|.. CC: <<bind>>\n<T->Canal*>
 PaqueteDeCanales o-- "1..5"Canal
-PaqueteDeCanales ..> CC
 
 note as Nota1
    El diagrama no incluye constructores
