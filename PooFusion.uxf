@@ -4,9 +4,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>200</y>
-      <w>470</w>
+      <x>200</x>
+      <y>60</y>
+      <w>430</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -17,31 +17,31 @@ Persona
 --
 + setMiConexion ( nuevaC: ConexionInternet ): ConexionInternet
 + getMiConexion (): ConexionInternet
-+ setMiCanal ( nuevoC: Canal ): Canal
-+ getMiCanal (): Canal</panel_attributes>
++ setMiPaquete( nuevoP: PaqueteDeCanales): PaqueteDeCanales
++ getMiPaquete(): PaqueteDeCanales</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>520</y>
-      <w>140</w>
+      <x>240</x>
+      <y>380</y>
+      <w>130</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>style=autoresize
 ConexionInternet
 --
 - tipo: string
-- velocidad: int</panel_attributes>
+- velocidadMB: int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
-      <y>680</y>
-      <w>130</w>
+      <x>540</x>
+      <y>540</y>
+      <w>110</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -53,9 +53,9 @@ Canal
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>730</y>
-      <w>130</w>
+      <x>380</x>
+      <y>590</y>
+      <w>120</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -69,9 +69,9 @@ MiExcepcion
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>330</y>
-      <w>110</w>
+      <x>260</x>
+      <y>190</y>
+      <w>100</w>
       <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -82,8 +82,8 @@ r1=miConexion</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
-      <y>330</y>
+      <x>550</x>
+      <y>190</y>
       <w>100</w>
       <h>210</h>
     </coordinates>
@@ -95,8 +95,8 @@ r1=miPaquete</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>330</y>
+      <x>430</x>
+      <y>190</y>
       <w>30</w>
       <h>420</h>
     </coordinates>
@@ -106,8 +106,8 @@ r1=miPaquete</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>730</y>
+      <x>500</x>
+      <y>590</y>
       <w>120</w>
       <h>70</h>
     </coordinates>
@@ -117,8 +117,8 @@ r1=miPaquete</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>580</y>
+      <x>290</x>
+      <y>440</y>
       <w>140</w>
       <h>170</h>
     </coordinates>
@@ -128,9 +128,9 @@ r1=miPaquete</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>520</y>
-      <w>150</w>
+      <x>520</x>
+      <y>380</y>
+      <w>140</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -142,20 +142,20 @@ PaqueteDeCanales
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>570</y>
-      <w>40</w>
+      <x>590</x>
+      <y>430</y>
+      <w>50</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=2</panel_attributes>
+m2=1..5</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>570</y>
+      <x>460</x>
+      <y>430</y>
       <w>110</w>
       <h>180</h>
     </coordinates>
