@@ -71,17 +71,17 @@ class PooFusionExc<<Exception>> extends std::logic_error{
    - mensaje: string
 }
 note bottom of PooFusionExc
-   Todas las clases lanzan
-   excepciones de este tipo
-   salvo Contenedor
+   Todas las clases, salvo Contenedor,
+   lanzan excepciones de este tipo
 end note
 
 class std::exception {
-  + what(): cadena
+  + what(): string
 }
 
 class std::logic_error extends std::exception {
-  +std::logic_error(mensaje)
+  +std::logic_error(mensaje: string)
+  +what(): string
 }
 class std::out_of_range extends std::logic_error
 

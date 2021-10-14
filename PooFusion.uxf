@@ -21,14 +21,14 @@ Persona
     <coordinates>
       <x>405</x>
       <y>675</y>
-      <w>171</w>
+      <w>180</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>style=autoresize
 ConexionInternet
 --
 - tipo: string
-- velocidad: int
+- velocidadMB: int
 --
 + copia (): Duplicable
 + getDescripcion (): string</panel_attributes>
@@ -39,8 +39,8 @@ ConexionInternet
     <coordinates>
       <x>927</x>
       <y>801</y>
-      <w>171</w>
-      <h>81</h>
+      <w>180</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
@@ -96,7 +96,7 @@ PooFusionExc
     <coordinates>
       <x>657</x>
       <y>675</y>
-      <w>180</w>
+      <w>189</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -127,7 +127,7 @@ m2=1..5</panel_attributes>
     <coordinates>
       <x>504</x>
       <y>27</y>
-      <w>261</w>
+      <w>279</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -160,7 +160,7 @@ m1=1</panel_attributes>
     <coordinates>
       <x>954</x>
       <y>162</y>
-      <w>333</w>
+      <w>342</w>
       <h>216</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -199,9 +199,9 @@ Contenedor
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>684</x>
+      <x>675</x>
       <y>234</y>
-      <w>117</w>
+      <w>135</w>
       <h>54</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -329,7 +329,7 @@ m2=1..10</panel_attributes>
     <coordinates>
       <x>324</x>
       <y>288</y>
-      <w>234</w>
+      <w>243</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -354,7 +354,7 @@ lanzan excepciones de este tipo</panel_attributes>
     <coordinates>
       <x>81</x>
       <y>621</y>
-      <w>243</w>
+      <w>252</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -383,7 +383,7 @@ programación</panel_attributes>
 std::Exception
 //bg=pink
 --
-+ what(): cadena</panel_attributes>
++ what(): string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -391,15 +391,15 @@ std::Exception
     <coordinates>
       <x>117</x>
       <y>162</y>
-      <w>153</w>
+      <w>207</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>style=autoresize
 std::logic_error
 //bg=pink
 --
-+ logic_error(mensaje)
-+ what(): cadena</panel_attributes>
++ logic_error(mensaje: string)
++ what(): string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -416,9 +416,9 @@ std::logic_error
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>36</x>
+      <x>27</x>
       <y>261</y>
-      <w>117</w>
+      <w>135</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>style=autoresize
