@@ -4,9 +4,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>220</y>
-      <w>320</w>
+      <x>30</x>
+      <y>20</y>
+      <w>280</w>
       <h>220</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -15,50 +15,50 @@ Persona
 - apeNom: string
 - nif: string
 --
-+ Persona ()
-+ Persona ( nApeNom: string, nNIF: string )
-+ Persona ( orig: Persona )
-+ ~Persona ()
-+ getApeNom (): string
-+ setApeNom ( nApeNom: string )
-+ getNif (): string
-+ setNif ( nNif: string )
-+ operator= ( otro: Persona ): Persona</panel_attributes>
++ Persona()
++ Persona( orig: Persona)
++ Persona( nApeNom: string, nNIF: string)
++ ~Persona()
++ getApeNom(): string
++ setApeNom( nApeNom: string)
++ getNif(): string
++ setNif( nNif: string)
++ operator=( otro: Persona): Persona</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>460</y>
-      <w>420</w>
+      <x>340</x>
+      <y>20</y>
+      <w>350</w>
       <h>260</h>
     </coordinates>
     <panel_attributes>style=autoresize
 ConexionInternet
 --
 - tipo: string
-- velocidad: int
+- velocidadMB: int
 --
-+ ConexionInternet ()
-+ ConexionInternet ( nTipo: string, nVel: int )
-+ ~ConexionInternet ()
-+ ConexionInternet ( orig: ConexionInternet )
-+ getTipo (): string
-+ setTipo ( nTipo: string )
-+ getVelocidad (): int
-+ setVelocidad ( nVel: int )
-+ operator= ( otro: ConexionInternet ): ConexionInternet
-+ operator&lt; ( otro: ConexionInternet )
-+ operator== ( otro: ConexionInternet )</panel_attributes>
++ ConexionInternet()
++ ConexionInternet( orig: ConexionInternet)
++ ConexionInternet( nTipo: string, nVel: int)
++ ~ConexionInternet()
++ getTipo(): string
++ setTipo( nTipo: string)
++ getVelocidad(): int
++ setVelocidad( nVel: int)
++ operator&lt;( otro: ConexionInternet): bool
++ operator==( otro: ConexionInternet): bool
++ operator=( otro: ConexionInternet): ConexionInternet</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>220</y>
-      <w>250</w>
+      <x>30</x>
+      <y>270</y>
+      <w>210</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -66,33 +66,34 @@ Canal
 --
 - nombre: string
 --
-+ Canal ()
-+ Canal ( nNombre: string )
-+ Canal ( orig: Canal )
-+ ~Canal ()
-+ getNombre (): string
-+ setNombre ( nNombre: string )
-+ operator= ( otro: Canal ): Canal</panel_attributes>
++ Canal()
++ Canal( orig: Canal)
++ Canal( nNombre: string)
++ ~Canal()
++ getNombre(): string
++ setNombre( nNombre: string)
++ operator=( otro: Canal): Canal</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>460</y>
-      <w>410</w>
+      <x>340</x>
+      <y>310</y>
+      <w>370</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>style=autoresize
-MiExcepcion
+//bg=green
+PooFusionExc
 --
 - fichero: string
 - funcion: string
 - mensaje: string
 --
-+ MiExcepcion ( nFich: string, nFun: string, msg: string )
-+ MiExcepcion ( orig: MiExcepcion )
-+ quePasa (): string</panel_attributes>
++ PooFusionExc( orig: PooFusionExc)
++ PooFusionExc( nFich: string, nFun: string, nMsg: string)
++ quePasa(): string</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
