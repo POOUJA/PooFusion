@@ -1,73 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>220</y>
-      <w>320</w>
-      <h>210</h>
+      <x>192</x>
+      <y>18</y>
+      <w>186</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>style=autoresize
-Persona
+    <panel_attributes>ConexionInternet
+--
+- tipo: string
+- velocidadMB: int
+--
++ ConexionInternet ()
++ ConexsionInternet (orig: ConexionInternet)
++ ConexionInternet ( nTipo: string, nVel: int)
+*+ ~ConexsionInternet ()*
++ getTipo (): string
++ setTipo (nTipo: string)
++ getVelocidad (): int
++ setVelocidad (nVel: int)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>18</y>
+      <w>168</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Persona
 --
 - apeNom: string
 - nif: string
 --
-+ Persona ()
-+ Persona ( nApeNom: string, nNIF: string )
-+ Persona ( orig: Persona )
++ Persona()
++ Persona (orig: Persona)
++ Persona (nApeNom: string, nNIF: string)
 *+ ~Persona ()*
 + getApeNom (): string
-+ setApeNom ( nApeNom: string )
++ getApeNom (nApeNom: string)
 + getNif (): string
-+ setNif ( nNif: string )</panel_attributes>
++ setNif (nNif: string)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
-      <y>460</y>
-      <w>330</w>
-      <h>210</h>
+      <x>12</x>
+      <y>150</y>
+      <w>132</w>
+      <h>96</h>
     </coordinates>
-    <panel_attributes>style=autoresize
-ConexionInternet
---
-- tipo: string
-- velocidad: int
---
-+ ConexionInternet ()
-+ ConexionInternet ( nTipo: string, nVel: int )
-*+ ~ConexionInternet ()*
-+ ConexionInternet ( orig: ConexionInternet )
-+ getTipo (): string
-+ setTipo ( nTipo: string )
-+ getVelocidad (): int
-+ setVelocidad ( nVel: int )</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>650</x>
-      <y>230</y>
-      <w>250</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>style=autoresize
-Canal
+    <panel_attributes>Canal
 --
 - nombre: string
 --
 + Canal ()
-+ Canal ( nNombre: string )
-+ Canal ( orig: Canal )
++ Canal (orig: Canal)
++ Canal (nNombre: string)
 *+ ~Canal ()*
-+ getNombre (): string
-+ setNombre ( nNombre: string )</panel_attributes>
++ setNombre (nNombre: string)
++ getNombre (): string</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
