@@ -8,19 +8,19 @@
  */
 
 #include "PaqueteDeCanales.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
  * @param nDesc Descuento a aplicar
  * @post El nuevo paquete tiene el descuento pasado como parámetro
- * @throw MiExcepcion Si el descuento es negativo
+ * @throw PooFusionExc Si el descuento es negativo
  */
 PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp"
+      throw PooFusionExc ( "PaqueteDeCanales.cpp"
                         , "PaqueteDeCanales::PaqueteDeCanales"
                         , "El descuento no puede ser negativo" );
    }
@@ -66,13 +66,13 @@ PaqueteDeCanales::~PaqueteDeCanales ( )
  * Cambia el descuento del paquete de canales
  * @param descuento Nuevo valor de descuento a aplicar
  * @post El descuento del paquete cambia al valor pasado como parámetro
- * @throw MiExcepcion Si el nuevo descuento es un número negativo
+ * @throw PooFusionExc Si el nuevo descuento es un número negativo
  */
 void PaqueteDeCanales::setDescuento ( float nDesc )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
                         , "El descuento no puede ser negativo" );
    }
 
@@ -95,13 +95,13 @@ float PaqueteDeCanales::getDescuento ( ) const
  * @param nuevoC Canal a añadir
  * @pre El canal nuevo no está ya incluido en el paquete
  * @post El paquete de canales contiene un canal más
- * @throw MiExcepcion Si no caben más canales en el paquete
+ * @throw PooFusionExc Si no caben más canales en el paquete
  */
 void PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
    if ( _nCanales == MAX_CANALES )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
                           "No caben más canales en el paquete" );
    }
 
@@ -115,13 +115,13 @@ void PaqueteDeCanales::addCanal ( Canal* nuevoC )
  * @param cual Ordinal del canal que se quiere consultar (rango: 1..número de
  *        canales)
  * @return La dirección de memoria del canal
- * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ * @throw PooFusionExc Si el ordinal está fuera del rango indicado
  */
 Canal* PaqueteDeCanales::getCanal ( int cual )
 {
    if ( ( cual < 1 ) || ( cual > _nCanales ) )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
                           "Valor de índice incorrecto" );
    }
 
@@ -135,13 +135,13 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
  *        canales)
  * @post El paquete tiene un canal menos
  * @return La dirección de memoria del canal que se saca
- * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ * @throw PooFusionExc Si el ordinal está fuera del rango indicado
  */
 Canal* PaqueteDeCanales::sacaCanal ( int cual )
 {
    if ( ( cual < 1 ) || ( cual > _nCanales ) )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
                           "Valor de índice incorrecto" );
    }
 

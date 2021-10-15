@@ -10,7 +10,7 @@
 #include <ctime>
 
 #include "Contrato.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 #include "ConexionInternet.h"
 #include "PaqueteDeCanales.h"
 
@@ -18,13 +18,13 @@
  * Constructor parametrizado
  * @param nAbonado Persona a nombre de quien se hace el contrato
  * @post El nuevo contrato no tiene servicios aún, aunque sí está activo
- * @throw MiExcepcion Si se le pasa como parámetro nullptr
+ * @throw PooFusionExc Si se le pasa como parámetro nullptr
  */
 Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado )
 {
    if ( nAbonado == nullptr )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::Contrato"
+      throw PooFusionExc ( "Contrato.cpp", "Contrato::Contrato"
                         , "El contrato ha de tener un abonado" );
    }
 
@@ -101,7 +101,7 @@ int Contrato::getFechaDeAlta ( ) const
  * 2% más
  * @param c Canal de TV que se añade
  * @post El contrato incluye un canal más
- * @throw MiExcepcion Si el contrato no permite más canales
+ * @throw PooFusionExc Si el contrato no permite más canales
  * @return Una referencia al objeto actual, para permitir encadenamiento de
  *         llamadas a métodos
  */
@@ -114,10 +114,10 @@ Contrato& Contrato::addCanal ( Canal* c )
       // Con cada nuevo canal, se aumenta el descuento
       _canales->setDescuento (_canales->getDescuento () + 2 );
    }
-   catch ( MiExcepcion& e )
+   catch ( PooFusionExc& e )
    {
       // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addCanalTV",
+      throw PooFusionExc ( "Contrato.cpp", "Contrato::addCanalTV",
                           e.quePasa () );
    }
 
@@ -144,7 +144,7 @@ PaqueteDeCanales* Contrato::getPaqueteCanales ( ) const
  * @note Si no había una conexión previa, la crea. Si ya existía, la destruye
  * @return Una referencia al propio objeto, para permitir encadenar llamadas a
  *         métodos
- * @throw MiExcepcion Si hay algún problema
+ * @throw PooFusionExc Si hay algún problema
  */
 Contrato& Contrato::addConexion ( std::string tipo, int velocidad )
 {
@@ -157,10 +157,10 @@ Contrato& Contrato::addConexion ( std::string tipo, int velocidad )
    {
       _conexion = new ConexionInternet ( tipo, velocidad );
    }
-   catch ( MiExcepcion& e )
+   catch ( PooFusionExc& e )
    {
       // Añade a la información de la primera excepción los datos de este método
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::addConexion",
+      throw PooFusionExc ( "Contrato.cpp", "Contrato::addConexion",
                           e.quePasa () );
    }
 
@@ -183,7 +183,7 @@ ConexionInternet* Contrato::getConexion ( ) const
  * @param abonado Nuevo abonado
  * @post El contrato cambia de abonado
  * @return Una referencia al propio contrato
- * @throw MiExcepcion Si el parámetro es nullptr
+ * @throw PooFusionExc Si el parámetro es nullptr
  * @note El abonado anterior NO se destruye. Es una responsabilidad externa a
  *       esta clase
  */
@@ -191,7 +191,7 @@ Contrato& Contrato::setAbonado ( Persona* abonado )
 {
    if ( abonado == nullptr )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::setAbonado"
+      throw PooFusionExc ( "Contrato.cpp", "Contrato::setAbonado"
                         , "El contrato tiene que tener un abonado" );
    }
 
@@ -241,13 +241,13 @@ bool Contrato::estaActivo ( ) const
  * @param cuentaBancaria Nueva cuenta bancaria (formato IBAN)
  * @post El contrato tiene una nueva cuenta de domiciliación
  * @return Una referencia al propio contrato
- * @throw MiExcepcion Si se le pasa como parámetro una cadena vacía
+ * @throw PooFusionExc Si se le pasa como parámetro una cadena vacía
  */
 Contrato& Contrato::setCuentaBancaria ( std::string cuentaBancaria )
 {
    if ( cuentaBancaria == "" )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::setCuentaBancaria"
+      throw PooFusionExc ( "Contrato.cpp", "Contrato::setCuentaBancaria"
                         , "El contrato tiene que tener cuenta bancaria" );
    }
 
@@ -272,13 +272,13 @@ std::string Contrato::getCuentaBancaria ( ) const
  * @param mesesPermanencia Número de meses
  * @post La permanencia del contrato cambia según el parámetro
  * @return Una referencia al propio contrato
- * @throw MiExcepcion Si el número de meses es negativo
+ * @throw PooFusionExc Si el número de meses es negativo
  */
 Contrato& Contrato::setMesesPermanencia ( int mesesPermanencia )
 {
    if ( mesesPermanencia < 0 )
    {
-      throw MiExcepcion ( "Contrato.cpp", "Contrato::setMesesPermanencia"
+      throw PooFusionExc ( "Contrato.cpp", "Contrato::setMesesPermanencia"
                         , "El contrato no puede tener una permanencia negativa" );
    }
 

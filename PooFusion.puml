@@ -29,7 +29,7 @@ class Canal {
  - nombre: string
 }
 
-class MiExcepcion{
+class PooFusionExc{
  - fichero: string
  - función: string
  - mensaje: string
@@ -39,10 +39,10 @@ Contrato *-- "conexion" ConexionInternet
 Contrato *-- "canales" PaqueteDeCanales
 Contrato --> "abonado" Persona
 PaqueteDeCanales o-- "1..5" Canal
-Contrato ..> MiExcepcion
-Canal ..> MiExcepcion
-ConexionInternet ..> MiExcepcion
-Persona ..> MiExcepcion
-PaqueteDeCanales ..> MiExcepcion
+Contrato ..> PooFusionExc
+Canal ..> PooFusionExc
+ConexionInternet ..> PooFusionExc
+Persona ..> PooFusionExc
+PaqueteDeCanales ..> PooFusionExc
 
 @enduml
