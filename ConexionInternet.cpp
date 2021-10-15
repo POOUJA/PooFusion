@@ -8,7 +8,7 @@
  */
 
 #include "ConexionInternet.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -16,7 +16,7 @@
  * @param nVel Velocidad de la conexión
  * @post La información de la nueva conexión coincide con los valores que se le
  *       pasan
- * @throw MiExcepcion Si la velocidad es un número menor o igual a cero, o si el
+ * @throw PooFusionExc Si la velocidad es un número menor o igual a cero, o si el
  *        tipo es una cadena vacía
  */
 ConexionInternet::ConexionInternet ( std::string nTipo, int nVel) :    _tipo ( nTipo )
@@ -24,14 +24,14 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel) :    _tipo ( n
 {
    if ( nVel <= 0 )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
+      throw PooFusionExc ( "ConexionInternet.cpp"
                         , "ConexionInternet::ConexionInternet"
                         , "La velocidad ha de ser un número positivo" );
    }
 
    if ( nTipo == "" )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
+      throw PooFusionExc ( "ConexionInternet.cpp"
                         , "ConexionInternet::ConexionInternet"
                         , "El tipo de conexión no puede ser una cadena vacía" );
    }
@@ -59,13 +59,13 @@ ConexionInternet::~ConexionInternet ( )
  * Cambia la velocidad de la conexión
  * @param nVel Nueva velocidad
  * @post La velocidad de la conexión cambia al nuevo valor
- * @throw MiExcepcion Si la nueva velocidad no es un número positivo
+ * @throw PooFusionExc Si la nueva velocidad no es un número positivo
  */
 void ConexionInternet::setVelocidadMB ( int nVel )
 {
    if ( nVel <= 0 )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
+      throw PooFusionExc ( "ConexionInternet.cpp"
                         , "ConexionInternet::setVelocidadMB"
                         , "La velocidad ha de ser un número positivo" );
    }
@@ -88,13 +88,13 @@ int ConexionInternet::getVelocidadMB ( ) const
  * Cambia el tipo de la conexión
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
  * @post El tipo de la conexión cambia al nuevo valor
- * @throw MiExcepcion Si el tipo es una cadena vacía
+ * @throw PooFusionExc Si el tipo es una cadena vacía
  */
 void ConexionInternet::setTipo ( std::string nTipo )
 {
    if ( nTipo == "" )
    {
-      throw MiExcepcion ( "ConexionInternet.cpp"
+      throw PooFusionExc ( "ConexionInternet.cpp"
                         , "ConexionInternet::setTipo"
                         , "El tipo de conexión no puede ser una cadena vacía" );
    }

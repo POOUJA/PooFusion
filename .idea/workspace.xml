@@ -15,15 +15,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f8fad2e-17d0-4b0f-90ee-bdb2d4667a21" name="Changes" comment="generic cmake support">
+      <change afterPath="$PROJECT_DIR$/PooFusionExc.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PooFusionExc.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Canal.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Canal.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Canal.h" beforeDir="false" afterPath="$PROJECT_DIR$/Canal.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConexionInternet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ConexionInternet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConexionInternet.h" beforeDir="false" afterPath="$PROJECT_DIR$/ConexionInternet.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contrato.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Contrato.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contrato.h" beforeDir="false" afterPath="$PROJECT_DIR$/Contrato.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaqueteDeCanales.h" beforeDir="false" afterPath="$PROJECT_DIR$/PaqueteDeCanales.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiExcepcion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiExcepcion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaqueteDeCanales.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/PaqueteDeCanales.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persona.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Persona.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PooFusion.puml" beforeDir="false" afterPath="$PROJECT_DIR$/PooFusion.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PooFusion.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/PooFusion.uxf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Producto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Producto.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,9 +79,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="a.exe" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PooFusion_git" TARGET_NAME="a.exe" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PooFusion_git" RUN_TARGET_NAME="a.exe">

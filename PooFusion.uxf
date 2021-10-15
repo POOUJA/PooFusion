@@ -60,7 +60,7 @@ bg=green</panel_attributes>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
-MiExcepcion
+PooFusionExc
 --
 - fichero: string
 - funcion: string

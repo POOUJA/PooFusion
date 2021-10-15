@@ -40,13 +40,13 @@ class PaqueteDeCanales {
 }
 
 
-class MiExcepcion<<Exception>> {
+class PooFusionExc<<Exception>> {
    - fichero: string
    - función: string
    - mensaje: string
    + quePasa(): cadena
 }
-note bottom of MiExcepcion
+note bottom of PooFusionExc
    Todas las clases lanzan
    excepciones de este tipo
    salvo Contenedor

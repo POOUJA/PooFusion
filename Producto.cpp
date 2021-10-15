@@ -10,7 +10,7 @@
 #include <stdexcept>
 
 #include "Producto.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -21,7 +21,7 @@ Producto::Producto ( float nPM ): _precioMensual ( nPM )
 {
    if ( nPM < 0 )
    {
-      throw MiExcepcion ( "Producto::Producto", "Precio de producto no válido"
+      throw PooFusionExc ( "Producto::Producto", "Precio de producto no válido"
                          , "Producto.cpp" );
    }
 }
@@ -61,7 +61,7 @@ void Producto::setPrecioMensual ( float nPM )
 {
    if ( nPM < 0 )
    {
-      throw MiExcepcion ( "Producto::setPrecioMensual"
+      throw PooFusionExc ( "Producto::setPrecioMensual"
                          , "Precio de producto no válido", "Producto.cpp" );
    }
 
