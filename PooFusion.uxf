@@ -46,8 +46,8 @@ ConexionInternet
 + ConexionInternet ( orig: ConexionInternet )
 + getTipo (): string
 + setTipo ( nTipo: string )
-+ getVelocidad (): int
-+ setVelocidad ( nVel: int )
++ getVelocidadMB (): int
++ setVelocidadMB ( nVel: int )
 *+ operator= ( otro: ConexionInternet ): ConexionInternet*
 *+ operator&lt; ( otro: ConexionInternet )*
 *+ operator== ( otro: ConexionInternet )*</panel_attributes>
