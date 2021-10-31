@@ -11,7 +11,7 @@
 #include "Persona.h"
 #include "Canal.h"
 #include "ConexionInternet.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 using namespace std;
 
@@ -118,7 +118,7 @@ int main ( int argc, char** argv )
    {
       aP[2].setApeNom ("");
    }
-   catch ( MiExcepcion& e )
+   catch ( PooFusionExc& e )
    {
       std::cerr << e.quePasa () << std::endl;
    }

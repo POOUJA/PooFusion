@@ -59,7 +59,7 @@ Canal
       <h>90</h>
     </coordinates>
     <panel_attributes>style=autoresize
-MiExcepcion
+PooFusionExc
 --
 - fichero: string
 - funcion: string
@@ -124,5 +124,20 @@ r1=miCanal</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>120.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>100</x>
+      <y>370</y>
+      <w>240</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+bg=yellow
+Solo se incluyen los nombres
+de los nuevos métodos, para
+que el diagrama sea más legible</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
