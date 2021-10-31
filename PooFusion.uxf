@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>7</y>
-      <w>203</w>
-      <h>119</h>
+      <x>630</x>
+      <y>260</y>
+      <w>330</w>
+      <h>180</h>
     </coordinates>
-    <panel_attributes>ConexionInternet
+    <panel_attributes>style=autoresize
+ConexionInternet
 --
 - tipo: string
 - velocidadMB: int
@@ -18,20 +19,20 @@
 + ConexionInternet ( nTipo: string, nVel: int)
 + getTipo (): string
 + setTipo (nTipo: string)
-+ getVelocidad (): int
-+ setVelocidad (nVel: int)
-</panel_attributes>
++ getVelocidadMB (): int
++ setVelocidadMB (nVel: int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>7</x>
-      <y>7</y>
-      <w>196</w>
-      <h>119</h>
+      <x>280</x>
+      <y>260</y>
+      <w>310</w>
+      <h>180</h>
     </coordinates>
-    <panel_attributes>Persona
+    <panel_attributes>style=autoresize
+Persona
 --
 - apeNom: string
 - nif: string
@@ -39,7 +40,7 @@
 + Persona()
 + Persona (nApeNom: string, nNIF: string)
 + getApeNom (): string
-+ getApeNom (nApeNom: string)
++ setApeNom (nApeNom: string)
 + getNif (): string
 + setNif (nNif: string)</panel_attributes>
     <additional_attributes/>
@@ -47,12 +48,13 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>7</x>
-      <y>133</y>
-      <w>154</w>
-      <h>84</h>
+      <x>280</x>
+      <y>480</y>
+      <w>240</w>
+      <h>130</h>
     </coordinates>
-    <panel_attributes>Canal
+    <panel_attributes>style=autoresize
+Canal
 --
 - nombre: string
 --
