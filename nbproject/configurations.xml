@@ -6,7 +6,7 @@
                    projectFiles="true">
       <itemPath>Canal.h</itemPath>
       <itemPath>ConexionInternet.h</itemPath>
-      <itemPath>MiExcepcion.h</itemPath>
+      <itemPath>PooFusionExc.h</itemPath>
       <itemPath>Persona.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -18,7 +18,7 @@
                    projectFiles="true">
       <itemPath>Canal.cpp</itemPath>
       <itemPath>ConexionInternet.cpp</itemPath>
-      <itemPath>MiExcepcion.cpp</itemPath>
+      <itemPath>PooFusionExc.cpp</itemPath>
       <itemPath>Persona.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -53,9 +53,9 @@
       </item>
       <item path="ConexionInternet.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="MiExcepcion.cpp" ex="false" tool="1" flavor2="0">
+      <item path="PooFusionExc.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="MiExcepcion.h" ex="false" tool="3" flavor2="0">
+      <item path="PooFusionExc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Persona.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -94,9 +94,9 @@
       </item>
       <item path="ConexionInternet.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="MiExcepcion.cpp" ex="false" tool="1" flavor2="0">
+      <item path="PooFusionExc.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="MiExcepcion.h" ex="false" tool="3" flavor2="0">
+      <item path="PooFusionExc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Persona.cpp" ex="false" tool="1" flavor2="0">
       </item>
