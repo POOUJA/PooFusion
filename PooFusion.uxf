@@ -4,9 +4,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
-      <y>20</y>
-      <w>280</w>
+      <x>270</x>
+      <y>200</y>
+      <w>310</w>
       <h>220</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -29,9 +29,9 @@ Persona
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>20</y>
-      <w>350</w>
+      <x>630</x>
+      <y>200</y>
+      <w>410</w>
       <h>260</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -46,8 +46,8 @@ ConexionInternet
 + ~ConexionInternet()
 + getTipo(): string
 + setTipo( nTipo: string)
-+ getVelocidad(): int
-+ setVelocidad( nVel: int)
++ getVelocidadMB (): int
++ setVelocidadMB ( nVel: int)
 + operator&lt;( otro: ConexionInternet): bool
 + operator==( otro: ConexionInternet): bool
 + operator=( otro: ConexionInternet): ConexionInternet</panel_attributes>
@@ -56,9 +56,9 @@ ConexionInternet
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
-      <y>270</y>
-      <w>210</w>
+      <x>270</x>
+      <y>450</y>
+      <w>240</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -78,9 +78,9 @@ Canal
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>310</y>
-      <w>370</w>
+      <x>580</x>
+      <y>490</y>
+      <w>420</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>style=autoresize
