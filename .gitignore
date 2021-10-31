@@ -35,3 +35,7 @@
 **/nbproject/private/
 **/build/
 **/dist/
+
+#Exclude Clion/CMake tmp dirs
+**/.idea
+**/cmake-build-debug
