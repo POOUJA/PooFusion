@@ -11,12 +11,11 @@
 #define POOFUSIONEXC_H
 
 #include <string>
-#include <stdexcept>
 
 /**
  * Los objetos de esta clase guardan información relativa a excepciones
  */
-class PooFusionExc: public std::logic_error
+class PooFusionExc
 {
    private:
       std::string _fichero = "";
@@ -24,13 +23,10 @@ class PooFusionExc: public std::logic_error
       std::string _mensaje = "";
 
    public:
-      PooFusionExc ( std::string nFun, std::string msg, std::string nFich = "" );
+      PooFusionExc ( std::string nFich, std::string nFun, std::string msg );
       PooFusionExc ( const PooFusionExc& orig );
-
-      virtual ~PooFusionExc ( ) noexcept = default;
-
+      virtual ~PooFusionExc ( );
       std::string quePasa () const;
 };
 
 #endif /* POOFUSIONEXC_H */
-
