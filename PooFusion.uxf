@@ -6,8 +6,8 @@
     <coordinates>
       <x>200</x>
       <y>60</y>
-      <w>430</w>
-      <h>140</h>
+      <w>480</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Persona
@@ -15,10 +15,8 @@ Persona
 - apeNom: string
 - nif: string
 --
-+ setMiConexion ( nuevaC: ConexionInternet ): ConexionInternet
-+ getMiConexion (): ConexionInternet
-+ setMiPaquete( nuevoP: PaqueteDeCanales): PaqueteDeCanales
-+ getMiPaquete(): PaqueteDeCanales</panel_attributes>
++ setPaqueteC ( nuevoPC: PaqueteDeCanales): PaqueteDeCanales
++ getPaqueteC (): PaqueteDeCanales</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -26,7 +24,7 @@ Persona
     <coordinates>
       <x>240</x>
       <y>380</y>
-      <w>130</w>
+      <w>140</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -40,8 +38,8 @@ ConexionInternet
     <id>UMLClass</id>
     <coordinates>
       <x>540</x>
-      <y>540</y>
-      <w>110</w>
+      <y>640</y>
+      <w>130</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -54,12 +52,12 @@ Canal
     <id>UMLClass</id>
     <coordinates>
       <x>380</x>
-      <y>590</y>
-      <w>120</w>
+      <y>690</y>
+      <w>130</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>style=autoresize
-MiExcepcion
+PooFusionExc
 --
 - fichero: string
 - funcion: string
@@ -70,44 +68,44 @@ MiExcepcion
     <id>Relation</id>
     <coordinates>
       <x>260</x>
-      <y>190</y>
-      <w>100</w>
-      <h>210</h>
+      <y>160</y>
+      <w>110</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 contrata v
 r1=miConexion</panel_attributes>
-    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;220.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>550</x>
-      <y>190</y>
+      <y>160</y>
       <w>100</w>
-      <h>210</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 contrata v
 r1=miPaquete</panel_attributes>
-    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>430</x>
-      <y>190</y>
+      <y>160</y>
       <w>30</w>
-      <h>420</h>
+      <h>550</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;400.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;530.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>500</x>
-      <y>590</y>
+      <y>690</y>
       <w>120</w>
       <h>70</h>
     </coordinates>
@@ -120,46 +118,72 @@ r1=miPaquete</panel_attributes>
       <x>290</x>
       <y>440</y>
       <w>140</w>
-      <h>170</h>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>120.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>120.0;250.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>520</x>
-      <y>380</y>
-      <w>140</w>
-      <h>60</h>
+      <y>330</y>
+      <w>440</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
 --
-- descuento: float</panel_attributes>
+- descuento: float
+--
++ PaqueteDeCanales ( nC1: Canal, nC2: Canal, nDesc: float )
++ PaqueteDeCanales ( orig: PaqueteDeCanales )
++ ~PaqueteDeCanales ( )
++ setDescuento ( nDesc: float )
++ getDescuento ( ): float
++ setC2 ( nC2: Canal ): Canal
++ getC2 ( ): Canal
++ setC1 ( nC1: Canal ): Canal
++ getC1 ( ): Canal
++ operator= ( otro: PaqueteDeCanales ): PaqueteDeCanales</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>590</x>
-      <y>430</y>
+      <y>540</y>
       <w>50</w>
-      <h>130</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=1..5</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+m2=c1\nc2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>460</x>
-      <y>430</y>
+      <y>540</y>
       <w>110</w>
-      <h>180</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>730</x>
+      <y>200</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>style=autoresize
+bg=yellow
+Solo se incluyen los nuevos
+métodos para que el diagrama
+sea más legible</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

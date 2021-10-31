@@ -8,7 +8,7 @@
  */
 
 #include "PaqueteDeCanales.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
@@ -16,14 +16,14 @@
  * @param nC2 Segundo canal del paquete
  * @param nDesc Descuento a aplicar
  * @post El nuevo paquete tiene los valores pasados como parámetros
- * @throw MiExcepcion Si el descuento es negativo
+ * @throw PooFusionExc Si el descuento es negativo
  */
 PaqueteDeCanales::PaqueteDeCanales ( Canal* nC1, Canal* nC2, float nDesc ):
                                    _c1 ( nC1 ), _c2 ( nC2 ), _descuento ( nDesc )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp"
+      throw PooFusionExc ( "PaqueteDeCanales.cpp"
                         , "PaqueteDeCanales::PaqueteDeCanales"
                         , "El descuento no puede ser negativo" );
    }
@@ -57,13 +57,13 @@ PaqueteDeCanales::~PaqueteDeCanales ( )
  * Cambia el descuento del paquete de canales
  * @param descuento Nuevo valor de descuento a aplicar
  * @post El descuento del paquete cambia al valor pasado como parámetro
- * @throw MiExcepcion Si el nuevo descuento es un número negativo
+ * @throw PooFusionExc Si el nuevo descuento es un número negativo
  */
 void PaqueteDeCanales::setDescuento ( float nDesc )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
                         , "El descuento no puede ser negativo" );
    }
 

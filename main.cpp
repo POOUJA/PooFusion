@@ -9,7 +9,7 @@
 #include <iostream>
 
 #include "Persona.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 using namespace std;
 
@@ -128,7 +128,7 @@ int main ( int argc, char** argv )
    {
       aP[2].setApeNom ("");
    }
-   catch ( MiExcepcion& e )
+   catch ( PooFusionExc& e )
    {
       std::cerr << e.quePasa () << std::endl << std::endl;
    }
