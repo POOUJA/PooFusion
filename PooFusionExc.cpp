@@ -7,22 +7,18 @@
  * @brief Implementación de los métodos de la clase PooFusionExc
  */
 
-#include <sstream>
-
 #include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
+ * @param nFich Nombre del archivo desde donde se lanza la excepción
  * @param nFun Nombre de la función/método que lanza la excepción
  * @param msg Descripción del error acaecido
- * @param nFich (opcional) Nombre del archivo desde donde se lanza la excepción
  */
-PooFusionExc::PooFusionExc ( std::string nFun, std::string msg
-                           , std::string nFich )
-        :std::logic_error( nFun+"::"+msg )
-        , _funcion ( nFun )
-        , _mensaje ( msg )
-        , _fichero ( nFich )
+PooFusionExc::PooFusionExc ( std::string nFich
+   , std::string nFun, std::string msg ): _fichero ( nFich )
+                                          , _funcion ( nFun )
+                                          , _mensaje ( msg )
 { }
 
 
@@ -32,11 +28,16 @@ PooFusionExc::PooFusionExc ( std::string nFun, std::string msg
  * @post El nuevo objeto tiene exactamente la misma información que el que se
  *       pasa como parámetro
  */
-PooFusionExc::PooFusionExc ( const PooFusionExc& orig )
-    : std::logic_error(orig)
-    , _fichero ( orig._fichero )
-    , _funcion ( orig._funcion )
-    , _mensaje ( orig._mensaje )
+PooFusionExc::PooFusionExc ( const PooFusionExc& orig ): _fichero ( orig._fichero )
+                                                         , _funcion ( orig._funcion )
+                                                         , _mensaje ( orig._mensaje )
+{ }
+
+
+/**
+ * Destructor
+ */
+PooFusionExc::~PooFusionExc ( )
 { }
 
 
@@ -46,15 +47,5 @@ PooFusionExc::PooFusionExc ( const PooFusionExc& orig )
  */
 std::string PooFusionExc::quePasa ( ) const
 {
-   std::stringstream aux;
-
-   if ( _fichero != "" )
-   {
-      aux << _fichero << " -> ";
-   }
-
-   aux << _funcion << ": " << _mensaje;
-
-   return aux.str ();
+   return std::string ( _fichero + " -> " + _funcion + ": " + _mensaje );
 }
-
