@@ -16,7 +16,7 @@
  * @post El nombre del nuevo canal coincidirá con el que se pasa como parámetro
  * @throw PooFusionExc Si el nombre es una cadena vacía
  */
-Canal::Canal ( std::string nNombre ) : _nombre ( nNombre )
+Canal::Canal ( std::string nNombre ) : Producto(), _nombre ( nNombre )
 {
    if ( nNombre == "" )
    {
@@ -30,7 +30,7 @@ Canal::Canal ( std::string nNombre ) : _nombre ( nNombre )
  * @param orig Canal del que se copia la información
  * @post El nuevo canal tiene exactamente los mismos datos que el original
  */
-Canal::Canal ( const Canal& orig ): _nombre ( orig._nombre )
+Canal::Canal ( const Canal& orig ): Producto ( orig ), _nombre ( orig._nombre )
 { }
 
 

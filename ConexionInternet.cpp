@@ -12,6 +12,37 @@
 
 /**
  * Constructor parametrizado
+ * @param nPrecio Precio de la conexión
+ * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
+ * @param nVel Velocidad de la conexión
+ * @post La información de la nueva conexión coincide con los valores que se le
+ *       pasan
+ * @throw PooFusionExc Si la velocidad es un número menor o igual a cero, si el
+ *        tipo es una cadena vacía, o si el precio es un número negativo
+ */
+ConexionInternet::ConexionInternet ( float nPrecio, std::string nTipo
+                                   , int nVel ): Producto ( nPrecio )
+                                               , _tipo( nTipo )
+                                               , _velocidadMB ( nVel )
+{
+   if ( nVel <= 0 )
+   {
+      throw PooFusionExc ( "ConexionInternet.cpp"
+                           , "ConexionInternet::ConexionInternet"
+                           , "La velocidad ha de ser un número positivo" );
+   }
+
+   if ( nTipo == "" )
+   {
+      throw PooFusionExc ( "ConexionInternet.cpp"
+                           , "ConexionInternet::ConexionInternet"
+                           , "El tipo de conexión no puede ser una cadena vacía" );
+   }
+}
+
+
+/**
+ * Constructor parametrizado
  * @param nTipo Tipo de la conexión (fibra, ADSL, WiMAX...)
  * @param nVel Velocidad de la conexión
  * @post La información de la nueva conexión coincide con los valores que se le
@@ -19,23 +50,9 @@
  * @throw PooFusionExc Si la velocidad es un número menor o igual a cero, o si el
  *        tipo es una cadena vacía
  */
-ConexionInternet::ConexionInternet ( std::string nTipo, int nVel) :    _tipo ( nTipo )
-                                                        , _velocidadMB ( nVel )
-{
-   if ( nVel <= 0 )
-   {
-      throw PooFusionExc ( "ConexionInternet.cpp"
-                        , "ConexionInternet::ConexionInternet"
-                        , "La velocidad ha de ser un número positivo" );
-   }
-
-   if ( nTipo == "" )
-   {
-      throw PooFusionExc ( "ConexionInternet.cpp"
-                        , "ConexionInternet::ConexionInternet"
-                        , "El tipo de conexión no puede ser una cadena vacía" );
-   }
-}
+ConexionInternet::ConexionInternet ( std::string nTipo, int nVel):
+                                ConexionInternet ( 0, nTipo, nVel )
+{ }
 
 
 /**
@@ -43,9 +60,9 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel) :    _tipo ( n
  * @param orig Conexión de la que se copia la información
  * @post La nueva conexión tiene exactamente los mismos datos que la original
  */
-ConexionInternet::ConexionInternet ( const ConexionInternet& orig ):
-                                 _tipo ( orig._tipo )
-                                 , _velocidadMB ( orig._velocidadMB )
+ConexionInternet::ConexionInternet ( const ConexionInternet& orig ): Producto ( orig )
+                                            , _tipo ( orig._tipo )
+                                            , _velocidadMB ( orig._velocidadMB )
 { }
 
 /**
@@ -125,7 +142,7 @@ ConexionInternet& ConexionInternet::operator= ( const ConexionInternet& otro )
 {
    if ( this != &otro )
    {
-      this->Producto::operator = ( otro );
+      Producto::operator= ( otro );
       _tipo = otro._tipo;
       _velocidadMB = otro._velocidadMB;
    }
