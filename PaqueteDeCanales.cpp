@@ -8,27 +8,25 @@
  */
 
 #include "PaqueteDeCanales.h"
-#include "MiExcepcion.h"
+#include "PooFusionExc.h"
 
 /**
  * Constructor parametrizado
  * @param nDesc Descuento a aplicar
  * @post El nuevo paquete tiene el descuento pasado como parámetro
- * @throw MiExcepcion Si el descuento es negativo
+ * @throw PooFusionExc Si el descuento es negativo
  */
-PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
+PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto(), _descuento ( nDesc )
+                                                  , _canales ( MAX_CANALES )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp"
+      throw PooFusionExc ( "PaqueteDeCanales.cpp"
                         , "PaqueteDeCanales::PaqueteDeCanales"
                         , "El descuento no puede ser negativo" );
    }
 
-   for ( int i = 0; i < MAX_CANALES; i++ )
-   {
-      _canales[i] = nullptr;
-   }
+   // El constructor del contenedor ya inicializa los valores a nullptr
 }
 
 
@@ -37,15 +35,10 @@ PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): _descuento ( nDesc )
  * @param orig Paquete del que se copia la información
  * @post El nuevo paquete tiene una copia exacta de los valores del original
  */
-PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
-                                                _descuento ( orig._descuento )
-                                                , _nCanales ( orig._nCanales )
-{
-   for ( int i = 0; i < MAX_CANALES; i++ )
-   {
-      _canales[i] = orig._canales[i];
-   }
-}
+PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ): Producto ( orig )
+                                                , _descuento ( orig._descuento )
+                                                , _canales ( orig._canales )
+{ }
 
 
 /**
@@ -55,10 +48,7 @@ PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ):
  */
 PaqueteDeCanales::~PaqueteDeCanales ( )
 {
-   for ( int i = 0; i < _nCanales; i++ )
-   {
-      _canales[i] = nullptr;
-   }
+   _canales.vaciar();
 }
 
 
@@ -66,13 +56,13 @@ PaqueteDeCanales::~PaqueteDeCanales ( )
  * Cambia el descuento del paquete de canales
  * @param descuento Nuevo valor de descuento a aplicar
  * @post El descuento del paquete cambia al valor pasado como parámetro
- * @throw MiExcepcion Si el nuevo descuento es un número negativo
+ * @throw PooFusionExc Si el nuevo descuento es un número negativo
  */
 void PaqueteDeCanales::setDescuento ( float nDesc )
 {
    if ( nDesc < 0 )
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::setDescuento"
                         , "El descuento no puede ser negativo" );
    }
 
@@ -95,18 +85,19 @@ float PaqueteDeCanales::getDescuento ( ) const
  * @param nuevoC Canal a añadir
  * @pre El canal nuevo no está ya incluido en el paquete
  * @post El paquete de canales contiene un canal más
- * @throw MiExcepcion Si no caben más canales en el paquete
+ * @throw PooFusionExc Si no caben más canales en el paquete
  */
 void PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
-   if ( _nCanales == MAX_CANALES )
+   try
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
-                          "No caben más canales en el paquete" );
+      _canales.addElemento ( nuevoC );
    }
-
-   _canales[_nCanales] = nuevoC;
-   _nCanales++;
+   catch ( std::length_error& e )
+   {
+      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
+                           e.what() );
+   }
 }
 
 
@@ -115,17 +106,23 @@ void PaqueteDeCanales::addCanal ( Canal* nuevoC )
  * @param cual Ordinal del canal que se quiere consultar (rango: 1..número de
  *        canales)
  * @return La dirección de memoria del canal
- * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ * @throw PooFusionExc Si el ordinal está fuera del rango indicado
  */
 Canal* PaqueteDeCanales::getCanal ( int cual )
 {
-   if ( ( cual < 1 ) || ( cual > _nCanales ) )
+   Canal* aDevolver = nullptr;
+
+   try
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal",
-                          "Valor de índice incorrecto" );
+      aDevolver = _canales.getElemento ( cual-1 );
+   }
+   catch ( std::out_of_range &e )
+   {
+      throw PooFusionExc ( "PaqueteDeCanales.cpp"
+                         , "PaqueteDeCanales::getCanal", e.what () );
    }
 
-   return _canales[cual-1];
+   return aDevolver;
 }
 
 
@@ -135,27 +132,23 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
  *        canales)
  * @post El paquete tiene un canal menos
  * @return La dirección de memoria del canal que se saca
- * @throw MiExcepcion Si el ordinal está fuera del rango indicado
+ * @throw PooFusionExc Si el ordinal está fuera del rango indicado
  */
 Canal* PaqueteDeCanales::sacaCanal ( int cual )
 {
-   if ( ( cual < 1 ) || ( cual > _nCanales ) )
+   Canal* aDevolver = nullptr;
+
+   try
    {
-      throw MiExcepcion ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::sacaCanal",
-                          "Valor de índice incorrecto" );
+      aDevolver = _canales.sacaElemento ( cual-1 );
+   }
+   catch ( std::out_of_range &e )
+   {
+      throw PooFusionExc ( "PaqueteDeCanales.cpp"
+                         , "PaqueteDeCanales::sacaCanal", e.what() );
    }
 
-   Canal* aux = _canales[cual-1];
-
-   // Compactación del vector de punteros
-   for ( int i = cual-1; i < _nCanales-1; i++ )
-   {
-      _canales[i] = _canales[i+1];
-   }
-
-   _nCanales--;
-
-   return aux;
+   return aDevolver;
 }
 
 
@@ -165,7 +158,7 @@ Canal* PaqueteDeCanales::sacaCanal ( int cual )
  */
 int PaqueteDeCanales::getNumCanales ( ) const
 {
-   return _nCanales;
+   return _canales.getNumElementos();
 }
 
 
@@ -183,11 +176,8 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 {
    if ( this != &otro )
    {
-      for ( int i = 0; i < MAX_CANALES; i++ )
-      {
-         _canales[i] = otro._canales[i];
-      }
-      _nCanales = otro._nCanales;
+      Producto::operator= ( otro );
+      _canales = otro._canales;
       _descuento = otro._descuento;
    }
 

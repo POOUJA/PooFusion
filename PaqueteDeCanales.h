@@ -11,6 +11,7 @@
 #define PAQUETEDECANALES_H
 
 #include "Canal.h"
+#include "Contenedor.h"
 #include "Producto.h"
 
 /**
@@ -22,9 +23,8 @@ class PaqueteDeCanales: public Producto
       static const int MAX_CANALES = 5;   ///< Máximo de canales
 
    private:
-      Canal* _canales[MAX_CANALES];   ///< Canales del paquete
-      int _nCanales = 0;   ///< Número de canales que contiene el paquete
       float _descuento = 0;   ///< Descuento por el paquete
+      Contenedor<Canal*> _canales;   ///< Canales del paquete
   
    public:
       PaqueteDeCanales ( float nDesc );

@@ -24,6 +24,7 @@ class ConexionInternet: public Producto
       
    public:
       ConexionInternet () = default;
+      ConexionInternet ( float nPrecio, std::string nTipo, int nVel );
       ConexionInternet ( std::string nTipo, int nVel);
       ConexionInternet ( const ConexionInternet& orig );
       ~ConexionInternet ();

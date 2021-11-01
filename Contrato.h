@@ -13,6 +13,7 @@
 #include "Persona.h"
 #include "ConexionInternet.h"
 #include "PaqueteDeCanales.h"
+#include "Contenedor.h"
 
 /**
  * Contratos formalizados entre PooFusion y particulares
@@ -30,8 +31,7 @@ class Contrato
       Persona* _abonado = nullptr;
 
       bool _conexionInternet = false;
-      Producto* _productos[MAX_PRODUCTOS];
-      int _numProductos = 0;
+      Contenedor<Producto*> _productos;   ///< Productos contratados
 
    public:
       Contrato ( Persona* nAbonado = nullptr);

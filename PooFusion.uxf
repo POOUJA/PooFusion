@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>48</y>
-      <w>96</w>
-      <h>56</h>
+      <x>40</x>
+      <y>130</y>
+      <w>130</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Persona
@@ -19,10 +19,10 @@ Persona
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>304</x>
-      <y>416</y>
-      <w>104</w>
-      <h>88</h>
+      <x>360</x>
+      <y>590</y>
+      <w>150</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>style=autoresize
 ConexionInternet
@@ -30,33 +30,30 @@ ConexionInternet
 - tipo: string
 - velocidad: int
 --
-+ getTipo (): string
-</panel_attributes>
++ getTipo (): string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>248</y>
-      <w>120</w>
-      <h>64</h>
+      <x>880</x>
+      <y>710</y>
+      <w>130</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
 --
-- nombre: string
---
-+ getNombre (): string</panel_attributes>
+- nombre: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>160</y>
-      <w>104</w>
-      <h>104</h>
+      <x>180</x>
+      <y>270</y>
+      <w>130</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
@@ -65,40 +62,38 @@ PooFusionExc
 --
 - fichero: string
 - funcion: string
-- mensaje: string
---
-+ quePasa(): string</panel_attributes>
+- mensaje: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>312</y>
-      <w>32</w>
-      <h>120</h>
+      <x>440</x>
+      <y>430</y>
+      <w>70</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;130.0;20.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>472</x>
-      <y>312</y>
-      <w>56</w>
-      <h>120</h>
+      <x>600</x>
+      <y>430</y>
+      <w>40</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>50.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>20.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>456</x>
-      <y>416</y>
-      <w>128</w>
-      <h>64</h>
+      <x>550</x>
+      <y>590</y>
+      <w>180</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
@@ -113,9 +108,9 @@ PaqueteDeCanales
     <id>UMLClass</id>
     <coordinates>
       <x>280</x>
-      <y>16</y>
-      <w>224</w>
-      <h>112</h>
+      <y>90</y>
+      <w>310</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Contrato
@@ -125,17 +120,16 @@ Contrato
 - cuentaBancaria: string
 - activo: bool
 --
-+ Contrato ( p: Persona )
 + addProducto ( p: Producto )</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
-      <y>64</y>
-      <w>112</w>
-      <h>32</h>
+      <x>160</x>
+      <y>150</y>
+      <w>140</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=abonado
@@ -145,10 +139,10 @@ r1=abonado
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>736</x>
-      <y>128</y>
-      <w>272</w>
-      <h>192</h>
+      <x>900</x>
+      <y>230</y>
+      <w>380</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template= T
@@ -165,16 +159,17 @@ Contenedor
 + getElemento ( cual: int ): T
 + sacaElemento ( cual: int ): T
 + getNumElementos (): int
++ operator= ( otro: Contenedor )
 + vaciar ()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>56</y>
-      <w>152</w>
-      <h>48</h>
+      <x>680</x>
+      <y>140</y>
+      <w>230</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template=Producto*
@@ -184,10 +179,10 @@ ContenedorProductos</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>416</y>
-      <w>136</w>
-      <h>48</h>
+      <x>870</x>
+      <y>590</y>
+      <w>190</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template=Canal*
@@ -197,76 +192,61 @@ ContenedorCanales</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>232</y>
-      <w>152</w>
-      <h>88</h>
+      <x>460</x>
+      <y>360</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Producto
 --
 # precioMensual: float
 --
-+ Producto ( precio: float )
-+ getPrecioMensual (): float
-</panel_attributes>
++ getPrecioMensual (): float</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>576</x>
-      <y>440</y>
-      <w>168</w>
-      <h>24</h>
+      <x>720</x>
+      <y>620</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>496</x>
-      <y>72</y>
-      <w>80</w>
-      <h>24</h>
+      <x>580</x>
+      <y>160</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>72</y>
-      <w>176</w>
-      <h>80</h>
+      <x>850</x>
+      <y>160</y>
+      <w>200</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 &lt;&lt;bind&gt;&gt;
 &lt;T-&gt;Producto*&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0;200.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>808</x>
-      <y>312</y>
-      <w>88</w>
-      <h>128</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-&lt;&lt;bind&gt;&gt;
-&lt;T-&gt;Canal*&gt;</panel_attributes>
-    <additional_attributes>15.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0;180.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>104</x>
-      <y>296</y>
-      <w>192</w>
-      <h>40</h>
+      <x>110</x>
+      <y>440</y>
+      <w>270</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>style=autoresize
 bg=yellow
@@ -277,27 +257,28 @@ lanzan excepciones de este tipo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>192</x>
-      <y>256</y>
-      <w>24</w>
-      <h>56</h>
+      <x>220</x>
+      <y>370</y>
+      <w>30</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>72</x>
-      <y>368</y>
-      <w>200</w>
-      <h>144</h>
+      <x>70</x>
+      <y>530</y>
+      <w>280</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>style=autoresize
 bg=yellow
-El diagrama no incluye constructores
-por defecto y de copia, destructores,
-setters y getters
+Para que el diagrama sea más legible,
+se omiten nombres de métodos
+que no se han modificado en esta
+sesión.
 
 Los tipos, salvo casos concretos, no
 llevan &amp; ni *, pero a la hora de
@@ -308,25 +289,12 @@ programación</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>16</x>
-      <y>160</y>
-      <w>128</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>style=autoresize
-std::invalid_argument
-//bg=pink</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>552</x>
-      <y>344</y>
-      <w>200</w>
-      <h>40</h>
+      <x>670</x>
+      <y>500</y>
+      <w>270</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>style=autoresize
 bg=yellow
@@ -337,10 +305,10 @@ Es un atributo de PaqueteDeCanales</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>552</x>
-      <y>136</y>
-      <w>168</w>
-      <h>40</h>
+      <x>660</x>
+      <y>30</y>
+      <w>230</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>style=autoresize
 bg=yellow
@@ -351,35 +319,71 @@ Es un atributo de Contrato</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>96</y>
-      <w>24</w>
-      <h>56</h>
+      <x>750</x>
+      <y>70</y>
+      <w>30</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>744</x>
-      <y>360</y>
-      <w>24</w>
+      <x>910</x>
+      <y>540</y>
+      <w>30</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>120</y>
-      <w>48</w>
-      <h>128</h>
+      <x>570</x>
+      <y>190</y>
+      <w>170</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m2=1..10</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;120.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>950</x>
+      <y>640</y>
+      <w>60</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>430</y>
+      <w>380</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>360.0;310.0;10.0;310.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>480</y>
+      <w>120</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;bind&gt;&gt;
+&lt;T-&gt;Canal*&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
 </diagram>
