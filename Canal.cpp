@@ -80,7 +80,6 @@ Canal& Canal::operator= ( const Canal& otro )
 {
    if ( this != &otro )
    {
-      Producto::operator= ( otro );
       _nombre = otro._nombre;
    }
 

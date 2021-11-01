@@ -125,7 +125,6 @@ ConexionInternet& ConexionInternet::operator= ( const ConexionInternet& otro )
 {
    if ( this != &otro )
    {
-      this->Producto::operator = ( otro );
       _tipo = otro._tipo;
       _velocidadMB = otro._velocidadMB;
    }
