@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.3">
+<diagram program="umlet" version="14.3.0">
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -41,7 +41,7 @@ bg=green</panel_attributes>
       <x>763</x>
       <y>651</y>
       <w>140</w>
-      <h>63</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
@@ -56,10 +56,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>182</x>
+      <x>168</x>
       <y>231</y>
       <w>105</w>
-      <h>84</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
@@ -77,23 +77,23 @@ PooFusionExc
     <id>Relation</id>
     <coordinates>
       <x>427</x>
-      <y>399</y>
+      <y>406</y>
       <w>63</w>
-      <h>168</h>
+      <h>161</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;220.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;210.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>525</x>
-      <y>399</y>
+      <y>406</y>
       <w>70</w>
-      <h>168</h>
+      <h>161</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;220.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -101,7 +101,7 @@ PooFusionExc
       <x>553</x>
       <y>553</y>
       <w>147</w>
-      <h>84</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
@@ -121,7 +121,7 @@ bg=green</panel_attributes>
     <coordinates>
       <x>686</x>
       <y>595</y>
-      <w>147</w>
+      <w>154</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
@@ -209,7 +209,7 @@ bg=green</panel_attributes>
       <x>567</x>
       <y>210</y>
       <w>105</w>
-      <h>35</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template=Producto*
@@ -222,7 +222,7 @@ Contenedor</panel_attributes>
       <x>847</x>
       <y>553</y>
       <w>91</w>
-      <h>35</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template=Canal*
@@ -235,7 +235,7 @@ Contenedor</panel_attributes>
       <x>448</x>
       <y>322</y>
       <w>154</w>
-      <h>84</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;abstract&gt;&gt;
@@ -264,13 +264,13 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>686</x>
+      <x>693</x>
       <y>560</y>
-      <w>175</w>
+      <w>168</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;220.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -337,7 +337,7 @@ m2=1..10</panel_attributes>
     <coordinates>
       <x>294</x>
       <y>252</y>
-      <w>182</w>
+      <w>189</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -349,13 +349,13 @@ lanzan excepciones de este tipo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>273</x>
+      <x>266</x>
       <y>259</y>
-      <w>35</w>
+      <w>42</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
@@ -363,11 +363,12 @@ lanzan excepciones de este tipo</panel_attributes>
       <x>105</x>
       <y>511</y>
       <w>189</w>
-      <h>126</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>style=autoresize
 bg=yellow
-El diagrama no incluye constructores
+Para mejorar la legibilidad, el
+diagrama no incluye constructores
 por defecto y de copia, destructores,
 setters y getters
 
@@ -382,10 +383,10 @@ programación</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
+      <x>42</x>
       <y>231</y>
       <w>119</w>
-      <h>21</h>
+      <h>28</h>
     </coordinates>
     <panel_attributes>style=autoresize
 std::invalid_argument
