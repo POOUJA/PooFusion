@@ -37,6 +37,7 @@ class PaqueteDeCanales: public Producto
       Canal* sacaCanal ( int cual );
       int getNumCanales () const;
       PaqueteDeCanales& operator= ( const PaqueteDeCanales& otro );
+      float getPrecioMensual();
 };
 
 #endif /* PAQUETEDECANALES_H */

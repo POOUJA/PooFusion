@@ -193,3 +193,16 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
 
    return *this;
 }
+/**
+ * Obtiene el precio del paquete de canales
+ *
+ * @post Calcula el precio del paquete como la suma del precio de los canales asignados menos el descuento aplicado
+ * @return El precio final del paquete
+ */
+float PaqueteDeCanales::getPrecioMensual() {
+    float precioTotal=0;
+    for (int i = 0; i < _nCanales; ++i) {
+        precioTotal+=_canales[i]->getPrecioMensual();
+    }
+    return precioTotal*(1-_descuento/100);
+}

@@ -165,9 +165,14 @@ int main ( int argc, char** argv )
    std::cout << "Precio del canal " << c2.getNombre() << ": "
              << c2.getPrecioMensual() << std::endl;
    aC[0].setPrecioMensual(12);
+   aC[1].setPrecioMensual(22);
    aC[2].setPrecioMensual(15);
 
-   // Introduce datos en el contrato
+    std::cout << "El precio del paquete de canales es "
+              << pC1.getPrecioMensual()
+              << std::endl << std::endl;
+
+    // Introduce datos en el contrato
    cto01.addProducto ( c )
         .addProducto ( c2 ).addProducto ( aC[0] ).addProducto ( aC[2] )
         .setActivo ( true );
