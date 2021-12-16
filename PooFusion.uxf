@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
+<diagram program="umlet" version="13.3">
   <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -36,9 +36,9 @@ ConexionInternet
     <id>UMLClass</id>
     <coordinates>
       <x>608</x>
-      <y>720</y>
+      <y>656</y>
       <w>104</w>
-      <h>48</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
@@ -53,7 +53,7 @@ bg=green</panel_attributes>
       <x>256</x>
       <y>328</y>
       <w>120</w>
-      <h>104</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
@@ -70,31 +70,31 @@ PooFusionExc
     <id>Relation</id>
     <coordinates>
       <x>544</x>
-      <y>504</y>
+      <y>496</y>
       <w>72</w>
-      <h>136</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;150.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>656</x>
-      <y>504</y>
+      <y>496</y>
       <w>96</w>
-      <h>136</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>100.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>100.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>704</x>
-      <y>624</y>
-      <w>192</w>
-      <h>80</h>
+      <y>576</y>
+      <w>144</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
@@ -102,7 +102,6 @@ PaqueteDeCanales
 - descuento: float
 --
 + addCanal ( c: Canal ) 
-*+ getPrecioMensual (): float*
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -110,22 +109,22 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>704</x>
-      <y>696</y>
+      <y>624</y>
       <w>96</w>
-      <h>64</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1..5
 r2=canales</panel_attributes>
-    <additional_attributes>100.0;10.0;100.0;50.0;10.0;50.0</additional_attributes>
+    <additional_attributes>100.0;10.0;100.0;60.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>552</x>
       <y>120</y>
-      <w>272</w>
-      <h>208</h>
+      <w>264</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Contrato
@@ -140,7 +139,6 @@ Contrato
 *+ addProducto ( ci: ConexionInternet )*
 *+ addProducto ( c: Canal )*
 *+ addProducto ( pc: PaqueteDeCanales )*
-*+ addProducto ( p: Producto )*
 *+ getProducto ( cual: int )*
 *+ getNumProductos (): int*
 *+ tieneConexionInternet(): bool*
@@ -166,12 +164,12 @@ m1=1</panel_attributes>
       <x>568</x>
       <y>432</y>
       <w>200</w>
-      <h>80</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Producto
 --
-# precioMensual: float
+- precioMensual: float
 --
 *+ Producto ( precio: float )*
 *+ getPrecioMensual (): string*
@@ -182,32 +180,32 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>632</x>
-      <y>504</y>
+      <y>496</y>
       <w>32</w>
-      <h>232</h>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>20.0;270.0;10.0;10.0</additional_attributes>
+    <additional_attributes>20.0;200.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>640</x>
-      <y>320</y>
+      <y>304</y>
       <w>80</w>
-      <h>128</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 r2=productos
 m2=1..10</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
       <x>392</x>
       <y>352</y>
-      <w>216</w>
+      <w>208</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -230,9 +228,9 @@ lanzan excepciones de este tipo</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>152</x>
-      <y>584</y>
-      <w>224</w>
+      <x>184</x>
+      <y>536</y>
+      <w>216</w>
       <h>144</h>
     </coordinates>
     <panel_attributes>style=autoresize

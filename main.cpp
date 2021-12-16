@@ -44,14 +44,9 @@ void muestraContrato ( Contrato& paramC )
         std::cout << "Actualmente NO activo" << std::endl;
     }
 
-    std::cout << "Productos del contrato " << std::endl;
+    std::cout << "Num productos del contrato "
+              << paramC.getNumProductos() << std::endl;
 
-    for ( int i = 1; i <= paramC.getNumProductos(); i++ )
-    {
-        std::cout << "Producto " << i
-                  << " precio " << paramC.getProducto(i).getPrecioMensual()
-                  << std::endl;
-    }
 }
 
 
@@ -157,27 +152,36 @@ int main ( int argc, char** argv )
    pC1.addCanal ( &aC[2] );
    pC1.addCanal ( &aC[1] );
 
-   // Crea un nuevo contrato
-   Contrato cto01 ( &p );
-   // Los canales y las líneas pueden tener un precio ahora
-   c.setPrecioMensual(100);
-   c2.setPrecioMensual(10);
-   std::cout << "Precio del canal " << c2.getNombre() << ": "
-             << c2.getPrecioMensual() << std::endl;
-   aC[0].setPrecioMensual(12);
-   aC[1].setPrecioMensual(22);
-   aC[2].setPrecioMensual(15);
+    // Las conexiones y canales pueden tener un precio ahora
+    c.setPrecioMensual(100);
 
-    std::cout << "El precio del paquete de canales es "
-              << pC1.getPrecioMensual()
-              << std::endl << std::endl;
+    c2.setPrecioMensual(10);
+    aC[0].setPrecioMensual(12);
+    aC[1].setPrecioMensual(22);
+    aC[2].setPrecioMensual(15);
+
+    std::cout << "Precio de la conexión:  " << c.getTipo() << ": "
+              << c2.getPrecioMensual() << std::endl;
+
+    std::cout << "Precio del canal " << c2.getNombre() << ": "
+              << c2.getPrecioMensual() << std::endl << std::endl;
+
+    // Crea un nuevo contrato
+   Contrato cto01 ( &p );
 
     // Introduce datos en el contrato
    cto01.addProducto ( c )
         .addProducto ( c2 ).addProducto ( aC[0] ).addProducto ( aC[2] )
         .setActivo ( true );
 
-   // Comprobamos el contrato
+   //Cambiamos el precio de la conexión del contrato
+   cto01.getProducto(1).setPrecioMensual(90);
+
+   std::cout << "Precio de la conexión del contrato:  "
+              << cto01.getProducto(1).getPrecioMensual()
+              << std::endl << std::endl;
+
+    // Comprobamos el contrato
    muestraContrato ( cto01 );
 
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa

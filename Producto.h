@@ -17,7 +17,7 @@
  */
 class Producto
 {
-   protected:
+   private:
       float _precioMensual = 0;   ///< Precio mensual del producto
      
    public:

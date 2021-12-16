@@ -42,7 +42,6 @@ class Contrato
       Contrato& addProducto ( const Canal &c );
       Contrato& addProducto ( const ConexionInternet &ci );
       Contrato& addProducto ( const PaqueteDeCanales &pc );
-      Contrato& addProducto ( const Producto &p );
       Producto& getProducto(int i);
       int getNumProductos() const;
       bool tieneConexionInternet() const;

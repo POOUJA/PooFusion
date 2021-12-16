@@ -167,32 +167,6 @@ Contrato& Contrato::addProducto ( const PaqueteDeCanales& pc )
     return *this;
 }
 
-/**
- * Añade un producto al Contrato
- * @param p Producto que se añade
- * @post El contrato incluye un producto más
- * @throw PooFusionExc Si el contrato no permite más canales
- * @return Una referencia al objeto actual, para permitir encadenamiento de
- *         llamadas a métodos
- */
-Contrato& Contrato::addProducto ( const Producto& p )
-{
-
-    //ToDo por ahora no tenemos una forma de saber si el producto es una ConexionInternet
-    if (_conexionInternet==false) {
-        throw PooFusionExc ( "Contrato.cpp", "Contrato::addProducto",
-                            "No se puede añadir un producto sin disponer de conexión a internet" );
-    }
-    if (_numProductos==MAX_PRODUCTOS) {
-        throw PooFusionExc ( "Contrato.cpp", "Contrato::addProducto",
-                            "Este contrato no admite más productos" );
-    }
-    _productos[_numProductos]= new Producto(p);
-    _numProductos++;
-
-    return *this;
-}
-
 
 /**
  * Devuelve el i-esimo producto
