@@ -16,9 +16,10 @@ class Contrato {
    - activo: bool
    - productos[MAX_PRODUCTOS]: Producto*
    - numProductos: int = 0
+   - tieneConexionInternet: bool
    + Contrato ( p: Persona )
-   + addProducto (c: Canal)
    + addProducto (ci: ConexionIternet)
+   + addProducto (c: Canal)
    + addProducto (pc: PaqueteCanales)
    + getProducto( cual: entero): Producto
    + getNumProductos()
@@ -43,7 +44,6 @@ class Canal {
 class PaqueteDeCanales {
    - descuento: float
    + addCanal ( c: Canal )
-   + getPrecioMensual(): float
 }
 
 

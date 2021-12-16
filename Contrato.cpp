@@ -20,7 +20,10 @@
  * @post El nuevo contrato no tiene servicios aún, aunque sí está activo
  * @throw PooFusionExc Si se le pasa como parámetro nullptr
  */
-Contrato::Contrato ( Persona* nAbonado ): _abonado ( nAbonado ), _numProductos(0), _conexionInternet(false)
+Contrato::Contrato ( Persona* nAbonado )
+    : _abonado ( nAbonado )
+    , _numProductos(0)
+    , _conexionInternet(false)
 {
    if ( nAbonado == nullptr )
    {
@@ -142,6 +145,11 @@ Contrato& Contrato::addProducto ( const Canal& c )
 
    return *this;
 }
+
+bool Contrato::tieneConexionInternet() const {
+    return _conexionInternet;
+}
+
 /**
  * Añade un paquete de canales al Contrato
  * @param pc Paquete de canales que se añade
@@ -174,7 +182,7 @@ Contrato& Contrato::addProducto ( const PaqueteDeCanales& pc )
  */
 Producto& Contrato::getProducto(int cual)
 {
-    if (cual>=_numProductos==MAX_PRODUCTOS)
+    if (cual>=_numProductos || cual < 1)
     {
         throw PooFusionExc ( "Contrato.cpp", "Contrato::getProducto",
                             "No existe ese producto" );
@@ -304,9 +312,5 @@ Contrato& Contrato::setMesesPermanencia ( int mesesPermanencia )
 int Contrato::getMesesPermanencia ( ) const
 {
    return _mesesPermanencia;
-}
-
-bool Contrato::tieneConexionInternet() const {
-    return _conexionInternet;
 }
 

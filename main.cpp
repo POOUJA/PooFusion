@@ -15,6 +15,22 @@
 using namespace std;
 
 /**
+ * @brief Muestra la información de un paquete de canales por consola
+ * @param paramPC Paquete del que se muestra la información
+ */
+void muestraPaqueteCanales ( PaqueteDeCanales& paramPC )
+{
+   std::cout << "Paquete de canales (" << paramPC.getDescuento ()
+             << "% de descuento) que contiene ";
+
+   for ( int i = 0; i < paramPC.getNumCanales (); i++ )
+   {
+      std::cout << paramPC.getCanal (i+1)->getNombre () << " ";
+   }
+}
+
+
+/**
  * @brief Muestra la información de una persona por consola
  * @param paramP Persona de la que muestra la información
  */
@@ -33,20 +49,20 @@ void muestraContrato ( Contrato& paramC )
    std::cout << "Contrato con fecha " << paramC.getFechaDeAlta () << std::endl
              << "===========================" << std::endl
              << "Abonado: " << paramC.getAbonado ()->getApeNom () << std::endl
-             << "Tiene conexión a Internet: " << (paramC.tieneConexionInternet()?"Sí":"No")
+             << "Conexión a Internet: " << (paramC.tieneConexionInternet()?"Sí":"No")
+             << ", Número de productos del contrato: " << paramC.getNumProductos()
              << std::endl;
-    if ( paramC.estaActivo () )
-    {
-        std::cout  << "Actualmente activo" << std::endl;
-    }
-    else
-    {
-        std::cout << "Actualmente NO activo" << std::endl;
-    }
+   //muestraPaqueteCanales ( *paramC.getPaqueteCanales() );
 
-    std::cout << "Num productos del contrato "
-              << paramC.getNumProductos() << std::endl;
-
+   if ( paramC.estaActivo () )
+   {
+      std::cout << std::endl << "Actualmente activo";
+   }
+   else
+   {
+      std::cout << std::endl << "Actualmente NO activo";
+   }
+   std::cout << std::endl;
 }
 
 
@@ -64,8 +80,15 @@ int main ( int argc, char** argv )
    ConexionInternet c, otraC;
    c.setTipo ( "Fibra" );
    c.setVelocidadMB ( 300 );
+   c.setPrecioMensual(39);
    otraC.setTipo ( "WiMAX" );
    otraC.setVelocidadMB ( 20 );
+
+   std::cout << "Los datos de la conexión son:"
+            << " Tipo: " << c.getTipo()
+            << " Velocidad: " << c.getVelocidadMB()
+            << " Precio: " << c.getPrecioMensual()
+            << std::endl << std::endl;
 
    // Creación de un objeto de clase Canal
    Canal c2;
@@ -152,36 +175,20 @@ int main ( int argc, char** argv )
    pC1.addCanal ( &aC[2] );
    pC1.addCanal ( &aC[1] );
 
-    // Las conexiones y canales pueden tener un precio ahora
-    c.setPrecioMensual(100);
-
-    c2.setPrecioMensual(10);
-    aC[0].setPrecioMensual(12);
-    aC[1].setPrecioMensual(22);
-    aC[2].setPrecioMensual(15);
-
-    std::cout << "Precio de la conexión:  " << c.getTipo() << ": "
-              << c2.getPrecioMensual() << std::endl;
-
-    std::cout << "Precio del canal " << c2.getNombre() << ": "
-              << c2.getPrecioMensual() << std::endl << std::endl;
-
-    // Crea un nuevo contrato
+   // Crea un nuevo contrato
    Contrato cto01 ( &p );
 
-    // Introduce datos en el contrato
-   cto01.addProducto ( c )
-        .addProducto ( c2 ).addProducto ( aC[0] ).addProducto ( aC[2] )
+   cto01.addProducto(c)
+        .addProducto(c2)
+        .addProducto(aC[0])
+        .addProducto(aC[2]);
+
+   // Introduce datos en el contrato
+/*   cto01.addConexion ( "Fibra", 300 )
+        .addCanal ( &c2 ).addCanal ( &aC[0] ).addCanal ( &aC[2] )
         .setActivo ( true );
-
-   //Cambiamos el precio de la conexión del contrato
-   cto01.getProducto(1).setPrecioMensual(90);
-
-   std::cout << "Precio de la conexión del contrato:  "
-              << cto01.getProducto(1).getPrecioMensual()
-              << std::endl << std::endl;
-
-    // Comprobamos el contrato
+*/
+   // Comprobamos el contrato
    muestraContrato ( cto01 );
 
    // Hay que liberar la memoria dinámica reservada antes de finalizar el programa

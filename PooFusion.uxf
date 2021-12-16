@@ -139,7 +139,7 @@ Contrato
 *+ addProducto ( ci: ConexionInternet )*
 *+ addProducto ( c: Canal )*
 *+ addProducto ( pc: PaqueteDeCanales )*
-*+ getProducto ( cual: int )*
+*+ getProducto ( cual: int ): Producto*
 *+ getNumProductos (): int*
 *+ tieneConexionInternet(): bool*
 bg=green</panel_attributes>
