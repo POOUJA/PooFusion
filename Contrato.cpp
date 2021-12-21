@@ -235,11 +235,11 @@ int Contrato::getNumProductos ( )
  * @return El producto consultado
  * @throw PooFusionExc Si hay algún problema
  */
-Producto* Contrato::getProducto ( int cual )
+Producto& Contrato::getProducto ( int cual )
 {
    try
    {
-      return _productos.getElemento ( cual-1 );
+      return *_productos.getElemento ( cual-1 );
    }
    catch ( std::out_of_range& e )
    {

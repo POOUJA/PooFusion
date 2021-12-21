@@ -36,7 +36,7 @@ void mostrar ( Contrato& paramC )
 
     for (int i = 1; i <= paramC.getNumProductos(); i++)
     {
-        std::cout << paramC.getProducto(i)->getDescripcion() << std::endl;
+        std::cout << paramC.getProducto(i).getDescripcion() << std::endl;
     }
 
     std::cout << "El precio mensual del contrato es "

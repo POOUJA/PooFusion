@@ -43,7 +43,7 @@ class Contrato
       Contrato& addProducto ( const PaqueteDeCanales& nPC );
       Contrato& addProducto ( const Producto& nP );
       int getNumProductos ();
-      Producto* getProducto ( int cual );
+      Producto& getProducto ( int cual );
       Contrato& setAbonado ( Persona* abonado );
       Persona* getAbonado ( ) const;
       Contrato& setActivo ( bool activo );

@@ -4,10 +4,6 @@ hide circle
 skinparam classattributeiconsize 0
 skinparam classFontStyle bold
 
-interface Duplicable<<Interfaz>> {
-   + {abstract} copia (): Duplicable
-}
-
 class Persona {
    - apeNom: string
    - nif: string
@@ -23,7 +19,7 @@ class Contrato {
 }
 
 class Producto {
-   # precioMensual: float
+   - precioMensual: float
    + Producto ( precio: float )
    + getDescripcion(): string
 }
@@ -89,7 +85,6 @@ Producto <|-- PaqueteDeCanales
 Contenedor <|.. CP: <<bind>>\n<T->Producto*>
 Contrato ..> CP
 Contrato *-- "1..10" Producto
-Duplicable <|.. Producto: <<implements>>
 Contenedor <|.. CC: <<bind>>\n<T->Canal*>
 PaqueteDeCanales o-- "1..5"Canal
 PaqueteDeCanales ..> CC
