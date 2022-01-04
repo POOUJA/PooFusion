@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
+<diagram program="umlet" version="13.3">
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -41,7 +41,7 @@ bg=green</panel_attributes>
       <x>763</x>
       <y>651</y>
       <w>140</w>
-      <h>70</h>
+      <h>63</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Canal
@@ -59,7 +59,7 @@ bg=green</panel_attributes>
       <x>168</x>
       <y>231</y>
       <w>105</w>
-      <h>91</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;Exception&gt;&gt;
@@ -77,23 +77,23 @@ PooFusionExc
     <id>Relation</id>
     <coordinates>
       <x>427</x>
-      <y>406</y>
+      <y>399</y>
       <w>63</w>
-      <h>161</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;210.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;220.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>525</x>
-      <y>406</y>
+      <y>399</y>
       <w>70</w>
-      <h>161</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;210.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;220.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -101,7 +101,7 @@ PooFusionExc
       <x>553</x>
       <y>553</y>
       <w>147</w>
-      <h>91</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>style=autoresize
 PaqueteDeCanales
@@ -119,14 +119,14 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>686</x>
+      <x>693</x>
       <y>595</y>
-      <w>154</w>
+      <w>140</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1..5</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;10.0;170.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0;160.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -209,7 +209,7 @@ bg=green</panel_attributes>
       <x>567</x>
       <y>210</y>
       <w>105</w>
-      <h>42</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template=Producto*
@@ -222,7 +222,7 @@ Contenedor</panel_attributes>
       <x>847</x>
       <y>553</y>
       <w>91</w>
-      <h>42</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>style=autoresize
 template=Canal*
@@ -235,13 +235,13 @@ Contenedor</panel_attributes>
       <x>448</x>
       <y>322</y>
       <w>154</w>
-      <h>91</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>style=autoresize
 &lt;&lt;abstract&gt;&gt;
 /Producto/
 --
-# precioMensual: float
+- precioMensual: float
 --
 + Producto ( precio: float )
 */+ copia (): Duplicable/*
@@ -337,7 +337,7 @@ m2=1..10</panel_attributes>
     <coordinates>
       <x>294</x>
       <y>252</y>
-      <w>189</w>
+      <w>182</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>style=autoresize
@@ -363,7 +363,7 @@ lanzan excepciones de este tipo</panel_attributes>
       <x>105</x>
       <y>511</y>
       <w>189</w>
-      <h>140</h>
+      <h>133</h>
     </coordinates>
     <panel_attributes>style=autoresize
 bg=yellow
@@ -386,7 +386,7 @@ programación</panel_attributes>
       <x>42</x>
       <y>231</y>
       <w>119</w>
-      <h>28</h>
+      <h>21</h>
     </coordinates>
     <panel_attributes>style=autoresize
 std::invalid_argument

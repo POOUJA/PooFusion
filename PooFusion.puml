@@ -23,7 +23,7 @@ class Contrato {
 }
 
 abstract class Producto {
-   # precioMensual: float
+   - precioMensual: float
    + Producto ( precio: float )
    + {abstract} copia(): Duplicable
    + {abstract} getDescripcion(): string
