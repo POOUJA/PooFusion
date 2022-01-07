@@ -19,10 +19,12 @@ class Contrato {
    - cuentaBancaria: string
    - activo: bool
    + Contrato ( p: Persona )
+   + Contrato( orig: Contrato)
+   + addProducto ( ci: ConexionInternet )
    + addProducto ( p: Producto )
 }
 
-abstract class Producto {
+abstract class Producto<<abstract>> {
    - precioMensual: float
    + Producto ( precio: float )
    + {abstract} copia(): Duplicable

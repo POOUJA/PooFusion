@@ -127,66 +127,7 @@ Contrato& Contrato::addProducto ( const ConexionInternet& nCI )
 
     return *this;
 }
-/**
- * Añade un nuevo canal al contrato
- * @param nC Nuevo canal. Se crea una copia de este objeto dentro del contrato
- * @post El contrato incluye un producto más
- * @throw PooFusionExc Si hay algún error
- * @return Una referencia al objeto actual, para permitir encadenamiento de
- *         llamadas a métodos
- */
-Contrato& Contrato::addProducto ( const Canal& nC )
-{
-    try
-    {
-        Producto* nuevoProducto = new Canal(nC);
 
-        if ( _conexionInternet == false)
-        {
-            throw PooFusionExc ( "Contrato::addProducto"
-                    , "¡No hay una conexión a Internet!"
-                    , "Contrato.cpp" );
-        }
-        _productos.addElemento ( nuevoProducto );
-    }
-    catch ( std::length_error& e )
-    {
-        // Añade a la información de la primera excepción los datos de este método
-        throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
-    }
-
-    return *this;
-}
-/**
- * Añade un nuevo paquete de canales al contrato
- * @param nPC Nuevo paquete de canales. Se crea una copia de este objeto dentro del contrato
- * @post El contrato incluye un producto más
- * @throw PooFusionExc Si hay algún error
- * @return Una referencia al objeto actual, para permitir encadenamiento de
- *         llamadas a métodos
- */
-Contrato& Contrato::addProducto ( const PaqueteDeCanales& nPC )
-{
-    try
-    {
-        PaqueteDeCanales* nuevoPaqueteCanales = new PaqueteDeCanales(nPC);
-
-        if ( _conexionInternet == false)
-        {
-            throw PooFusionExc ( "Contrato::addProducto"
-                    , "¡No hay una conexión a Internet!"
-                    , "Contrato.cpp" );
-        }
-        _productos.addElemento ( nuevoPaqueteCanales );
-    }
-    catch ( std::length_error& e )
-    {
-        // Añade a la información de la primera excepción los datos de este método
-        throw PooFusionExc ( "Contrato::addProducto", e.what (), "Contrato.cpp" );
-    }
-
-    return *this;
-}
 
 /**
  * Añade un nuevo producto genérico al contrato
@@ -198,6 +139,8 @@ Contrato& Contrato::addProducto ( const PaqueteDeCanales& nPC )
  */
 Contrato& Contrato::addProducto ( const Producto& nP )
 {
+    //ToDo Si Producto es una conexión a Internet actualizar _conexionInternet
+
     try
     {
         Producto* nuevoProducto = (Producto* )nP.copia();

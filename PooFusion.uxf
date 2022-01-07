@@ -134,7 +134,7 @@ m2=1..5</panel_attributes>
       <x>434</x>
       <y>49</y>
       <w>217</w>
-      <h>98</h>
+      <h>119</h>
     </coordinates>
     <panel_attributes>style=autoresize
 Contrato
@@ -145,7 +145,9 @@ Contrato
 - activo: bool
 --
 + Contrato ( p: Persona )
-+ addProducto ( p: Producto )</panel_attributes>
+*+ Contrato(Contrato)*
++ addProducto ( c: ConexionInternet )
+*+ addProducto ( p: Producto )*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -287,13 +289,13 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>511</x>
-      <y>140</y>
+      <y>161</y>
       <w>42</w>
-      <h>196</h>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m2=1..10</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

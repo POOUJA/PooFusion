@@ -32,7 +32,8 @@ void mostrar ( Contrato& paramC )
 {
     std::cout << "Contrato con fecha " << paramC.getFechaDeAlta() << std::endl
             << "===========================" << std::endl
-            << "Abonado: " << paramC.getAbonado()->getApeNom() << std::endl;
+            << "Abonado: " << paramC.getAbonado()->getApeNom()  << std::endl
+            << "Nº de productos: " << paramC.getNumProductos() << std::endl;
 
     for (int i = 1; i <= paramC.getNumProductos(); i++)
     {
@@ -44,11 +45,11 @@ void mostrar ( Contrato& paramC )
 
     if (paramC.estaActivo())
     {
-        std::cout << std::endl << "Actualmente activo";
+        std::cout <<  "Actualmente activo" << std::endl;
     }
     else
     {
-        std::cout << std::endl << "Actualmente NO activo";
+        std::cout << "Actualmente NO activo" << std::endl;
     }
     std::cout << std::endl;
 }
@@ -201,6 +202,8 @@ int main ( int argc, char** argv )
    {
       std::cerr << "Capturada excepción: " << e.quePasa () << std::endl;
    }
+
+    //Producto prod1 (10); // no se puede crear el objeto por ser clase abstracta
 
    // Introduce datos en el contrato
    cto01.addProducto ( ConexionInternet ( "Fibra", 300, 30 ) )

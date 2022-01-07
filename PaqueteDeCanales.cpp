@@ -232,13 +232,13 @@ std::string PaqueteDeCanales::getDescripcion ( )
 {
    std::stringstream aux;
 
-   aux << "Paquete de canales que contiene ";
+   aux << "Paquete de canales que contiene :" << " { ";
 
    for ( int i = 0; i < _canales.getNumElementos (); i++ )
    {
-      aux << std::endl << "\t" << _canales.getElemento (i)->getNombre ();
+      aux << _canales.getElemento (i)->getNombre () << " ";
    }
-
+   aux << "}";
    return aux.str ();
 }
 

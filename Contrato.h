@@ -39,8 +39,6 @@ class Contrato
       int getFechaDeAlta ( ) const;
       bool tieneConexionInternet() const;
       Contrato& addProducto ( const ConexionInternet& nCI );
-      Contrato& addProducto ( const Canal& nC );
-      Contrato& addProducto ( const PaqueteDeCanales& nPC );
       Contrato& addProducto ( const Producto& nP );
       int getNumProductos ();
       Producto& getProducto ( int cual );
