@@ -24,7 +24,7 @@ class ConexionInternet {
  + ConexionInternet ()
  + ConexionInternet ( orig: ConexionInternet )
  + ConexionInternet ( nTipo: string, nVel: int )
- + ~Persona ()
+ + ~ConexionInternet ()
  + getTipo (): string
  + setTipo ( nTipo: string )
  + getVelocidad (): int
@@ -40,17 +40,17 @@ class Canal {
  + Canal ( orig: Canal )
  + Canal ( nNombre: string )
  + ~Canal ()
- + setNombre ( nNombre: string )
  + getNombre (): string
+ + setNombre ( nNombre: string )
  + operator= ( otro: Canal ): Canal
 }
 
-class MiExcepcion{
+class PooFusionExc{
  - fichero: string
  - funcion: string
  - mensaje: string
- + MiExcepcion ( nFich: string, nFun: string, msg: string )
- + MiExcepcion ( orig: MiExcepcion )
+ + PooFusionExc ( nFich: string, nFun: string, msg: string )
+ + PooFusionExc ( orig: PooFusionExc )
  + quePasa (): string
 }
 
