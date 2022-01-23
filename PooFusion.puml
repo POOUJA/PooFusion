@@ -7,14 +7,22 @@ skinparam classFontStyle bold
 class Persona {
  - apeNom: string
  - nif: string
- + setPaqueteC ( nuevoC: PaqueteDeCanales ): PaqueteDeCanales
+ + setPaqueteC ( nuevoPC: PaqueteDeCanales ): PaqueteDeCanales
  + getPaqueteC (): PaqueteDeCanales
- + setConexion ( nuevaC: ConexionInternet ): ConexionInternet
- + getConexion (): ConexionInternet
 }
 
 class PaqueteDeCanales{
  - descuento: float
+ +PaqueteDeCanales(nC1:Canal, nC2: Canal, nDesc: float)
+ +PaqueteDeCanales(orig: PaqueteDeCanales)
+ +~PaqueteDeCanales()
+ +setDescuento(nDesc: float)
+ +getDescuento(): float
+ +setC1(nC1: Canal): Canal
+ +getC1(): Canal
+ +setC2(nC2: Canal): Canal
+ +getC2(): Canal
+ +operator= (otro: PaqueteDeCanales): PaqueteDeCanales
 }
 
 class ConexionInternet {
@@ -26,7 +34,7 @@ class Canal {
  - nombre: string
 }
 
-class MiExcepcion{
+class PooFusionExc{
  - fichero: string
  - función: string
  - mensaje: string
@@ -35,9 +43,9 @@ class MiExcepcion{
 Persona --> "miConexion" ConexionInternet: Contrata >
 Persona --> "miPaquete" PaqueteDeCanales: Contrata >
 PaqueteDeCanales o-- "2" Canal
-Canal ..> MiExcepcion
-ConexionInternet ..> MiExcepcion
-Persona ..> MiExcepcion
-PaqueteDeCanales ..> MiExcepcion
+Canal ..> PooFusionExc
+ConexionInternet ..> PooFusionExc
+Persona ..> PooFusionExc
+PaqueteDeCanales ..> PooFusionExc
 
 @enduml
