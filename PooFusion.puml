@@ -10,13 +10,10 @@ class Persona {
 }
 
 class Contrato {
-   - fechaAlta: int {Formato: YYYYMMDD}
+   - fechaDeAlta: int {Formato: YYYYMMDD}
    - mesesPermanencia: int
    - cuentaBancaria: string
    - activo: bool
-   - productos[MAX_PRODUCTOS]: Producto*
-   - numProductos: int = 0
-   + Contrato ( p: Persona )
    + addProducto ( p: Producto )
 }
 
@@ -39,27 +36,46 @@ class PaqueteDeCanales {
    + addCanal ( c: Canal )
 }
 
-
-class MiExcepcion<<Exception>> {
-   - fichero: string
-   - función: string
-   - mensaje: string
-   + quePasa(): cadena
+class Contenedor<T>{
+   - elementos[MAX_TAM]: T
+   - numElementos: int
+   - maxElementos: int
+   - vacio: T
+   - compactar ( inicio: int )
+   + Contenedor ( tamMaximo: int, vVacio: T = T() )
+   + addElemento ( nE: T )
+   + getElemento ( cual: int ): T
+   + sacaElemento ( cual: int ): T
+   + getNumElementos (): int
+   + operator= ( otro: Contenedor )
+   + vaciar ()
 }
-note bottom of MiExcepcion
-   Todas las clases lanzan
-   excepciones de este tipo
-   salvo Contenedor
-end note
 
-class std::invalid_argument
+class ContenedorProductos<Producto*>{}
+
+class ContenedorCanales<Canal*>{}
 
 Contrato -- "1\nabonado" Persona: >
 Producto <|-- ConexionInternet 
 Producto <|-- Canal
 Producto <|-- PaqueteDeCanales
-Contrato *-- "1..10" Producto
-PaqueteDeCanales o-- "1..5"Canal
+Contenedor <|..  "<<bind>> <T-> Canal*>" ContenedorProductos
+Contenedor <|.. "<<bind>> <T-> Canal*>" ContenedorCanales
+Contrato *-- ContenedorProductos
+ContenedorProductos *-- "1..10" Producto
+PaqueteDeCanales *-- ContenedorCanales
+ContenedorCanales *-- "1..5" Canal
+
+class PooFusionExc<<Exception>> {
+   - fichero: string
+   - función: string
+   - mensaje: string
+}
+note bottom of PooFusionExc
+   Todas las clases lanzan
+   excepciones de este tipo
+   salvo Contenedor
+end note
 
 note as Nota1
    El diagrama no incluye constructores
@@ -68,7 +84,7 @@ note as Nota1
 
    Los tipos, salvo casos concretos, no
    llevan & ni *, pero a la hora de
-   implementar sí hay que ponerlos ;-). 
+   implementar sí hay que ponerlos ;-).
    Está así por hacer que el UML sea lo
    más "ajeno" posible al lenguaje de
    programación
