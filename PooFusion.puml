@@ -4,107 +4,78 @@ hide circle
 skinparam classattributeiconsize 0
 skinparam classFontStyle bold
 
-interface Duplicable<<Interfaz>> {
-   + {abstract} copia (): Duplicable
-}
-
 class Persona {
    - apeNom: string
    - nif: string
 }
 
 class Contrato {
-   - fechaAlta: int {Formato: YYYYMMDD}
+   - fechaDeAlta: int {Formato: YYYYMMDD}
    - mesesPermanencia: int
    - cuentaBancaria: string
    - activo: bool
-   + Contrato ( p: Persona )
    + addProducto ( p: Producto )
 }
 
-abstract class Producto {
+class Producto {
    # precioMensual: float
    + Producto ( precio: float )
-   + {abstract} copia(): Duplicable
-   + {abstract} getDescripcion(): string
 }
 
 class ConexionInternet {
    - tipo: string
    - velocidadMB: int
-   + copia(): Duplicable
-   + getDescripcion (): string
 }
 
 class Canal {
    - nombre: string
-   + copia(): Duplicable
-   + getDescripcion (): string
 }
 
 class PaqueteDeCanales {
    - descuento: float
    + addCanal ( c: Canal )
-   + copia(): Duplicable
-   + getDescripcion (): string
-   + getPrecioMensual (): float
 }
 
-class Contenedor<T> {
+class Contenedor<T>{
    - elementos[MAX_TAM]: T
    - numElementos: int
    - maxElementos: int
    - vacio: T
-
    - compactar ( inicio: int )
    + Contenedor ( tamMaximo: int, vVacio: T = T() )
    + addElemento ( nE: T )
    + getElemento ( cual: int ): T
    + sacaElemento ( cual: int ): T
    + getNumElementos (): int
+   + operator= ( otro: Contenedor )
    + vaciar ()
 }
 
-class PooFusionExc<<Exception>> extends std::logic_error{
+class ContenedorProductos<Producto*>{}
+
+class ContenedorCanales<Canal*>{}
+
+Contrato -- "1\nabonado" Persona: >
+Producto <|-- ConexionInternet 
+Producto <|-- Canal
+Producto <|-- PaqueteDeCanales
+Contenedor <|..  "<<bind>> <T-> Canal*>" ContenedorProductos
+Contenedor <|.. "<<bind>> <T-> Canal*>" ContenedorCanales
+Contrato *-- ContenedorProductos
+ContenedorProductos *-- "1..10" Producto
+PaqueteDeCanales *-- ContenedorCanales
+ContenedorCanales *-- "1..5" Canal
+
+class PooFusionExc<<Exception>> {
    - fichero: string
    - función: string
    - mensaje: string
-   + quePasa(): cadena
 }
 note bottom of PooFusionExc
    Todas las clases lanzan
    excepciones de este tipo
    salvo Contenedor
 end note
-
-class std::exception {
-  + what(): cadena
-}
-
-class std::logic_error extends std::exception {
-  +std::logic_error(mensaje)
-  + what(): cadena
-}
-class std::invalid_argument extends std::logic_error
-
-class "Contenedor<Canal*>" as CC {
-}
-
-class "Contenedor<Producto*>" as CP{
-}
-
-
-Contrato -- "1\nabonado" Persona: >
-Producto <|-- ConexionInternet 
-Producto <|-- Canal
-Producto <|-- PaqueteDeCanales
-Contenedor <|.. CP: <<bind>>\n<T->Producto*>
-Contrato ..> CP
-Contrato *-- "1..10" Producto
-Duplicable <|.. Producto: <<implements>>
-Contenedor <|.. CC: <<bind>>\n<T->Canal*>
-PaqueteDeCanales o-- "1..5"Canal
-PaqueteDeCanales ..> CC
 
 note as Nota1
    El diagrama no incluye constructores
@@ -113,7 +84,7 @@ note as Nota1
 
    Los tipos, salvo casos concretos, no
    llevan & ni *, pero a la hora de
-   implementar sí hay que ponerlos ;-). 
+   implementar sí hay que ponerlos ;-).
    Está así por hacer que el UML sea lo
    más "ajeno" posible al lenguaje de
    programación
