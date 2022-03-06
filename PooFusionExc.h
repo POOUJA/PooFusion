@@ -30,4 +30,3 @@ class PooFusionExc
 };
 
 #endif /* POOFUSIONEXC_H */
-

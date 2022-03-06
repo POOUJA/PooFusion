@@ -11,8 +11,8 @@
 #define PAQUETEDECANALES_H
 
 #include "Canal.h"
-#include "Contenedor.h"
 #include "Producto.h"
+#include "Contenedor.h"
 
 /**
  * Paquetes de canales de TV con un descuento
@@ -23,8 +23,8 @@ class PaqueteDeCanales: public Producto
       static const int MAX_CANALES = 5;   ///< Máximo de canales
 
    private:
-      float _descuento = 0;   ///< Descuento por el paquete
       Contenedor<Canal*> _canales;   ///< Canales del paquete
+      float _descuento = 0;   ///< Descuento por el paquete
   
    public:
       PaqueteDeCanales ( float nDesc );
@@ -32,7 +32,7 @@ class PaqueteDeCanales: public Producto
       virtual ~PaqueteDeCanales ( );
       void setDescuento ( float nDesc );
       float getDescuento ( ) const;
-      void addCanal ( Canal* nuevoC );
+      PaqueteDeCanales& addCanal ( Canal* nuevoC );
       Canal* getCanal ( int cual );
       Canal* sacaCanal ( int cual );
       int getNumCanales () const;

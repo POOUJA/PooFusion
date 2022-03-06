@@ -21,9 +21,9 @@
  *        tipo es una cadena vacía, o si el precio es un número negativo
  */
 ConexionInternet::ConexionInternet ( float nPrecio, std::string nTipo
-   , int nVel ): Producto ( nPrecio )
-                 , _tipo( nTipo )
-                 , _velocidadMB ( nVel )
+                                   , int nVel ): Producto ( nPrecio )
+                                               , _tipo( nTipo )
+                                               , _velocidadMB ( nVel )
 {
    if ( nVel <= 0 )
    {
@@ -51,7 +51,7 @@ ConexionInternet::ConexionInternet ( float nPrecio, std::string nTipo
  *        tipo es una cadena vacía
  */
 ConexionInternet::ConexionInternet ( std::string nTipo, int nVel):
-   ConexionInternet ( 0, nTipo, nVel )
+                                ConexionInternet ( 0, nTipo, nVel )
 { }
 
 
@@ -61,8 +61,8 @@ ConexionInternet::ConexionInternet ( std::string nTipo, int nVel):
  * @post La nueva conexión tiene exactamente los mismos datos que la original
  */
 ConexionInternet::ConexionInternet ( const ConexionInternet& orig ): Producto ( orig )
-                                 , _tipo ( orig._tipo )
-                                 , _velocidadMB ( orig._velocidadMB )
+                                            , _tipo ( orig._tipo )
+                                            , _velocidadMB ( orig._velocidadMB )
 { }
 
 /**
@@ -142,7 +142,7 @@ ConexionInternet& ConexionInternet::operator= ( const ConexionInternet& otro )
 {
    if ( this != &otro )
    {
-      this->Producto::operator = ( otro );
+      Producto::operator= ( otro );
       _tipo = otro._tipo;
       _velocidadMB = otro._velocidadMB;
    }

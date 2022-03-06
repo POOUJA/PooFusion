@@ -16,8 +16,7 @@
  * @post El nuevo paquete tiene el descuento pasado como parámetro
  * @throw PooFusionExc Si el descuento es negativo
  */
-PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto(), _descuento ( nDesc )
-                                                  , _canales ( MAX_CANALES )
+PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto(), _descuento ( nDesc ), _canales(MAX_CANALES, nullptr)
 {
    if ( nDesc < 0 )
    {
@@ -25,8 +24,6 @@ PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto(), _descuento ( nDe
                         , "PaqueteDeCanales::PaqueteDeCanales"
                         , "El descuento no puede ser negativo" );
    }
-
-   // El constructor del contenedor ya inicializa los valores a nullptr
 }
 
 
@@ -35,9 +32,9 @@ PaqueteDeCanales::PaqueteDeCanales ( float nDesc ): Producto(), _descuento ( nDe
  * @param orig Paquete del que se copia la información
  * @post El nuevo paquete tiene una copia exacta de los valores del original
  */
-PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ): Producto ( orig )
+PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ): Producto( orig )
                                                 , _descuento ( orig._descuento )
-                                                , _canales ( orig._canales )
+                                                , _canales(orig._canales)
 { }
 
 
@@ -48,7 +45,9 @@ PaqueteDeCanales::PaqueteDeCanales ( const PaqueteDeCanales& orig ): Producto ( 
  */
 PaqueteDeCanales::~PaqueteDeCanales ( )
 {
-   _canales.vaciar();
+   for(int i=0; i<_canales.getNumElementos(); i++){
+       _canales.sacaElemento(0);
+   }
 }
 
 
@@ -87,17 +86,15 @@ float PaqueteDeCanales::getDescuento ( ) const
  * @post El paquete de canales contiene un canal más
  * @throw PooFusionExc Si no caben más canales en el paquete
  */
-void PaqueteDeCanales::addCanal ( Canal* nuevoC )
+PaqueteDeCanales& PaqueteDeCanales::addCanal ( Canal* nuevoC )
 {
-   try
-   {
-      _canales.addElemento ( nuevoC );
+   try{
+       _canales.addElemento(nuevoC);
+   }catch (std::length_error& e) {
+       throw PooFusionExc("PaqueteDeCanales.cpp","PaqueteDeCanales::addCanal", e.what());
    }
-   catch ( std::length_error& e )
-   {
-      throw PooFusionExc ( "PaqueteDeCanales.cpp", "PaqueteDeCanales::addCanal",
-                           e.what() );
-   }
+
+    return *this;
 }
 
 
@@ -110,19 +107,11 @@ void PaqueteDeCanales::addCanal ( Canal* nuevoC )
  */
 Canal* PaqueteDeCanales::getCanal ( int cual )
 {
-   Canal* aDevolver = nullptr;
-
-   try
-   {
-      aDevolver = _canales.getElemento ( cual-1 );
+   try{
+       return _canales.getElemento(cual-1);
+   }catch (std::out_of_range& e){
+       throw PooFusionExc("PaqueteDeCanales.cpp", "PaqueteDeCanales::getCanal", e.what());
    }
-   catch ( std::out_of_range &e )
-   {
-      throw PooFusionExc ( "PaqueteDeCanales.cpp"
-                         , "PaqueteDeCanales::getCanal", e.what () );
-   }
-
-   return aDevolver;
 }
 
 
@@ -136,19 +125,11 @@ Canal* PaqueteDeCanales::getCanal ( int cual )
  */
 Canal* PaqueteDeCanales::sacaCanal ( int cual )
 {
-   Canal* aDevolver = nullptr;
-
-   try
-   {
-      aDevolver = _canales.sacaElemento ( cual-1 );
+   try{
+       return _canales.sacaElemento(cual-1);
+   }catch (std::out_of_range& e){
+       throw PooFusionExc("PaqueteDeCanales.cpp","PaqueteDeCanales::sacaCanal", e.what());
    }
-   catch ( std::out_of_range &e )
-   {
-      throw PooFusionExc ( "PaqueteDeCanales.cpp"
-                         , "PaqueteDeCanales::sacaCanal", e.what() );
-   }
-
-   return aDevolver;
 }
 
 
@@ -177,7 +158,7 @@ PaqueteDeCanales& PaqueteDeCanales::operator= ( const PaqueteDeCanales& otro )
    if ( this != &otro )
    {
       Producto::operator= ( otro );
-      _canales = otro._canales;
+      _canales=otro._canales;
       _descuento = otro._descuento;
    }
 

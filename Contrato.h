@@ -31,7 +31,7 @@ class Contrato
       Persona* _abonado = nullptr;
 
       bool _conexionInternet = false;
-      Contenedor<Producto*> _productos;   ///< Productos contratados
+      Contenedor<Producto*> _productos;
 
    public:
       Contrato ( Persona* nAbonado = nullptr);
@@ -44,9 +44,8 @@ class Contrato
       Contrato& addProducto ( const PaqueteDeCanales &pc );
       Contrato& addProducto ( const Producto &p );
       Producto& getProducto(int i);
-      int getNumProductos() const;
       bool tieneConexionInternet() const;
-
+      int getNumProductos() const;
       Contrato& setAbonado ( Persona* abonado );
       Persona* getAbonado ( ) const;
       Contrato& setActivo ( bool activo );
